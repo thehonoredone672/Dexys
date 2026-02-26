@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEXYS | IT Solutions</title>
+
+<style>
+
+:root{
+--dark:#181818;
+--accent:#8FAFC3;
+--light:#F4F7FA;
+--card:#1f2933;
+--text:#5F6B75;
+--white:#ffffff;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+scroll-behavior:smooth;
+}
+
+
+body{
+  background:linear-gradient(135deg,#0f1115,#181818,#1f2933);
+  color:var(--white);
+min-height:100vh;
+}
+/* NAVBAR */
+
+/* NAVBAR */
+
+/* ===== MODERN NAVBAR ===== */
+
+header{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(255,255,255,.9);
+backdrop-filter:blur(10px);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px 50px;
+z-index:1000;
+box-shadow:0 4px 20px rgba(0,0,0,.08);
+border-bottom:2px solid transparent;
+border-image:linear-gradient(90deg,#8FAFC3,#181818) 1;
+}
+
+.brand{
+display:flex;
+align-items:center;
+}
+
+.logo-img{
+height:38px;
+}
+
+nav{
+display:flex;
+gap:30px;
+}
+
+nav a{
+color:#181818;
+text-decoration:none;
+font-weight:500;
+position:relative;
+}
+
+nav a::after{
+content:"";
+position:absolute;
+bottom:-5px;
+left:0;
+width:0;
+height:2px;
+background:#8FAFC3;
+transition:.3s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+/* Hamburger */
+
+.menu{
+display:none;
+font-size:26px;
+cursor:pointer;
+color:#181818;
+}
+
+/* MOBILE NAV */
+
+@media(max-width:768px){
+
+nav{
+position:fixed;
+top:65px;
+right:-100%;
+height:100vh;
+width:230px;
+background:rgba(255,255,255,.95);
+backdrop-filter:blur(12px);
+flex-direction:column;
+padding:30px;
+gap:20px;
+transition:.3s;
+}
+
+nav.active{
+right:0;
+}
+
+.menu{
+display:block;
+}
+
+}
+/* HERO */
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:0 20px;
+}
+
+.hero h1{
+font-size:50px;
+}
+
+.hero span{
+color:var(--accent);
+}
+
+.hero p{
+margin-top:15px;
+max-width:600px;
+color:#ccc;
+}
+
+button{
+margin-top:25px;
+padding:12px 28px;
+background:var(--accent);
+border:none;
+border-radius:6px;
+cursor:pointer;
+color:#111;
+}
+
+/* SECTIONS */
+
+section{
+padding:100px 60px;
+}
+
+h2{
+text-align:center;
+margin-bottom:40px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:var(--card);
+padding:30px;
+border-radius:15px;
+border:1px solid #2f3a44;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+border-color:var(--accent);
+}
+
+/* CONTACT */
+
+input,textarea{
+width:100%;
+padding:12px;
+margin:10px 0;
+background:#111;
+border:1px solid #333;
+color:white;
+border-radius:5px;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:25px;
+background:#111;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+nav{
+position:absolute;
+top:60px;
+right:0;
+background:#111;
+flex-direction:column;
+width:200px;
+display:none;
+}
+
+nav.active{
+display:flex;
+}
+
+.menu{
+display:block;
+}
+
+header{
+padding:15px 25px;
+}
+
+section{
+padding:80px 25px;
+}
+
+.hero h1{
+font-size:38px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="brand">
+<img src="logo.png" class="logo-img">
+</div>
+
+<div class="menu" onclick="toggleMenu()">☰</div>
+
+<nav id="nav">
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#products">Products</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>""
+
+<div class="hero">
+<h1>We Build <span>Digital Solutions</span></h1>
+<p>DEXYS delivers modern IT services, web platforms, AI systems and intelligent products.</p>
+<button onclick="scrollToContact()">Get Started</button>
+</div>
+
+<section id="about">
+<h2>About DEXYS</h2>
+<p style="text-align:center;color:#ccc;">
+DEXYS is an innovative IT solution company delivering websites, applications, AI systems and product platforms for startups and enterprises.
+</p>
+</section>
+
+<section id="services">
+<h2>Our Services</h2>
+<div class="grid">
+<div class="card">Web Development</div>
+<div class="card">Mobile Applications</div>
+<div class="card">AI & ML Solutions</div>
+<div class="card">Cloud Deployment</div>
+</div>
+</section>
+
+<section id="products">
+<h2>Our Products</h2>
+<div class="grid">
+<div class="card">DEXYS CRM</div>
+<div class="card">DEXYS Analytics</div>
+<div class="card">DEXYS Learning Platform</div>
+</div>
+</section>
+
+<section id="projects">
+<h2>Completed Projects</h2>
+<div class="grid">
+<div class="card">College Management System</div>
+<div class="card">E-Commerce Platform</div>
+<div class="card">VR Training App</div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact Us</h2>
+<input placeholder="Your Name">
+<input placeholder="Email">
+<textarea rows="5" placeholder="Message"></textarea>
+<button onclick="submitForm()">Send Message</button>
+</section>
+
+<footer>
+<p>© 2026 DEXYS Technologies</p>
+</footer>
+
+<script>
+
+function toggleMenu(){
+document.getElementById("nav").classList.toggle("active");
+}
+
+function scrollToContact(){
+document.getElementById("contact").scrollIntoView({behavior:"smooth"});
+}
+
+function submitForm(){
+alert("Message Sent — Backend integration coming soon.");
+}
+
+</script>
+
+</body>
+</html>
