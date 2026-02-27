@@ -20,27 +20,23 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial;
+font-family:Arial, sans-serif;
 scroll-behavior:smooth;
 }
 
-
 body{
-  background:linear-gradient(135deg,#0f1115,#181818,#1f2933);
-  color:var(--white);
+background:linear-gradient(135deg,#0f1115,#181818,#1f2933);
+color:var(--white);
 min-height:100vh;
 }
-/* NAVBAR */
 
-/* NAVBAR */
-
-/* ===== MODERN NAVBAR ===== */
+/* ===== NAVBAR ===== */
 
 header{
 position:fixed;
 top:0;
 width:100%;
-background:rgba(255,255,255,.9);
+background:#fff;
 backdrop-filter:blur(10px);
 display:flex;
 justify-content:space-between;
@@ -48,13 +44,6 @@ align-items:center;
 padding:12px 50px;
 z-index:1000;
 box-shadow:0 4px 20px rgba(0,0,0,.08);
-border-bottom:2px solid transparent;
-border-image:linear-gradient(90deg,#8FAFC3,#181818) 1;
-}
-
-.brand{
-display:flex;
-align-items:center;
 }
 
 .logo-img{
@@ -80,15 +69,13 @@ bottom:-5px;
 left:0;
 width:0;
 height:2px;
-background:#8FAFC3;
+background:var(--accent);
 transition:.3s;
 }
 
 nav a:hover::after{
 width:100%;
 }
-
-/* Hamburger */
 
 .menu{
 display:none;
@@ -97,34 +84,7 @@ cursor:pointer;
 color:#181818;
 }
 
-/* MOBILE NAV */
-
-@media(max-width:768px){
-
-nav{
-position:fixed;
-top:65px;
-right:-100%;
-height:100vh;
-width:230px;
-background:rgba(255,255,255,.95);
-backdrop-filter:blur(12px);
-flex-direction:column;
-padding:30px;
-gap:20px;
-transition:.3s;
-}
-
-nav.active{
-right:0;
-}
-
-.menu{
-display:block;
-}
-
-}
-/* HERO */
+/* ===== HERO ===== */
 
 .hero{
 height:100vh;
@@ -134,6 +94,7 @@ justify-content:center;
 align-items:center;
 text-align:center;
 padding:0 20px;
+margin-top:70px;
 }
 
 .hero h1{
@@ -158,9 +119,10 @@ border:none;
 border-radius:6px;
 cursor:pointer;
 color:#111;
+font-weight:600;
 }
 
-/* SECTIONS */
+/* ===== SECTIONS ===== */
 
 section{
 padding:100px 60px;
@@ -190,7 +152,7 @@ transform:translateY(-8px);
 border-color:var(--accent);
 }
 
-/* CONTACT */
+/* ===== CONTACT ===== */
 
 input,textarea{
 width:100%;
@@ -202,7 +164,7 @@ color:white;
 border-radius:5px;
 }
 
-/* FOOTER */
+/* ===== FOOTER ===== */
 
 footer{
 text-align:center;
@@ -210,30 +172,34 @@ padding:25px;
 background:#111;
 }
 
-/* MOBILE */
+/* ===== MOBILE ===== */
 
 @media(max-width:768px){
 
+header{
+padding:12px 25px;
+}
+
 nav{
-position:absolute;
-top:60px;
-right:0;
-background:#111;
+position:fixed;
+top:65px;
+right:-100%;
+height:100vh;
+width:230px;
+background:rgba(255,255,255,.95);
+backdrop-filter:blur(12px);
 flex-direction:column;
-width:200px;
-display:none;
+padding:30px;
+gap:20px;
+transition:.3s;
 }
 
 nav.active{
-display:flex;
+right:0;
 }
 
 .menu{
 display:block;
-}
-
-header{
-padding:15px 25px;
 }
 
 section{
@@ -252,9 +218,7 @@ font-size:38px;
 <body>
 
 <header>
-<div class="brand">
-<img src="logo.png" class="logo-img">
-</div>
+<img src="dexys.png" class="logo-img" alt="DEXYS Logo">
 
 <div class="menu" onclick="toggleMenu()">☰</div>
 
@@ -265,7 +229,7 @@ font-size:38px;
 <a href="#projects">Projects</a>
 <a href="#contact">Contact</a>
 </nav>
-</header>""
+</header>
 
 <div class="hero">
 <h1>We Build <span>Digital Solutions</span></h1>
@@ -313,7 +277,7 @@ DEXYS is an innovative IT solution company delivering websites, applications, AI
 <input placeholder="Your Name">
 <input placeholder="Email">
 <textarea rows="5" placeholder="Message"></textarea>
-<button onclick="submitForm()">Send Message</button>
+<button>Send Message</button>
 </section>
 
 <footer>
@@ -328,10 +292,6 @@ document.getElementById("nav").classList.toggle("active");
 
 function scrollToContact(){
 document.getElementById("contact").scrollIntoView({behavior:"smooth"});
-}
-
-function submitForm(){
-alert("Message Sent — Backend integration coming soon.");
 }
 
 </script>
