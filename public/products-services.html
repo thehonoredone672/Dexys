@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products & Services | DEXYS Technologies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        :root { --bg-primary: #0B0F19; --bg-secondary: #111827; --accent: #8FB6CC; --accent-soft: rgba(143,182,204,0.1); --text-light: #F9FAFB; --text-muted: #9CA3AF; --border: rgba(143, 182, 204, 0.15); --header-height: 80px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        body { background-color: var(--bg-primary); color: var(--text-light); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        
+        .dexys-svg-logo { height: 28px; width: auto; display: block; transition: transform 0.3s ease; } .dexys-svg-logo:hover { transform: scale(1.05); } header .dexys-svg-logo { color: var(--bg-primary); } footer .dexys-svg-logo { color: var(--text-light); }
+        
+        #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-primary); z-index: 99999; display: flex; align-items: center; justify-content: center; flex-direction: column; } .loader-text { font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 500; color: var(--text-muted); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 2rem; } .loader-line-container { width: 1px; height: 100px; background: rgba(255,255,255,0.05); overflow: hidden; position: relative; } .loader-line { width: 100%; height: 0%; background: var(--accent); position: absolute; bottom: 0; }
+        .cursor-dot { width: 6px; height: 6px; background-color: var(--accent); position: fixed; top: 0; left: 0; border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s; } .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(143,182,204,0.5); position: fixed; top: 0; left: 0; border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: 0.3s; } body.hovering .cursor-outline { width: 60px; height: 60px; background-color: rgba(143,182,204,0.1); border-color: transparent; backdrop-filter: blur(2px); } body.hovering .cursor-dot { width: 0; height: 0; }
+        
+        header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); z-index: 1000; display: flex; align-items: center; opacity: 0; transform: translateY(-100%); } .nav-container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 6%; display: flex; justify-content: space-between; align-items: center; }
+        .desktop-nav { display: flex; gap: 3rem; align-items: center; } .desktop-nav a { position: relative; color: var(--bg-primary); text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 0.5rem 0; transition: color 0.3s ease; } .desktop-nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: var(--accent); transform: scaleX(0); transform-origin: right; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); } .desktop-nav a:hover, .desktop-nav a.active { color: var(--accent); } .desktop-nav a:hover::after, .desktop-nav a.active::after { transform: scaleX(1); transform-origin: left; }
+        .menu-btn { background: none; border: none; width: 40px; height: 40px; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; gap: 6px; z-index: 1001; position: relative; } .menu-line { height: 2px; background: var(--bg-primary); transition: 0.3s ease; } .menu-line:nth-child(1) { width: 24px; } .menu-line:nth-child(2) { width: 16px; } .menu-btn:hover .menu-line { width: 24px; background: var(--accent); } .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-primary); z-index: 999; display: flex; flex-direction: column; justify-content: center; padding-left: 10%; pointer-events: none; opacity: 0; } .menu-link { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 800; color: var(--text-light); text-decoration: none; letter-spacing: -0.04em; margin-bottom: 1.5rem; opacity: 0; transform: translateY(40px); display: block; width: fit-content; } .menu-link:hover { color: var(--accent); }
+        
+        .ambient-glow { position: absolute; top: 10%; left: 50%; transform: translateX(-50%); width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(143,182,204,0.08) 0%, transparent 70%); z-index: -1; pointer-events: none; } #grid-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: grid; grid-template-columns: repeat(20, 1fr); z-index: -2; opacity: 0.15; mask-image: radial-gradient(ellipse at center, black 40%, transparent 100%); } .grid-pixel { border: 0.5px solid var(--border); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 5%; position: relative; } section { padding: clamp(100px, 12vw, 160px) 0; border-bottom: 1px solid var(--border); position: relative; } .bg-secondary-section { background-color: var(--bg-secondary); } .kicker { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 1.5rem; display: block; } h1 { font-size: clamp(3.5rem, 8vw, 6.5rem); font-weight: 900; letter-spacing: -0.05em; line-height: 1.05; margin-bottom: 1.5rem; } h2 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 1.5rem; line-height: 1.1; color: var(--text-light); } p { color: var(--text-muted); font-size: clamp(1.05rem, 2vw, 1.2rem); max-width: 65ch; margin-bottom: 2rem; line-height: 1.7; } .text-gradient { background: linear-gradient(135deg, #FFF 0%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 4rem; }
+        .glass-card { position: relative; background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 3rem; transition: transform 0.4s, border-color 0.4s; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; } .glass-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(143,182,204,0.06), transparent 40%); z-index: 0; pointer-events: none; opacity: 0; transition: opacity 0.4s; } .glass-card:hover::before { opacity: 1; } .glass-card:hover { transform: translateY(-5px); border-color: rgba(143,182,204,0.3); } .glass-card > * { position: relative; z-index: 1; } .glass-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-light); } .glass-card p { font-size: 0.95rem; margin-bottom: 0; max-width: 100%; } .card-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--accent-soft); display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; border: 1px solid rgba(143,182,204,0.2); color: var(--accent); font-size: 1.5rem; font-family: 'JetBrains Mono'; font-weight: 700; }
+        .tech-badge { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; background: rgba(143,182,204,0.15); color: var(--accent); padding: 4px 10px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+
+        .algo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 4rem; } .algo-card { background: #0B0F19; border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 8px; padding: 2.5rem; box-shadow: inset 0 0 40px rgba(0,0,0,0.5); transition: 0.3s; } .algo-card:hover { border-color: var(--accent); } .algo-card h3 { font-family: 'JetBrains Mono', monospace; font-size: 1.25rem; color: #98C379; margin-bottom: 1rem; }
+
+        footer { background: var(--bg-primary); padding: 80px 0 40px 0; border-top: 1px solid var(--border); } .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 60px; } .footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; color: var(--text-light); } .footer-col ul { list-style: none; } .footer-col li { margin-bottom: 0.75rem; } .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; transition: color 0.3s; } .footer-col a:hover { color: var(--accent); } .copyright { padding-top: 40px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 0.85rem; color: #4B5563; }
+        .reveal { opacity: 0; transform: translateY(40px); }
+        @media (min-width: 901px) { .menu-btn { display: none !important; } } @media (max-width: 900px) { .desktop-nav { display: none; } * { cursor: auto; } .cursor-dot, .cursor-outline { display: none; } .footer-grid, .algo-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div id="loader"><div class="loader-text">DEXYS</div><div class="loader-line-container"><div class="loader-line" id="loader-line"></div></div></div>
+    <div class="cursor-outline" id="cursor-outline"></div><div class="cursor-dot" id="cursor-dot"></div>
+
+    <header id="main-header">
+        <div class="nav-container">
+            <a href="index.html" class="hover-target">
+                <svg viewBox="0 0 170 40" class="dexys-svg-logo" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 5 20 L 15 10 L 21 10 L 11 20 L 21 30 L 15 30 Z" fill="var(--accent)" />
+                    <path d="M 15 20 L 25 10 L 31 10 L 21 20 L 31 30 L 25 30 Z" fill="currentColor" />
+                    <text x="45" y="28" font-family="'Inter', sans-serif" font-weight="900" font-size="24" fill="currentColor" letter-spacing="-0.01em">DEXYS</text>
+                </svg>
+            </a>
+            
+            <nav class="desktop-nav">
+                <a href="index.html" class="hover-target">Home</a>
+                <a href="products-services.html" class="hover-target active">Products & Services</a>
+                <a href="contact.html" class="hover-target">Contact Us</a>
+                <a href="about.html" class="hover-target">About Us</a>
+            </nav>
+
+            <button class="menu-btn hover-target" id="menu-toggle"><div class="menu-line" id="line1"></div><div class="menu-line" id="line2"></div></button>
+        </div>
+    </header>
+
+    <div class="menu-overlay" id="menu-overlay">
+        <span class="kicker" style="opacity: 0; transform: translateY(20px);" id="menu-kicker">Navigation</span>
+        <a href="index.html" class="menu-link hover-target">Home</a>
+        <a href="products-services.html" class="menu-link hover-target">Products & Services</a>
+        <a href="contact.html" class="menu-link hover-target">Contact Us</a>
+        <a href="about.html" class="menu-link hover-target">About Us</a>
+    </div>
+
+    <div class="ambient-glow"></div><div id="grid-container"></div>
+
+    <section id="hero" style="padding-top: 180px; border: none;">
+        <div class="container">
+            <span class="kicker reveal">Ecosystem</span>
+            <h1 class="reveal">Platforms &<br><span class="text-gradient">Infrastructure.</span></h1>
+            <p class="reveal">We build the unseen engines that power modern business. From deep-tech compression algorithms to full-stack enterprise cloud environments, our technology scales without friction.</p>
+        </div>
+    </section>
+
+    <section id="services" class="bg-secondary-section">
+        <div class="container">
+            <span class="kicker reveal">Core Operations</span>
+            <h2 class="reveal">Engineering Services.</h2>
+            <p class="reveal">Custom architectural solutions designed to absorb complexity and drive absolute performance.</p>
+            
+            <div class="grid-layout">
+                <div class="glass-card reveal hover-target">
+                    <span class="tech-badge">Web Architecture</span>
+                    <h3>Web Platforms</h3>
+                    <p>High-fidelity omnichannel web applications engineered on modern frameworks (React/Next.js) for seamless UX and uncompromising backend security.</p>
+                </div>
+                <div class="glass-card reveal hover-target">
+                    <span class="tech-badge">Mobile Systems</span>
+                    <h3>Native Apps</h3>
+                    <p>Native and cross-platform mobile architectures designed for zero-latency interactions, hardware optimization, and maximum user retention.</p>
+                </div>
+                <div class="glass-card reveal hover-target">
+                    <span class="tech-badge">Machine Learning</span>
+                    <h3>AI Integration</h3>
+                    <p>Injecting cognitive logic directly into your business processes. From predictive data modeling to fully generative automated workflows.</p>
+                </div>
+                <div class="glass-card reveal hover-target">
+                    <span class="tech-badge">Infrastructure</span>
+                    <h3>Cloud Deployment</h3>
+                    <p>Deploying resilient, distributed AWS/GCP architectures. We ensure your systems scale horizontally dynamically with zero downtime.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="platforms">
+        <div class="container">
+            <span class="kicker reveal">SaaS Ecosystem</span>
+            <h2 class="reveal">Enterprise Platforms.</h2>
+            <p class="reveal">Our proprietary software suite designed to streamline complex academic and institutional workflows.</p>
+            
+            <div class="grid-layout">
+                <div class="glass-card reveal hover-target" style="border-top: 2px solid var(--accent);">
+                    <div class="card-icon">🥽</div>
+                    <h3>SpatialCAD VR</h3>
+                    <p>An immersive 3D drafting environment bridging AutoCAD data with virtual reality for real-time spatial engineering and architectural review.</p>
+                </div>
+                <div class="glass-card reveal hover-target">
+                    <div class="card-icon">📊</div>
+                    <h3>EduMetrics ERP</h3>
+                    <p>Automated, data-driven academic report generation powered by our proprietary institutional resource planning engine.</p>
+                </div>
+                <div class="glass-card reveal hover-target">
+                    <div class="card-icon">⚡</div>
+                    <h3>Nexus Workspace</h3>
+                    <p>A unified, zero-latency collaborative environment and digital workspace engineered specifically for modern student-educator ecosystems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="deeptech" class="bg-secondary-section" style="border-bottom: none;">
+        <div class="container">
+            <span class="kicker reveal">Deep Tech</span>
+            <h2 class="reveal">Proprietary Algorithms.</h2>
+            <p class="reveal">We don't just build apps; we invent fundamental technologies. Explore our benchmark-breaking core compression engines.</p>
+            
+            <div class="algo-grid">
+                <div class="algo-card reveal hover-target">
+                    <span class="tech-badge" style="background: rgba(152, 195, 121, 0.1); color: #98C379;">Core Logic</span>
+                    <h3>.dex Engine</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Our proprietary lossless text compression algorithm. Mathematically benchmarked to consistently outperform standard <code style="color: var(--accent); background: rgba(143,182,204,0.1); padding: 2px 6px; border-radius: 4px;">gzip</code> in both compression ratio and execution speed.</p>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-light); background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 6px;">
+                        <span style="color: var(--accent);">></span> Status: <span style="color: #98C379;">Production Ready</span><br>
+                        <span style="color: var(--accent);">></span> Benchmark: <span style="color: #E5C07B;">22% smaller payload</span>
+                    </div>
+                </div>
+
+                <div class="algo-card reveal hover-target">
+                    <span class="tech-badge" style="background: rgba(152, 195, 121, 0.1); color: #98C379;">Video Codec</span>
+                    <h3>OpticCompress SVC</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">High-efficiency Surveillance Video Codec specifically optimized for 24/7 CCTV feeds. Drastically reduces petabyte-scale storage overhead without degrading forensic visual fidelity.</p>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-light); background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 6px;">
+                        <span style="color: var(--accent);">></span> Target: <span style="color: #98C379;">Enterprise Security</span><br>
+                        <span style="color: var(--accent);">></span> Impact: <span style="color: #E5C07B;">60% Storage Reduction</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid reveal">
+                <div class="footer-col">
+                    <svg viewBox="0 0 170 40" class="dexys-svg-logo" style="margin-bottom: 1.5rem;" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 5 20 L 15 10 L 21 10 L 11 20 L 21 30 L 15 30 Z" fill="var(--accent)" />
+                        <path d="M 15 20 L 25 10 L 31 10 L 21 20 L 31 30 L 25 30 Z" fill="currentColor" />
+                        <text x="45" y="28" font-family="'Inter', sans-serif" font-weight="900" font-size="24" fill="currentColor" letter-spacing="-0.01em">DEXYS</text>
+                    </svg>
+                    <p style="font-size: 0.95rem; max-width: 300px;">Architecting the resilient digital infrastructure of tomorrow.</p>
+                </div>
+                <div class="footer-col"><h4>Company</h4><ul><li><a href="index.html" class="hover-target">Home</a></li><li><a href="products-services.html" class="hover-target">Products & Services</a></li><li><a href="contact.html" class="hover-target">Contact Us</a></li><li><a href="about.html" class="hover-target">About Us</a></li></ul></div>
+                <div class="footer-col"><h4>Connect</h4><ul><li><a href="contact.html" class="hover-target">Contact Us</a></li><li><a href="#" class="hover-target">Privacy Policy</a></li></ul></div>
+            </div>
+            <div class="copyright reveal"><span>© 2026 DEXYS Technologies. All rights reserved.</span></div>
+        </div>
+    </footer>
+
+    <script>
+        // Line Loader & Header Drop Animation
+        anime({ targets: '#loader-line', height: ['0%', '100%'], easing: 'easeInOutExpo', duration: 1200, complete: function() { 
+            anime({ targets: '#loader', opacity: 0, duration: 600, easing: 'linear', complete: () => document.getElementById('loader').style.display = 'none' }); 
+            // Drop Header In
+            anime({ targets: '#main-header', translateY: ['-100%', '0%'], opacity: [0, 1], duration: 800, easing: 'easeOutExpo' });
+            anime({ targets: '#hero .reveal', translateY: [30, 0], opacity: [0, 1], delay: anime.stagger(100), duration: 1000, easing: 'easeOutExpo' }); 
+        }});
+        
+        const menuBtn = document.getElementById('menu-toggle'); const overlay = document.getElementById('menu-overlay'); const line1 = document.getElementById('line1'); const line2 = document.getElementById('line2'); let menuOpen = false; let menuTimeline = anime.timeline({ autoplay: false });
+        menuTimeline.add({ targets: overlay, opacity: [0, 1], duration: 400, easing: 'easeInOutSine', begin: () => { overlay.style.pointerEvents = 'auto'; } }).add({ targets: '#menu-kicker', opacity: [0, 1], translateY: [20, 0], duration: 600, easing: 'easeOutExpo' }, '-=200').add({ targets: '.menu-link', opacity: [0, 1], translateY: [40, 0], duration: 800, delay: anime.stagger(100), easing: 'easeOutExpo' }, '-=500');
+        if(menuBtn){ menuBtn.addEventListener('click', () => { if(!menuOpen){ line1.style.transform = 'translateY(4px) rotate(45deg)'; line2.style.transform = 'translateY(-4px) rotate(-45deg)'; line1.style.width = '24px'; line2.style.width = '24px'; line1.style.backgroundColor = '#fff'; line2.style.backgroundColor = '#fff'; menuTimeline.play(); menuTimeline.finished.then(() => menuTimeline.reverse()); } else { line1.style.transform = 'none'; line2.style.transform = 'none'; line2.style.width = '16px'; line1.style.backgroundColor = 'var(--bg-primary)'; line2.style.backgroundColor = 'var(--bg-primary)'; menuTimeline.play(); menuTimeline.finished.then(() => { overlay.style.pointerEvents = 'none'; menuTimeline.reverse(); }); } menuOpen = !menuOpen; }); }
+        
+        const cDot = document.getElementById('cursor-dot'); const cOut = document.getElementById('cursor-outline'); window.addEventListener('mousemove', e => { if(window.innerWidth > 900) { cDot.style.left = `${e.clientX}px`; cDot.style.top = `${e.clientY}px`; cOut.animate({ left: `${e.clientX}px`, top: `${e.clientY}px` }, { duration: 150, fill: "forwards" }); } document.querySelectorAll('.glass-card').forEach(card => { const rect = card.getBoundingClientRect(), x = e.clientX - rect.left, y = e.clientY - rect.top; card.style.setProperty('--mouse-x', `${x}px`); card.style.setProperty('--mouse-y', `${y}px`); }); });
+        document.querySelectorAll('.hover-target').forEach(el => { el.addEventListener('mouseenter', () => document.body.classList.add('hovering')); el.addEventListener('mouseleave', () => document.body.classList.remove('hovering')); });
+        
+        const grid = document.getElementById('grid-container'); for(let i=0; i<300; i++) { let d = document.createElement('div'); d.className='grid-pixel'; grid.appendChild(d); } anime({ targets: '.grid-pixel', opacity: [0.1, 0.4, 0.1], delay: anime.stagger(40, {grid: [20, 15], from: 'center'}), loop: true, easing: 'easeInOutQuad', duration: 4000 });
+        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { anime({ targets: e.target.querySelectorAll('.reveal'), translateY: [40, 0], opacity: [0, 1], delay: anime.stagger(150), duration: 1200, easing: 'easeOutExpo' }); observer.unobserve(e.target); } }); }, { threshold: 0.15 }); document.querySelectorAll('section:not(#hero), footer').forEach(s => observer.observe(s));
+    </script>
+</body>
+</html>
