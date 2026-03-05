@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | DEXYS Technologies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        :root { --bg-primary: #0B0F19; --bg-secondary: #111827; --accent: #8FB6CC; --accent-soft: rgba(143,182,204,0.1); --text-light: #F9FAFB; --text-muted: #9CA3AF; --border: rgba(143, 182, 204, 0.15); --header-height: 80px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        body { background-color: var(--bg-primary); color: var(--text-light); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        
+        .dexys-svg-logo { height: 28px; width: auto; display: block; transition: transform 0.3s ease; }
+        .dexys-svg-logo:hover { transform: scale(1.05); }
+        header .dexys-svg-logo { color: var(--bg-primary); } footer .dexys-svg-logo { color: var(--text-light); }
+
+        #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-primary); z-index: 99999; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+        .loader-text { font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 500; color: var(--text-muted); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 2rem; }
+        .loader-line-container { width: 1px; height: 100px; background: rgba(255,255,255,0.05); overflow: hidden; position: relative; } .loader-line { width: 100%; height: 0%; background: var(--accent); position: absolute; bottom: 0; }
+        .cursor-dot { width: 6px; height: 6px; background-color: var(--accent); position: fixed; top: 0; left: 0; border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s; }
+        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(143,182,204,0.5); position: fixed; top: 0; left: 0; border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: 0.3s; }
+        body.hovering .cursor-outline { width: 60px; height: 60px; background-color: rgba(143,182,204,0.1); border-color: transparent; backdrop-filter: blur(2px); } body.hovering .cursor-dot { width: 0; height: 0; }
+
+        header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); z-index: 1000; display: flex; align-items: center; }
+        .nav-container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 6%; display: flex; justify-content: space-between; align-items: center; }
+        .desktop-nav { display: flex; gap: 3rem; align-items: center; } .desktop-nav a { position: relative; color: var(--bg-primary); text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 0.5rem 0; transition: color 0.3s ease; } .desktop-nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: var(--accent); transform: scaleX(0); transform-origin: right; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); } .desktop-nav a:hover, .desktop-nav a.active { color: var(--accent); } .desktop-nav a:hover::after, .desktop-nav a.active::after { transform: scaleX(1); transform-origin: left; }
+        .menu-btn { background: none; border: none; width: 40px; height: 40px; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; gap: 6px; z-index: 1001; position: relative; } .menu-line { height: 2px; background: var(--bg-primary); transition: 0.3s ease; } .menu-line:nth-child(1) { width: 24px; } .menu-line:nth-child(2) { width: 16px; } .menu-btn:hover .menu-line { width: 24px; background: var(--accent); } .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-primary); z-index: 999; display: flex; flex-direction: column; justify-content: center; padding-left: 10%; pointer-events: none; opacity: 0; } .menu-link { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 800; color: var(--text-light); text-decoration: none; letter-spacing: -0.04em; margin-bottom: 1.5rem; opacity: 0; transform: translateY(40px); display: block; width: fit-content; } .menu-link:hover { color: var(--accent); }
+        
+        .ambient-glow { position: absolute; top: 10%; left: 50%; transform: translateX(-50%); width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(143,182,204,0.08) 0%, transparent 70%); z-index: -1; pointer-events: none; } #grid-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: grid; grid-template-columns: repeat(20, 1fr); z-index: -2; opacity: 0.15; mask-image: radial-gradient(ellipse at center, black 40%, transparent 100%); } .grid-pixel { border: 0.5px solid var(--border); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 5%; position: relative; } section { padding: clamp(100px, 12vw, 160px) 0; border-bottom: 1px solid var(--border); position: relative; } .bg-secondary-section { background-color: var(--bg-secondary); } .kicker { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 1.5rem; display: block; } h1 { font-size: clamp(3.5rem, 8vw, 6.5rem); font-weight: 900; letter-spacing: -0.05em; line-height: 1.05; margin-bottom: 1.5rem; } h2 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 1.5rem; line-height: 1.1; color: var(--text-light); } p { color: var(--text-muted); font-size: clamp(1.05rem, 2vw, 1.2rem); max-width: 65ch; margin-bottom: 2rem; line-height: 1.7; } .text-gradient { background: linear-gradient(135deg, #FFF 0%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        
+        .timeline-wrapper { margin-top: 5rem; position: relative; padding-left: 2rem; max-width: 800px;} .timeline-line { position: absolute; left: 0; top: 0; width: 2px; height: 100%; background: linear-gradient(to bottom, var(--accent) 0%, rgba(143,182,204,0.1) 100%); border-radius: 2px; } .timeline-card { position: relative; background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 3rem; margin-bottom: 3rem; transition: transform 0.4s, border-color 0.4s; overflow: hidden; } .timeline-card:hover { transform: translateY(-5px); border-color: rgba(143,182,204,0.3); } .timeline-dot { position: absolute; left: -2.35rem; top: 3.5rem; width: 14px; height: 14px; border-radius: 50%; background: var(--bg-primary); border: 2px solid var(--accent); z-index: 2; } .timeline-year { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--bg-primary); background: var(--accent); padding: 4px 12px; border-radius: 50px; font-weight: 700; margin-bottom: 1rem; } .timeline-card h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; color: var(--text-light); }
+        .leadership-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; margin-top: 5rem; } .leader-card { background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%); padding: 4rem 3rem; border: 1px solid var(--border); border-radius: 16px; transition: 0.4s; position: relative; } .leader-card:hover { border-color: var(--accent); transform: translateY(-8px); box-shadow: 0 30px 60px rgba(0,0,0,0.5); background: linear-gradient(180deg, rgba(143,182,204,0.05) 0%, rgba(255,255,255,0) 100%); } .leader-role { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem; } .leader-name { font-size: 2.5rem; font-weight: 800; color: var(--text-light); margin-bottom: 1.5rem; letter-spacing: -0.04em; }
+
+        footer { background: var(--bg-primary); padding: 80px 0 40px 0; border-top: 1px solid var(--border); } .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 60px; } .footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; color: var(--text-light); } .footer-col ul { list-style: none; } .footer-col li { margin-bottom: 0.75rem; } .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; transition: color 0.3s; } .footer-col a:hover { color: var(--accent); } .copyright { padding-top: 40px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 0.85rem; color: #4B5563; } 
+        .reveal { opacity: 0; transform: translateY(40px); }
+        @media (min-width: 901px) { .menu-btn { display: none !important; } }
+        @media (max-width: 900px) { .desktop-nav { display: none; } * { cursor: auto; } .cursor-dot, .cursor-outline { display: none; } .footer-grid { grid-template-columns: 1fr; } .timeline-wrapper { padding-left: 1.5rem; } .timeline-dot { left: -1.85rem; } .timeline-card { padding: 2rem; } }
+    </style>
+</head>
+<body>
+    <div id="loader"><div class="loader-text">DEXYS</div><div class="loader-line-container"><div class="loader-line" id="loader-line"></div></div></div>
+    <div class="cursor-outline" id="cursor-outline"></div><div class="cursor-dot" id="cursor-dot"></div>
+
+    <header id="main-header">
+        <div class="nav-container">
+            <a href="index.html" class="hover-target">
+                <svg viewBox="0 0 170 40" class="dexys-svg-logo" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 5 20 L 15 10 L 21 10 L 11 20 L 21 30 L 15 30 Z" fill="var(--accent)" />
+                    <path d="M 15 20 L 25 10 L 31 10 L 21 20 L 31 30 L 25 30 Z" fill="currentColor" />
+                    <text x="45" y="28" font-family="'Inter', sans-serif" font-weight="900" font-size="24" fill="currentColor" letter-spacing="-0.01em">DEXYS</text>
+                </svg>
+            </a>
+            
+            <nav class="desktop-nav">
+                <a href="index.html" class="hover-target">Home</a>
+                <a href="products-services.html" class="hover-target">Products & Services</a>
+                <a href="contact.html" class="hover-target">Contact Us</a>
+                <a href="about.html" class="hover-target active">About Us</a>
+            </nav>
+
+            <button class="menu-btn hover-target" id="menu-toggle"><div class="menu-line" id="line1"></div><div class="menu-line" id="line2"></div></button>
+        </div>
+    </header>
+
+    <div class="menu-overlay" id="menu-overlay">
+        <span class="kicker" style="opacity: 0; transform: translateY(20px);" id="menu-kicker">Navigation</span>
+        <a href="index.html" class="menu-link hover-target">Home</a>
+        <a href="products-services.html" class="menu-link hover-target">Products & Services</a>
+        <a href="contact.html" class="menu-link hover-target">Contact Us</a>
+        <a href="about.html" class="menu-link hover-target">About Us</a>
+    </div>
+
+    <div class="ambient-glow"></div><div id="grid-container"></div>
+
+    <section id="about" style="padding-top: 200px;">
+        <div class="container">
+            <span class="kicker reveal">The Genesis</span>
+            <h1 class="reveal">The Story of <br><span class="text-gradient">DEXYS.</span></h1>
+            <p class="reveal">Every great company starts with a simple idea… and a lot of late-night discussions. DEXYS was born in the same way — from curiosity, ambition, and the belief that technology can solve real-world problems.</p>
+            <p class="reveal">What started as conversations about building something meaningful soon turned into a mission to create innovative digital solutions and impactful technology services.</p>
+        </div>
+    </section>
+
+    <section id="story" class="bg-secondary-section">
+        <div class="container">
+            <span class="kicker reveal">Execution</span>
+            <h2 class="reveal">Our Journey.</h2>
+            
+            <div class="timeline-wrapper">
+                <div class="timeline-line reveal"></div>
+                <div class="timeline-card reveal hover-target">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-year">💡 2024</span>
+                    <h3>The Idea Stage</h3>
+                    <p style="margin-bottom: 0;">In 2024, the spark for DEXYS was ignited. A group of passionate tech enthusiasts began discussing the possibility of building a startup that could deliver smart, modern IT solutions. At that time, it was mostly brainstorming sessions, planning documents, and the classic startup ingredient — big dreams with bigger coffee cups.</p>
+                </div>
+                <div class="timeline-card reveal hover-target">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-year">🏗 2025</span>
+                    <h3>The Foundation</h3>
+                    <p style="margin-bottom: 0;">By 2025, those ideas started turning into reality. DEXYS officially established its organization and began offering its first set of services. This year was all about building the foundation — creating solutions, helping early clients, and learning something new every single day.</p>
+                </div>
+                <div class="timeline-card reveal hover-target">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-year">🚀 2026</span>
+                    <h3>Full Momentum</h3>
+                    <p style="margin-bottom: 0;">In 2026, DEXYS stepped into full momentum. We expanded our services, strengthened our expertise, and began building strong connections across the technology ecosystem. With growing experience and collaborations, we became more confident in delivering innovative and reliable IT solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="vision">
+        <div class="container" style="text-align: center; max-width: 800px;">
+            <span class="kicker reveal" style="text-align: center;">The Future</span>
+            <h2 class="reveal">🌟 Looking Ahead.</h2>
+            <p class="reveal" style="margin-inline: auto;">The journey of DEXYS is just getting started. What began as a simple idea has evolved into a growing technology initiative driven by creativity, innovation, and a passion for solving problems.</p>
+            <p class="reveal" style="margin-inline: auto; font-size: 1.25rem; font-weight: 500; color: var(--text-light); margin-top: 2rem;">And if the past few years have taught us anything, it’s this:<br><span class="text-gradient">Great ideas may start small, but with the right team and vision, they can grow into something extraordinary.</span></p>
+        </div>
+    </section>
+
+    <section id="leadership" class="bg-secondary-section" style="border-bottom: none;">
+        <div class="container">
+            <span class="kicker reveal">The Architects</span>
+            <h2 class="reveal">Visionary Leadership.</h2>
+            <div class="leadership-grid">
+                <div class="leader-card reveal hover-target" onclick="window.location.href='dharsan.html'" style="cursor: pointer;">
+                    <span class="leader-role">Founder & Chief Architect</span>
+                    <h3 class="leader-name">Dharsan</h3>
+                    <p style="margin-bottom: 2rem;">Primary converter of caffeine into enterprise-grade system logic. Dharsan focuses on high-level architecture, cloud sovereignty, and ensuring the ecosystem scales flawlessly.</p>
+                    <span style="color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; text-transform: uppercase;">Execute Profile &rarr;</span>
+                </div>
+                <div class="leader-card reveal hover-target" onclick="window.location.href='naveenkumar.html'" style="cursor: pointer;">
+                    <span class="leader-role">Co-Founder & Head of Operations</span>
+                    <h3 class="leader-name">Naveenkumar</h3>
+                    <p style="margin-bottom: 2rem;">Driving execution and strategic deployment. Naveenkumar bridges the gap between complex engineering and operational reality, ensuring seamless delivery.</p>
+                    <span style="color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; text-transform: uppercase;">Execute Profile &rarr;</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid reveal">
+                <div class="footer-col">
+                    <svg viewBox="0 0 170 40" class="dexys-svg-logo" style="margin-bottom: 1.5rem;" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 5 20 L 15 10 L 21 10 L 11 20 L 21 30 L 15 30 Z" fill="var(--accent)" />
+                        <path d="M 15 20 L 25 10 L 31 10 L 21 20 L 31 30 L 25 30 Z" fill="currentColor" />
+                        <text x="45" y="28" font-family="'Inter', sans-serif" font-weight="900" font-size="24" fill="currentColor" letter-spacing="-0.01em">DEXYS</text>
+                    </svg>
+                    <p style="font-size: 0.95rem; max-width: 300px;">Architecting the resilient digital infrastructure of tomorrow.</p>
+                </div>
+                <div class="footer-col"><h4>Navigation</h4><ul><li><a href="index.html" class="hover-target">Home</a></li><li><a href="products-services.html" class="hover-target">Products & Services</a></li><li><a href="contact.html" class="hover-target">Contact Us</a></li><li><a href="about.html" class="hover-target">About Us</a></li></ul></div>
+                <div class="footer-col"><h4>Connect</h4><ul><li><a href="contact.html" class="hover-target">Contact Us</a></li><li><a href="#" class="hover-target">Privacy Policy</a></li></ul></div>
+            </div>
+            <div class="copyright reveal"><span>© 2026 DEXYS Technologies. All rights reserved.</span><span></span></div>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menu-toggle'); const overlay = document.getElementById('menu-overlay'); const line1 = document.getElementById('line1'); const line2 = document.getElementById('line2'); let menuOpen = false; let menuTimeline = anime.timeline({ autoplay: false });
+        menuTimeline.add({ targets: overlay, opacity: [0, 1], duration: 400, easing: 'easeInOutSine', begin: () => { overlay.style.pointerEvents = 'auto'; } }).add({ targets: '#menu-kicker', opacity: [0, 1], translateY: [20, 0], duration: 600, easing: 'easeOutExpo' }, '-=200').add({ targets: '.menu-link', opacity: [0, 1], translateY: [40, 0], duration: 800, delay: anime.stagger(100), easing: 'easeOutExpo' }, '-=500');
+        if(menuBtn){ menuBtn.addEventListener('click', () => { if(!menuOpen){ line1.style.transform = 'translateY(4px) rotate(45deg)'; line2.style.transform = 'translateY(-4px) rotate(-45deg)'; line1.style.width = '24px'; line2.style.width = '24px'; line1.style.backgroundColor = '#fff'; line2.style.backgroundColor = '#fff'; menuTimeline.play(); menuTimeline.finished.then(() => menuTimeline.reverse()); } else { line1.style.transform = 'none'; line2.style.transform = 'none'; line2.style.width = '16px'; line1.style.backgroundColor = 'var(--bg-primary)'; line2.style.backgroundColor = 'var(--bg-primary)'; menuTimeline.play(); menuTimeline.finished.then(() => { overlay.style.pointerEvents = 'none'; menuTimeline.reverse(); }); } menuOpen = !menuOpen; }); }
+        anime({ targets: '#loader-line', height: ['0%', '100%'], easing: 'easeInOutExpo', duration: 1200, complete: function() { anime({ targets: '#loader', opacity: 0, duration: 600, easing: 'linear', complete: () => document.getElementById('loader').style.display = 'none' }); anime({ targets: '#about .reveal', translateY: [30, 0], opacity: [0, 1], delay: anime.stagger(100), duration: 1000, easing: 'easeOutExpo' }); }});
+        const cDot = document.getElementById('cursor-dot'); const cOut = document.getElementById('cursor-outline'); window.addEventListener('mousemove', e => { if(window.innerWidth > 900) { cDot.style.left = `${e.clientX}px`; cDot.style.top = `${e.clientY}px`; cOut.animate({ left: `${e.clientX}px`, top: `${e.clientY}px` }, { duration: 150, fill: "forwards" }); } }); document.querySelectorAll('.hover-target').forEach(el => { el.addEventListener('mouseenter', () => document.body.classList.add('hovering')); el.addEventListener('mouseleave', () => document.body.classList.remove('hovering')); });
+        const grid = document.getElementById('grid-container'); for(let i=0; i<300; i++) { let d = document.createElement('div'); d.className='grid-pixel'; grid.appendChild(d); } anime({ targets: '.grid-pixel', opacity: [0.1, 0.4, 0.1], delay: anime.stagger(40, {grid: [20, 15], from: 'center'}), loop: true, easing: 'easeInOutQuad', duration: 4000 });
+        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { anime({ targets: e.target.querySelectorAll('.reveal'), translateY: [40, 0], opacity: [0, 1], delay: anime.stagger(150), duration: 1200, easing: 'easeOutExpo' }); observer.unobserve(e.target); } }); }, { threshold: 0.15 }); document.querySelectorAll('section, footer').forEach(s => observer.observe(s));
+    </script>
+</body>
+</html>
