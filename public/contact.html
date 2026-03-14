@@ -1,142 +1,230 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | DEXYS Technologies</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Contact DEXYS India to request an IT consultation.">
+    <title>Contact | DEXYS India</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script>
+        (function() {
+            const isInternal = document.referrer.includes(location.hostname) && document.referrer !== "";
+            const isReload = performance.navigation.type === 1 || (performance.getEntriesByType && performance.getEntriesByType("navigation")[0]?.type === "reload");
+            if (!isInternal || isReload) { document.documentElement.classList.add('fresh-route'); } 
+            else { document.documentElement.classList.add('internal-route'); }
+        })();
+    </script>
     <style>
-        :root { --bg-primary: #0B0F19; --bg-secondary: #111827; --accent: #8FB6CC; --accent-soft: rgba(143,182,204,0.1); --text-light: #F9FAFB; --text-muted: #9CA3AF; --border: rgba(143, 182, 204, 0.15); --header-height: 80px; }
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; } body { background-color: var(--bg-primary); color: var(--text-light); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        :root { --bg-primary: #0B0F19; --bg-secondary: #111827; --accent: #8FB6CC; --text-light: #F9FAFB; --text-muted: #9CA3AF; --border: rgba(143, 182, 204, 0.15); --header-height: 80px; } * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; } ::selection { background: rgba(143, 182, 204, 0.3); color: var(--text-light); } ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg-primary); } ::-webkit-scrollbar-thumb { background: rgba(143,182,204,0.2); border-radius: 10px; transition: background 0.3s;} ::-webkit-scrollbar-thumb:hover { background: var(--accent); } body { background-color: var(--bg-primary); color: var(--text-light); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh;} main { flex: 1 0 auto; display: flex; flex-direction: column; } footer { flex-shrink: 0; margin-top: auto; position: relative; z-index: 10; } a, button { cursor: pointer; text-decoration: none;} body.intro-locked { overflow: hidden !important; height: 100vh !important; } .bg-grid { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; background-image: radial-gradient(rgba(143,182,204,0.1) 1px, transparent 1px); background-size: 30px 30px; mask-image: linear-gradient(to bottom, black 0%, transparent 100%); pointer-events: none; } @keyframes pulse { 0% { opacity: 0.4; transform: translateX(-50%) scale(1); } 100% { opacity: 0.7; transform: translateX(-50%) scale(1.05); } } .ambient-glow { position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 80vw; height: 80vw; background: radial-gradient(circle, rgba(143,182,204,0.06) 0%, transparent 60%); z-index: -1; pointer-events: none; animation: pulse 10s ease-in-out infinite alternate; will-change: transform, opacity; } 
         
-        .dexys-svg-logo { height: 28px; width: auto; display: block; transition: transform 0.3s ease; } .dexys-svg-logo:hover { transform: scale(1.05); } header .dexys-svg-logo { color: var(--bg-primary); } footer .dexys-svg-logo { color: var(--text-light); }
+        #loader { position: fixed; inset: 0; background: var(--bg-primary); z-index: 999999; display: flex; align-items: center; justify-content: center; flex-direction: column; } 
+        .loader-logo { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.8rem; color: var(--text-light); letter-spacing: -0.04em; margin-bottom: 1.5rem; opacity: 0; transform: translateY(10px); will-change: transform, opacity; }
+        .loader-line-wrapper { width: 140px; height: 2px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; } 
+        .loader-line { width: 0%; height: 100%; background: var(--accent); will-change: width;}
 
-        #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-primary); z-index: 99999; display: flex; align-items: center; justify-content: center; flex-direction: column; } .loader-text { font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 500; color: var(--text-muted); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 2rem; } .loader-line-container { width: 1px; height: 100px; background: rgba(255,255,255,0.05); overflow: hidden; position: relative; } .loader-line { width: 100%; height: 0%; background: var(--accent); position: absolute; bottom: 0; }
-        .cursor-dot { width: 6px; height: 6px; background-color: var(--accent); position: fixed; top: 0; left: 0; border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s; } .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(143,182,204,0.5); position: fixed; top: 0; left: 0; border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: 0.3s; } body.hovering .cursor-outline { width: 60px; height: 60px; background-color: rgba(143,182,204,0.1); border-color: transparent; backdrop-filter: blur(2px); } body.hovering .cursor-dot { width: 0; height: 0; }
+        .dexys-text-logo { font-family: 'Inter', sans-serif; font-weight: 800; color: var(--text-light); letter-spacing: -0.04em; line-height: 1; transition: color 0.3s ease; }
+        .nav-logo { font-size: 24px; }
+        .footer-logo { font-size: 32px; margin-bottom: 1rem; display: inline-block; }
+        .nav-logo:hover, .footer-logo:hover { color: var(--accent); }
 
-        header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); z-index: 1000; display: flex; align-items: center; } .nav-container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 6%; display: flex; justify-content: space-between; align-items: center; }
-        .desktop-nav { display: flex; gap: 3rem; align-items: center; } .desktop-nav a { position: relative; color: var(--bg-primary); text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 0.5rem 0; transition: color 0.3s ease; } .desktop-nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background-color: var(--accent); transform: scaleX(0); transform-origin: right; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); } .desktop-nav a:hover, .desktop-nav a.active { color: var(--accent); } .desktop-nav a:hover::after, .desktop-nav a.active::after { transform: scaleX(1); transform-origin: left; }
-        .menu-btn { background: none; border: none; width: 40px; height: 40px; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; gap: 6px; z-index: 1001; position: relative; } .menu-line { height: 2px; background: var(--bg-primary); transition: 0.3s ease; } .menu-line:nth-child(1) { width: 24px; } .menu-line:nth-child(2) { width: 16px; } .menu-btn:hover .menu-line { width: 24px; background: var(--accent); } .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-primary); z-index: 999; display: flex; flex-direction: column; justify-content: center; padding-left: 10%; pointer-events: none; opacity: 0; } .menu-link { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 800; color: var(--text-light); text-decoration: none; letter-spacing: -0.04em; margin-bottom: 1.5rem; opacity: 0; transform: translateY(40px); display: block; width: fit-content; } .menu-link:hover { color: var(--accent); }
+        header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); background: rgba(11, 15, 25, 0.75); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255,255,255,0.03); z-index: 1000; display: flex; align-items: center; opacity: 0; transform: translateY(-100%); transition: opacity 0.8s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity;} .nav-container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 5%; display: flex; justify-content: space-between; align-items: center; height: 100%; } .desktop-nav { display: flex; gap: 3.5rem; align-items: center; height: 100%; } .desktop-nav a { position: relative; color: var(--text-light); font-size: 0.9rem; font-weight: 500; padding: 1rem 0; opacity: 0.7; transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s;} .desktop-nav a::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 2px; background-color: var(--accent); transform: scaleX(0); transform-origin: right; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); } .desktop-nav a:hover, .desktop-nav a.active { opacity: 1; color: #fff; } .desktop-nav a:hover::after, .desktop-nav a.active::after { transform: scaleX(1); transform-origin: left; } .menu-btn { background: none; border: none; width: 40px; height: 40px; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; gap: 7px; z-index: 1001; position: relative; display: none; } .menu-line { height: 2px; background: var(--text-light); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), width 0.4s cubic-bezier(0.16, 1, 0.3, 1); } .menu-line:nth-child(1) { width: 28px; } .menu-line:nth-child(2) { width: 20px; } .menu-overlay { position: fixed; inset: 0; background: rgba(11,15,25,0.99); backdrop-filter: blur(30px); z-index: 999; display: flex; flex-direction: column; justify-content: center; padding-left: 10%; pointer-events: none; opacity: 0; } .menu-link { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; color: var(--text-light); letter-spacing: -0.03em; margin-bottom: 1.5rem; opacity: 0; transform: translateY(40px); display: block; width: fit-content; transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity;} .menu-link:hover { color: var(--accent); transform: translateX(10px) !important;} .reveal-up { opacity: 0; transform: translateY(50px); will-change: transform, opacity;} .reveal-scale { opacity: 0; transform: scale(0.95) translateY(20px); will-change: transform, opacity;} .is-visible { opacity: 1 !important; transform: translate(0) scale(1) !important; transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); } .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.15s; } .delay-3 { transition-delay: 0.2s; }
 
-        .ambient-glow { position: absolute; top: 10%; left: 50%; transform: translateX(-50%); width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(143,182,204,0.08) 0%, transparent 70%); z-index: -1; pointer-events: none; } #grid-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; display: grid; grid-template-columns: repeat(20, 1fr); z-index: -2; opacity: 0.15; mask-image: radial-gradient(ellipse at center, black 40%, transparent 100%); } .grid-pixel { border: 0.5px solid var(--border); }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 5%; position: relative; } section { padding: clamp(100px, 12vw, 160px) 0; border-bottom: 1px solid var(--border); position: relative; }
-        .kicker { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 1.5rem; display: block; } h1 { font-size: clamp(3.5rem, 8vw, 5.5rem); font-weight: 900; letter-spacing: -0.05em; line-height: 1.05; margin-bottom: 1.5rem; } p { color: var(--text-muted); font-size: clamp(1.05rem, 2vw, 1.2rem); max-width: 65ch; margin-bottom: 2rem; line-height: 1.7; } .text-gradient { background: linear-gradient(135deg, #FFF 0%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 5%; position: relative; } 
+        section { padding: clamp(120px, 15vw, 180px) 0; border-bottom: 1px solid var(--border); position: relative; }
+        .kicker { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 1.5rem; display: block; } 
+        h1 { font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 1.5rem; color: #fff;} 
+        p { color: var(--text-muted); font-size: clamp(1.05rem, 2vw, 1.15rem); max-width: 70ch; margin-bottom: 2rem; line-height: 1.8; }
+        .text-gradient { background: linear-gradient(135deg, #FFF 0%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         
         .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; margin-top: 3rem; }
-        .contact-info-block { margin-bottom: 3rem; } .info-title { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; } .info-val { font-size: 1.25rem; font-weight: 600; color: var(--text-light); }
-        .glass-form { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 3rem; } .form-group { margin-bottom: 1.5rem; } .form-label { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent); margin-bottom: 0.5rem; } .form-control { width: 100%; background: rgba(0,0,0,0.2); border: 1px solid var(--border); padding: 1rem 1.2rem; border-radius: 8px; color: var(--text-light); font-family: 'Inter', sans-serif; font-size: 1rem; transition: 0.3s; } .form-control:focus { outline: none; border-color: var(--accent); background: rgba(143,182,204,0.05); } textarea.form-control { resize: vertical; min-height: 120px; }
-        .btn-submit { display: inline-flex; align-items: center; justify-content: center; width: 100%; padding: 16px 28px; background: var(--text-light); color: var(--bg-primary); border: none; font-weight: 700; font-size: 1rem; border-radius: 8px; transition: all 0.3s ease; font-family: 'JetBrains Mono', monospace; letter-spacing: -0.02em; margin-top: 1rem; } .btn-submit:hover { background: var(--accent); color: var(--bg-primary); }
-
-        footer { background: var(--bg-primary); padding: 80px 0 40px 0; border-top: 1px solid var(--border); } .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 60px; } .footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; color: var(--text-light); } .footer-col ul { list-style: none; } .footer-col li { margin-bottom: 0.75rem; } .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; transition: color 0.3s; } .footer-col a:hover { color: var(--accent); } .copyright { padding-top: 40px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 0.85rem; color: #4B5563; }
+        .contact-info-block { margin-bottom: 2.5rem; } .info-title { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; } .info-val { font-size: 1.15rem; font-weight: 600; color: var(--text-light); }
         
-        .reveal { opacity: 0; transform: translateY(40px); }
-        @media (min-width: 901px) { .menu-btn { display: none !important; } }
-        @media (max-width: 900px) { .desktop-nav { display: none; } * { cursor: auto; } .cursor-dot, .cursor-outline { display: none; } .footer-grid, .contact-grid { grid-template-columns: 1fr; } .glass-form { padding: 2rem; } }
+        .glass-form { position: relative; background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.005) 100%); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(143,182,204,0.08); border-radius: 16px; padding: 3rem; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease, box-shadow 0.5s ease; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); } 
+        .glass-form:hover { transform: translateY(-8px); border-color: rgba(143,182,204,0.4); box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 0 30px rgba(143,182,204,0.05); } 
+        .form-group { margin-bottom: 1.5rem; } .form-label { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em;} 
+        .form-control { width: 100%; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); padding: 1rem 1.2rem; border-radius: 8px; color: var(--text-light); font-family: 'Inter', sans-serif; font-size: 0.95rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); } 
+        .form-control:focus { outline: none; border-color: var(--accent); background: rgba(143,182,204,0.05); box-shadow: 0 0 15px rgba(143,182,204,0.2);} textarea.form-control { resize: vertical; min-height: 120px; }
+        
+        .btn-submit { display: inline-flex; align-items: center; justify-content: center; width: 100%; padding: 18px 28px; background: var(--text-light); color: var(--bg-primary); border: none; font-weight: 700; font-size: 0.9rem; border-radius: 8px; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; margin-top: 1rem; text-transform: uppercase; cursor: pointer;} 
+        .btn-submit:hover { background: var(--accent); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(143,182,204,0.3); }
+
+        footer { background: #070A11; padding: 80px 0 40px 0; border-top: 1px solid var(--border); position: relative; z-index: 10; margin-top: auto;}
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 40px; }
+        .footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1.5rem; color: var(--text-light); }
+        .footer-col ul { list-style: none; } .footer-col li { margin-bottom: 0.85rem; } .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: inline-block;} .footer-col a:hover { color: var(--accent); transform: translateX(4px); }
+        .copyright { padding-top: 30px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 0.75rem; color: #4B5563; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+
+        @media (max-width: 900px) { 
+            .menu-btn { display: flex; } .desktop-nav { display: none; } 
+            .contact-grid { grid-template-columns: 1fr; gap: 3rem; } .glass-form { padding: 2rem; transform: none !important; }
+            .footer-grid { grid-template-columns: 1fr; gap: 3rem; } .copyright { flex-direction: column; gap: 1rem; text-align: center; } 
+        }
     </style>
 </head>
-<body>
-    <div id="loader"><div class="loader-text">DEXYS</div><div class="loader-line-container"><div class="loader-line" id="loader-line"></div></div></div>
-    <div class="cursor-outline" id="cursor-outline"></div><div class="cursor-dot" id="cursor-dot"></div>
-
+<body class="intro-locked">
+    <div id="loader">
+        <div class="loader-logo">DEXYS</div>
+        <div class="loader-line-wrapper"><div class="loader-line"></div></div>
+    </div>
+    
     <header id="main-header">
         <div class="nav-container">
-            <a href="index.html" class="hover-target">
-                <svg viewBox="0 0 170 40" class="dexys-svg-logo" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M 5 20 L 15 10 L 21 10 L 11 20 L 21 30 L 15 30 Z" fill="var(--accent)" />
-                    <path d="M 15 20 L 25 10 L 31 10 L 21 20 L 31 30 L 25 30 Z" fill="currentColor" />
-                    <text x="45" y="28" font-family="'Inter', sans-serif" font-weight="900" font-size="24" fill="currentColor" letter-spacing="-0.01em">DEXYS</text>
-                </svg>
+            <a href="index.html" style="text-decoration: none;">
+                <span class="dexys-text-logo nav-logo">DEXYS</span>
             </a>
-            
             <nav class="desktop-nav">
-                <a href="index.html" class="hover-target">Home</a>
-                <a href="products-services.html" class="hover-target">Products & Services</a>
-                <a href="contact.html" class="hover-target active">Contact Us</a>
-                <a href="about.html" class="hover-target">About Us</a>
+                <a href="index.html">Home</a>
+                <a href="products-services.html">Products & Services</a>
+                <a href="contact.html" class="active">Contact Us</a>
+                <a href="about.html">About Us</a>
             </nav>
-
-            <button class="menu-btn hover-target" id="menu-toggle"><div class="menu-line" id="line1"></div><div class="menu-line" id="line2"></div></button>
+            <button class="menu-btn" id="menu-toggle"><div class="menu-line" id="line1"></div><div class="menu-line" id="line2"></div></button>
         </div>
     </header>
 
     <div class="menu-overlay" id="menu-overlay">
         <span class="kicker" style="opacity: 0; transform: translateY(20px);" id="menu-kicker">Navigation</span>
-        <a href="index.html" class="menu-link hover-target">Home</a>
-        <a href="products-services.html" class="menu-link hover-target">Products & Services</a>
-        <a href="contact.html" class="menu-link hover-target">Contact Us</a>
-        <a href="about.html" class="menu-link hover-target">About Us</a>
+        <a href="index.html" class="menu-link">Home</a>
+        <a href="products-services.html" class="menu-link">Products & Services</a>
+        <a href="contact.html" class="menu-link" style="color: var(--accent);">Contact Us</a>
+        <a href="about.html" class="menu-link">About Us</a>
     </div>
 
-    <div class="ambient-glow"></div><div id="grid-container"></div>
+    <div class="ambient-glow"></div>
+    <div class="bg-grid"></div>
 
-    <section style="padding-top: 200px; border: none; min-height: 90vh;">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="reveal">
-                    <span class="kicker">Connect</span>
-                    <h1 style="margin-bottom: 1rem;">Let's Build<br><span class="text-gradient">Together.</span></h1>
-                    <p>Whether you need to architect a new cloud infrastructure or scale your current enterprise ecosystem, our engineers are ready.</p>
-                    
-                    <div style="margin-top: 4rem;">
-                        <div class="contact-info-block">
-                            <div class="info-title">Headquarters</div>
-                            <div class="info-val">Pollachi, India</div>
+    <main>
+        <section style="padding-top: 180px; border: none; min-height: 90vh;" id="hero" class="reveal-zone">
+            <div class="container">
+                <div class="contact-grid">
+                    <div>
+                        <span class="kicker reveal-up">Enterprise Engagement</span>
+                        <h1 class="reveal-up delay-1" style="margin-bottom: 1rem;">Let's Build<br><span class="text-gradient">Together.</span></h1>
+                        <p class="reveal-up delay-2">Whether you are a rising startup or an established organization, we partner directly with you to engineer your enterprise-grade IT infrastructure.</p>
+                        
+                        <div class="reveal-up delay-3" style="margin-top: 3rem; margin-bottom: 3rem;">
+                            <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">Partnership Inquiries</h4>
+                            <div class="contact-info-block" style="margin-bottom: 1.5rem;">
+                                <div class="info-title">Executive Architecture Board</div>
+                                <a href="mailto:dharsan@dexys.in" style="color: var(--text-light); text-decoration: none; font-size: 1.1rem; transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1);" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-light)'">dharsan@dexys.in</a>
+                            </div>
                         </div>
-                        <div class="contact-info-block">
-                            <div class="info-title">Global Inquiries</div>
-                            <a href="mailto:dharsan@dexys.in" class="info-val hover-target" style="color: var(--accent); text-decoration: none;">dharsan@dexys.in</a>
+                        <div class="reveal-up delay-4" style="margin-top: 2rem;">
+                            <div class="contact-info-block">
+                                <div class="info-title">Headquarters</div>
+                                <div class="info-val" style="font-size: 1.1rem;">Pollachi, Tamil Nadu, India</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="glass-form reveal">
-                    <form id="contactForm" onsubmit="event.preventDefault(); submitForm();">
-                        <div class="form-group">
-                            <label class="form-label">Name</label>
-                            <input type="text" class="form-control hover-target" placeholder="Jane Doe" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-control hover-target" placeholder="jane@mail.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Project Scope</label>
-                            <textarea class="form-control hover-target" placeholder="Tell us about your architectural needs..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn-submit hover-target" id="submitBtn">Initialize Contact</button>
-                    </form>
+                    <div class="glass-form reveal-scale delay-2">
+                        <form id="contactForm" onsubmit="event.preventDefault(); submitForm();">
+                            <div class="form-group">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Enterprise Email</label>
+                                <input type="email" id="email" class="form-control" placeholder="name@enterprise.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Project Scope & Scale</label>
+                                <textarea id="message" class="form-control" placeholder="Detail your architectural requirements..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit" id="submitBtn">Request Consultation</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-grid reveal">
+        </section>
+    </main>
+    
+    <footer class="reveal-zone">
+        <div class="container reveal-up">
+            <div class="footer-grid">
                 <div class="footer-col">
-                    <svg viewBox="0 0 170 40" class="dexys-svg-logo" style="margin-bottom: 1.5rem;" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M 5 20 L 15 10 L 21 10 L 11 20 L 21 30 L 15 30 Z" fill="var(--accent)" />
-                        <path d="M 15 20 L 25 10 L 31 10 L 21 20 L 31 30 L 25 30 Z" fill="currentColor" />
-                        <text x="45" y="28" font-family="'Inter', sans-serif" font-weight="900" font-size="24" fill="currentColor" letter-spacing="-0.01em">DEXYS</text>
-                    </svg>
-                    <p style="font-size: 0.95rem; max-width: 300px;">Architecting the resilient digital infrastructure of tomorrow.</p>
+                    <span class="dexys-text-logo footer-logo">DEXYS</span>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; max-width: 300px;">Architecting secure, intelligent, and sovereign digital ecosystems.</p>
                 </div>
-                <div class="footer-col"><h4>Navigation</h4><ul><li><a href="index.html" class="hover-target">Home</a></li><li><a href="products-services.html" class="hover-target">Products & Services</a></li><li><a href="contact.html" class="hover-target">Contact Us</a></li><li><a href="about.html" class="hover-target">About Us</a></li></ul></div>
-                <div class="footer-col"><h4>Connect</h4><ul><li><a href="contact.html" class="hover-target">Contact Us</a></li><li><a href="#" class="hover-target">Privacy Policy</a></li></ul></div>
+                <div class="footer-col"><h4>Sitemap</h4><ul><li><a href="index.html">Home</a></li><li><a href="products-services.html">Products & Services</a></li><li><a href="about.html">About Us</a></li></ul></div>
+                <div class="footer-col"><h4>Connect</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="mailto:dharsan@dexys.in">dharsan@dexys.in</a></li></ul></div>
             </div>
-            <div class="copyright reveal"><span>© 2026 DEXYS Technologies.</span><span></span></div>
+            <div class="copyright"><span>© 2026 DEXYS India. Engineered in Pollachi.</span></div>
         </div>
     </footer>
 
     <script>
-        function submitForm() { const btn = document.getElementById('submitBtn'); btn.innerHTML = 'Compiling...'; btn.style.backgroundColor = 'var(--accent)'; setTimeout(() => { btn.innerHTML = 'Message Transmitted ✓'; btn.style.backgroundColor = '#27C93F'; btn.style.color = '#000'; setTimeout(() => { btn.innerHTML = 'Initialize Contact'; btn.style.backgroundColor = 'var(--text-light)'; document.getElementById('contactForm').reset(); }, 3000); }, 1500); }
-        const menuBtn = document.getElementById('menu-toggle'); const overlay = document.getElementById('menu-overlay'); const line1 = document.getElementById('line1'); const line2 = document.getElementById('line2'); let menuOpen = false; let menuTimeline = anime.timeline({ autoplay: false });
-        menuTimeline.add({ targets: overlay, opacity: [0, 1], duration: 400, easing: 'easeInOutSine', begin: () => { overlay.style.pointerEvents = 'auto'; } }).add({ targets: '#menu-kicker', opacity: [0, 1], translateY: [20, 0], duration: 600, easing: 'easeOutExpo' }, '-=200').add({ targets: '.menu-link', opacity: [0, 1], translateY: [40, 0], duration: 800, delay: anime.stagger(100), easing: 'easeOutExpo' }, '-=500');
-        if(menuBtn){ menuBtn.addEventListener('click', () => { if(!menuOpen){ line1.style.transform = 'translateY(4px) rotate(45deg)'; line2.style.transform = 'translateY(-4px) rotate(-45deg)'; line1.style.width = '24px'; line2.style.width = '24px'; line1.style.backgroundColor = '#fff'; line2.style.backgroundColor = '#fff'; menuTimeline.play(); menuTimeline.finished.then(() => menuTimeline.reverse()); } else { line1.style.transform = 'none'; line2.style.transform = 'none'; line2.style.width = '16px'; line1.style.backgroundColor = 'var(--bg-primary)'; line2.style.backgroundColor = 'var(--bg-primary)'; menuTimeline.play(); menuTimeline.finished.then(() => { overlay.style.pointerEvents = 'none'; menuTimeline.reverse(); }); } menuOpen = !menuOpen; }); }
-        anime({ targets: '#loader-line', height: ['0%', '100%'], easing: 'easeInOutExpo', duration: 1200, complete: function() { anime({ targets: '#loader', opacity: 0, duration: 600, easing: 'linear', complete: () => document.getElementById('loader').style.display = 'none' }); anime({ targets: '.reveal', translateY: [30, 0], opacity: [0, 1], delay: anime.stagger(150), duration: 1200, easing: 'easeOutExpo' }); }});
-        const cDot = document.getElementById('cursor-dot'); const cOut = document.getElementById('cursor-outline'); window.addEventListener('mousemove', e => { if(window.innerWidth > 900) { cDot.style.left = `${e.clientX}px`; cDot.style.top = `${e.clientY}px`; cOut.animate({ left: `${e.clientX}px`, top: `${e.clientY}px` }, { duration: 150, fill: "forwards" }); } }); document.querySelectorAll('.hover-target').forEach(el => { el.addEventListener('mouseenter', () => document.body.classList.add('hovering')); el.addEventListener('mouseleave', () => document.body.classList.remove('hovering')); });
-        const grid = document.getElementById('grid-container'); for(let i=0; i<300; i++) { let d = document.createElement('div'); d.className='grid-pixel'; grid.appendChild(d); } anime({ targets: '.grid-pixel', opacity: [0.1, 0.4, 0.1], delay: anime.stagger(40, {grid: [20, 15], from: 'center'}), loop: true, easing: 'easeInOutQuad', duration: 4000 });
+        async function submitForm() { 
+            const btn = document.getElementById('submitBtn'); 
+            const form = document.getElementById('contactForm');
+            
+            // Grabbing values using the new IDs
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            btn.innerHTML = 'ESTABLISHING SECURE LINK...'; 
+            btn.style.background = 'rgba(143,182,204,0.1)'; 
+            btn.style.color = 'var(--accent)'; 
+            
+            try {
+                // Change '/api/contact' if you mount your Express router somewhere else
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, email, message })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    btn.innerHTML = 'TRANSMISSION SUCCESSFUL ✓'; 
+                    btn.style.background = '#27C93F'; 
+                    btn.style.color = '#000';
+                    
+                    setTimeout(() => {
+                        btn.innerHTML = 'REQUEST CONSULTATION';
+                        btn.style.background = 'var(--text-light)';
+                        btn.style.color = 'var(--bg-primary)';
+                        form.reset();
+                    }, 3000);
+                } else {
+                    throw new Error(data.error || 'Transmission failed');
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                btn.innerHTML = 'TRANSMISSION FAILED ✗'; 
+                btn.style.background = '#ef4444'; 
+                btn.style.color = '#fff';
+                
+                setTimeout(() => {
+                    btn.innerHTML = 'REQUEST CONSULTATION';
+                    btn.style.background = 'var(--text-light)';
+                    btn.style.color = 'var(--bg-primary)';
+                }, 3000);
+            }
+        }
+
+        window.addEventListener('load', () => {
+            const tl = anime.timeline({ easing: 'easeOutExpo' });
+            tl.add({ targets: '.loader-logo', opacity: [0, 1], translateY: [10, 0], duration: 500 })
+              .add({ targets: '.loader-line', width: ['0%', '100%'], duration: 700, easing: 'easeInOutQuart' }, '-=200')
+              .add({ targets: '#loader', opacity: 0, duration: 400, easing: 'linear', complete: () => {
+                  document.getElementById('loader').style.display = 'none';
+                  document.body.classList.remove('intro-locked');
+              }})
+              .add({ targets: '#main-header', translateY: ['-100%', '0%'], opacity: [0, 1], duration: 800, easing: 'easeOutExpo' }, '-=200')
+              .add({ targets: '#hero .reveal-up, #hero .reveal-scale, #hero .reveal-right', opacity: 1, translateY: 0, translateX: 0, scale: 1, duration: 1000, delay: anime.stagger(100), easing: 'easeOutExpo', complete: function(anim) { anim.animatables.forEach(a => a.target.classList.add('is-visible')); } }, '-=600');
+        });
+        
+        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.querySelectorAll('.reveal-up, .reveal-scale, .reveal-right').forEach(el => el.classList.add('is-visible')); if(e.target.classList.contains('reveal-up') || e.target.classList.contains('reveal-scale')) e.target.classList.add('is-visible'); observer.unobserve(e.target); } }); }, { threshold: 0.15 }); document.querySelectorAll('.reveal-zone').forEach(s => observer.observe(s));
+
+        const menuBtn = document.getElementById('menu-toggle'); const overlay = document.getElementById('menu-overlay'); let menuOpen = false; let menuTimeline = anime.timeline({ autoplay: false });
+        menuTimeline.add({ targets: overlay, opacity: [0, 1], duration: 300, easing: 'easeInOutSine', begin: () => { overlay.style.pointerEvents = 'auto'; } }).add({ targets: '.menu-link', opacity: [0, 1], translateY: [20, 0], duration: 400, delay: anime.stagger(50), easing: 'easeOutExpo' }, '-=200');
+        if(menuBtn){ menuBtn.addEventListener('click', () => { if(!menuOpen){ menuBtn.children[0].style.transform = 'translateY(4px) rotate(45deg)'; menuBtn.children[1].style.transform = 'translateY(-4px) rotate(-45deg)'; menuBtn.children[0].style.width = '24px'; menuBtn.children[1].style.width = '24px'; menuTimeline.play(); menuTimeline.finished.then(() => menuTimeline.reverse()); } else { menuBtn.children[0].style.transform = 'none'; menuBtn.children[1].style.transform = 'none'; menuBtn.children[1].style.width = '16px'; menuTimeline.play(); menuTimeline.finished.then(() => { overlay.style.pointerEvents = 'none'; menuTimeline.reverse(); }); } menuOpen = !menuOpen; }); }
     </script>
 </body>
 </html>
