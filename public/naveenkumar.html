@@ -5,49 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Naveen Kumar M - Co-Founder & CTO at DEXYS India.">
     <title>Naveen Kumar M | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <style>
-        :root { --bg-primary: #0B0F19; --bg-secondary: #111827; --accent: #8FB6CC; --text-light: #F9FAFB; --text-muted: #9CA3AF; --border: rgba(143, 182, 204, 0.12); --header-height: 80px; } * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; } ::selection { background: rgba(143, 182, 204, 0.3); color: var(--text-light); } ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg-primary); } ::-webkit-scrollbar-thumb { background: rgba(143,182,204,0.2); border-radius: 10px; transition: background 0.3s;} ::-webkit-scrollbar-thumb:hover { background: var(--accent); } body { background-color: var(--bg-primary); color: var(--text-light); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh;} a, button { cursor: pointer; text-decoration: none;} body.intro-locked { overflow: hidden !important; height: 100vh !important; }
+        :root { --bg-primary: #0B0F19; --bg-secondary: #111827; --accent: #8FB6CC; --text-light: #F9FAFB; --text-muted: #9CA3AF; --border: rgba(143, 182, 204, 0.12); --header-height: 80px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        ::selection { background: rgba(143, 182, 204, 0.3); color: var(--text-light); }
+        ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background: rgba(143,182,204,0.3); border-radius: 10px; }
         
-        .dexys-text-logo { font-family: 'Inter', sans-serif; font-weight: 800; color: var(--text-light); letter-spacing: -0.04em; line-height: 1; transition: color 0.3s ease; } .nav-logo { font-size: 24px; } .footer-logo { font-size: 32px; margin-bottom: 1rem; display: inline-block; } .nav-logo:hover, .footer-logo:hover { color: var(--accent); }
+        html, body { height: 100%; margin: 0; padding: 0;}
+        body { background-color: var(--bg-primary); color: var(--text-light); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh;}
+        a, button { cursor: pointer; text-decoration: none;}
+        body.intro-locked { overflow: hidden !important; height: 100vh !important; }
+        
+        .dexys-text-logo { font-family: 'Inter', sans-serif; font-weight: 800; color: var(--text-light); letter-spacing: -0.04em; line-height: 1; transition: color 0.3s ease; }
+        .nav-logo { font-size: 24px; } .footer-logo { font-size: 32px; margin-bottom: 1rem; display: inline-block; } .nav-logo:hover, .footer-logo:hover { color: var(--accent); }
 
-        .bg-grid { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; background-image: radial-gradient(rgba(143,182,204,0.12) 1px, transparent 1px); background-size: 40px 40px; mask-image: linear-gradient(to bottom, black 0%, transparent 100%); pointer-events: none; } @keyframes pulse-glow { 0% { opacity: 0.5; transform: translateX(-50%) scale(1); } 100% { opacity: 0.8; transform: translateX(-50%) scale(1.05); } } .ambient-glow { position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 80vw; height: 80vw; background: radial-gradient(circle, rgba(143,182,204,0.06) 0%, transparent 60%); z-index: -1; pointer-events: none; animation: pulse-glow 10s ease-in-out infinite alternate; }
+        .bg-grid { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; background-image: radial-gradient(rgba(143,182,204,0.12) 1px, transparent 1px); background-size: 40px 40px; mask-image: linear-gradient(to bottom, black 0%, transparent 100%); pointer-events: none; }
+        @keyframes pulse-glow { 0% { opacity: 0.5; transform: translateX(-50%) scale(1); } 100% { opacity: 0.8; transform: translateX(-50%) scale(1.05); } }
+        .ambient-glow { position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 80vw; height: 80vw; background: radial-gradient(circle, rgba(143,182,204,0.06) 0%, transparent 60%); z-index: -1; pointer-events: none; animation: pulse-glow 10s ease-in-out infinite alternate; }
         
-        #loader { position: fixed; inset: 0; background: var(--bg-primary); z-index: 999999; display: flex; align-items: center; justify-content: center; flex-direction: column; } .loader-logo { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.8rem; color: var(--text-light); letter-spacing: -0.04em; margin-bottom: 1.5rem; opacity: 0; transform: translateY(10px); } .loader-line-wrapper { width: 140px; height: 2px; background: rgba(255,255,255,0.05); border-radius: 2px; overflow: hidden; } .loader-line { width: 0%; height: 100%; background: var(--accent); }
+        #loader { position: fixed; inset: 0; background: var(--bg-primary); z-index: 999999; display: flex; align-items: center; justify-content: center; flex-direction: column; } 
+        .loader-logo { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.8rem; color: var(--text-light); letter-spacing: -0.04em; margin-bottom: 1.5rem; opacity: 0; transform: translateY(10px); }
+        .loader-line-wrapper { width: 140px; height: 2px; background: rgba(255,255,255,0.05); border-radius: 2px; overflow: hidden; } .loader-line { width: 0%; height: 100%; background: var(--accent); }
         
-        header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); background: rgba(11, 15, 25, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); z-index: 1000; display: flex; align-items: center; opacity: 0; transform: translateY(-100%); transition: background 0.4s;} .nav-container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 5%; display: flex; justify-content: space-between; align-items: center; height: 100%;} .desktop-nav { display: flex; gap: 3.5rem; align-items: center; height: 100%;} .desktop-nav a { position: relative; color: var(--text-light); font-size: 0.9rem; font-weight: 500; padding: 1rem 0; opacity: 0.8; transition: opacity 0.3s, color 0.3s;} .desktop-nav a::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 2px; background-color: var(--accent); transform: scaleX(0); transform-origin: right; transition: transform 0.4s ease; } .desktop-nav a:hover, .desktop-nav a.active { opacity: 1; color: #fff;} .desktop-nav a:hover::after, .desktop-nav a.active::after { transform: scaleX(1); transform-origin: left; } .menu-btn { background: none; border: none; width: 40px; height: 40px; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; gap: 7px; z-index: 1001; position: relative; display: none; } .menu-line { height: 2px; background: var(--text-light); transition: 0.3s ease; } .menu-line:nth-child(1) { width: 28px; } .menu-line:nth-child(2) { width: 20px; } .menu-overlay { position: fixed; inset: 0; background: rgba(11,15,25,0.99); backdrop-filter: blur(25px); z-index: 999; display: flex; flex-direction: column; justify-content: center; padding-left: 10%; pointer-events: none; opacity: 0; } .menu-link { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; color: var(--text-light); letter-spacing: -0.03em; margin-bottom: 1.5rem; opacity: 0; transform: translateY(40px); display: block; width: fit-content; transition: color 0.3s, transform 0.3s;} .menu-link:hover { color: var(--accent); transform: translateX(10px) !important;}
+        header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); background: rgba(11, 15, 25, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); z-index: 1000; display: flex; align-items: center; opacity: 0; transform: translateY(-100%); transition: background 0.4s;} 
+        .nav-container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 5%; display: flex; justify-content: space-between; align-items: center; height: 100%;}
+        .desktop-nav { display: flex; gap: 3.5rem; align-items: center; height: 100%;} .desktop-nav a { position: relative; color: var(--text-light); font-size: 0.9rem; font-weight: 500; padding: 1rem 0; opacity: 0.8; transition: opacity 0.3s, color 0.3s;} .desktop-nav a::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 2px; background-color: var(--accent); transform: scaleX(0); transform-origin: right; transition: transform 0.4s ease; } .desktop-nav a:hover, .desktop-nav a.active { opacity: 1; color: #fff;} .desktop-nav a:hover::after, .desktop-nav a.active::after { transform: scaleX(1); transform-origin: left; }
+        .menu-btn { background: none; border: none; width: 40px; height: 40px; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; gap: 7px; z-index: 1001; position: relative; display: none; } .menu-line { height: 2px; background: var(--text-light); transition: 0.3s ease; } .menu-line:nth-child(1) { width: 28px; } .menu-line:nth-child(2) { width: 20px; }
+        .menu-overlay { position: fixed; inset: 0; background: rgba(11,15,25,0.99); backdrop-filter: blur(25px); z-index: 999; display: flex; flex-direction: column; justify-content: center; padding-left: 10%; pointer-events: none; opacity: 0; } .menu-link { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; color: var(--text-light); letter-spacing: -0.03em; margin-bottom: 1.5rem; opacity: 0; transform: translateY(40px); display: block; width: fit-content; transition: color 0.3s, transform 0.3s;} .menu-link:hover { color: var(--accent); transform: translateX(10px) !important;}
         
-        .reveal-up { opacity: 0; transform: translateY(40px); } .reveal-right { opacity: 0; transform: translateX(-40px); } .is-visible { opacity: 1 !important; transform: translate(0) scale(1) !important; transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); } .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; }
+        .reveal-up { opacity: 0; transform: translateY(40px); }
+        .reveal-right { opacity: 0; transform: translateX(-40px); }
+        .is-visible { opacity: 1 !important; transform: translate(0) scale(1) !important; transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; }
 
-        main { flex: 1 0 auto; } .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; position: relative; } 
-        .bio-section { padding-top: calc(var(--header-height) + 60px); padding-bottom: 40px; } .back-link { display: inline-flex; align-items: center; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 2rem; transition: all 0.3s ease; } .back-link:hover { color: var(--accent); transform: translateX(-4px); } h1 { font-size: clamp(2.8rem, 6vw, 4rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 0.5rem; color: #fff; } .role-title { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; margin-bottom: 1.5rem; } .bio-text { color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; max-width: 85ch; margin-bottom: 0;}
-        .portfolio-section { padding-bottom: 80px; } .section-kicker { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 1rem; font-weight: 600;} .section-kicker::after { content: ''; height: 1px; flex: 1; background: var(--border); }
-        .portfolio-split { display: grid; grid-template-columns: 320px 1fr; gap: 4rem; align-items: start; }
+        main { flex-grow: 1; padding-bottom: 60px;}
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; position: relative; } 
         
-        .portfolio-left { position: sticky; top: 100px; display: flex; flex-direction: column; align-items: flex-start; width: 100%; } .photo-wrapper { width: 100%; aspect-ratio: 3/4; border-radius: 16px; overflow: hidden; border: 1px solid rgba(143,182,204,0.2); box-shadow: 0 20px 40px rgba(0,0,0,0.5); margin-bottom: 1.5rem; position: relative; } .profile-photo { width: 100%; height: 100%; display: block; object-fit: cover; filter: grayscale(100%) contrast(1.1); transition: filter 0.6s ease, transform 0.6s ease; } .photo-wrapper:hover .profile-photo { filter: grayscale(0%) contrast(1); transform: scale(1.03); } .photo-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px 20px 20px 20px; background: linear-gradient(to top, rgba(5,8,14,0.95) 0%, rgba(5,8,14,0.6) 60%, transparent 100%); display: flex; flex-direction: column; align-items: flex-start; text-align: left; } .photo-overlay .name { font-size: 1.5rem; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 4px; letter-spacing: -0.02em;} .photo-overlay .loc { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 4px;}
-        .profile-extras { display: flex; flex-direction: column; gap: 1rem; width: 100%; align-items: flex-start; } .extras-label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: -0.2rem; width: 100%; text-align: left;} .skill-grid { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: flex-start; width: 100%; } .skill-pill { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 700; background: rgba(143,182,204,0.05); border: 1px solid rgba(143,182,204,0.15); color: var(--accent); padding: 6px 12px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.3s ease;} .skill-pill:hover { background: rgba(143,182,204,0.15); border-color: var(--accent); transform: translateY(-2px); } .linkedin-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-light); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.3s ease; margin-top: 0.5rem;} .linkedin-btn:hover { background: #0A66C2; border-color: #0A66C2; color: #fff; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(10, 102, 194, 0.3); }
+        .bio-section { padding-top: calc(var(--header-height) + 60px); }
+        .back-link { display: inline-flex; align-items: center; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 2rem; transition: all 0.3s ease; } .back-link:hover { color: var(--accent); transform: translateX(-4px); }
+        
+        .profile-header { display: flex; gap: 4rem; align-items: center; margin-bottom: 4rem; }
+        .ph-left { flex: 0 0 320px; }
+        .photo-wrapper { width: 100%; aspect-ratio: 3/4; border-radius: 20px; overflow: hidden; border: 1px solid rgba(143,182,204,0.15); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .profile-photo { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: filter 0.6s ease, transform 0.6s ease; }
+        .photo-wrapper:hover .profile-photo { filter: grayscale(0%); transform: scale(1.03); }
+        
+        .ph-right { flex: 1; }
+        .ph-right h1 { font-size: clamp(2.8rem, 6vw, 4.5rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 0.5rem; color: #fff; } 
+        .role-title { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; margin-bottom: 1.5rem; }
+        .bio-text { color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; max-width: 75ch; margin-bottom: 2rem;}
 
-        .portfolio-right { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; } .venture-card { background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.005) 100%); border: 1px solid rgba(143,182,204,0.1); border-radius: 16px; padding: 2.5rem; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease; display: flex; flex-direction: column; cursor: default; box-shadow: 0 4px 20px rgba(0,0,0,0.1);} .venture-card:hover { transform: translateY(-8px); border-color: rgba(143,182,204,0.4); box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 0 30px rgba(143,182,204,0.05); } .v-header { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 1rem; } .v-name { font-size: 1.25rem; color: var(--text-light); font-weight: 700; letter-spacing: -0.02em; line-height: 1.3; margin-bottom: 0.3rem;} .v-role { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;} .v-toggle { display: none; } .v-details { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+        .profile-extras { display: flex; flex-direction: column; gap: 1rem; width: 100%; align-items: flex-start; }
+        .extras-label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: -0.2rem; text-align: left;}
+        .skill-grid { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: flex-start; width: 100%; margin-bottom: 0.5rem;}
+        .skill-pill { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 700; background: rgba(143,182,204,0.05); border: 1px solid rgba(143,182,204,0.15); color: var(--accent); padding: 6px 14px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.3s ease;}
+        .skill-pill:hover { background: rgba(143,182,204,0.15); border-color: var(--accent); transform: translateY(-2px); }
         
-        footer { background: #070A11; padding: 80px 0 40px 0; border-top: 1px solid var(--border); position: relative; z-index: 10; margin-top: auto;} .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 40px; } .footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1.5rem; color: var(--text-light); } .footer-col ul { list-style: none; } .footer-col li { margin-bottom: 0.85rem; } .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; } .footer-col a:hover { color: var(--accent); padding-left: 4px; } .copyright { padding-top: 30px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 0.75rem; color: #4B5563; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+        .linkedin-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: auto; min-width: 140px; padding: 12px 24px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-light); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.3s ease;}
+        .linkedin-btn:hover { background: #0A66C2; border-color: #0A66C2; color: #fff; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(10, 102, 194, 0.3); }
+
+        .quote-block { max-width: 900px; margin: 6rem auto; text-align: center; padding: 0 5%; }
+        .quote-text { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 400; line-height: 1.4; color: var(--text-light); font-style: italic; }
+
+        .professional-section { padding-bottom: 40px; }
+        .section-kicker { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 1rem; font-weight: 600;}
+        .section-kicker::after { content: ''; height: 1px; flex: 1; background: var(--border); }
+        
+        .prof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .prof-card { background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.005) 100%); border: 1px solid rgba(143,182,204,0.1); border-radius: 16px; padding: 2.5rem; transition: transform 0.4s ease, border-color 0.4s ease; display: flex; flex-direction: column; }
+        .prof-card:hover { transform: translateY(-8px); border-color: rgba(143,182,204,0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .prof-icon { color: var(--accent); margin-bottom: 1.2rem; display: flex; align-items: center; }
+        .prof-title { font-size: 1.15rem; color: #fff; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.8rem; }
+        .prof-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+        footer { background: #070A11; padding: 80px 0 20px 0; border-top: 1px solid var(--border); margin-top: auto;}
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 40px; }
+        .footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1.5rem; color: var(--text-light); }
+        .footer-col ul { list-style: none; } .footer-col li { margin-bottom: 0.85rem; } .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; } .footer-col a:hover { color: var(--accent); padding-left: 4px; }
+        .copyright { padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 0.75rem; color: #4B5563; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
 
         @media (max-width: 900px) { 
             .menu-btn { display: flex; } .desktop-nav { display: none; } 
-            .bio-section { padding-top: calc(var(--header-height) + 20px); padding-bottom: 20px; } h1 { font-size: 2.2rem; } .bio-text { font-size: 0.9rem; line-height: 1.6; }
-            .portfolio-section { padding-top: 10px; padding-bottom: 40px; } .section-kicker { font-size: 0.7rem; margin-bottom: 1rem; }
-            .portfolio-split { display: flex; flex-direction: row; align-items: flex-start; gap: 1rem; height: 65vh; min-height: 480px; max-height: 600px; }
-            .portfolio-left { position: relative; top: 0; width: 42%; height: 100%; display: flex; flex-direction: column; align-items: flex-start; flex-shrink: 0; overflow-y: auto; overflow-x: hidden; padding-bottom: 10px; overscroll-behavior: contain;} .portfolio-left::-webkit-scrollbar { display: none; }
-            .photo-wrapper { width: 100%; aspect-ratio: 3/4; border-radius: 12px; margin-bottom: 0.8rem; border: 1px solid rgba(143,182,204,0.3); flex-shrink: 0;} .photo-overlay { padding: 40px 10px 10px 10px; align-items: flex-start; text-align: left;} .photo-overlay .name { font-size: 1.1rem; }
-            .profile-extras { margin-top: 0; gap: 0.6rem; width: 100%; align-items: flex-start;} .extras-label { display: block; font-size: 0.6rem; color: var(--text-muted); margin-bottom: 0;} .skill-grid { justify-content: flex-start; gap: 0.3rem; width: 100%;} .skill-pill { font-size: 0.55rem; padding: 4px 6px; letter-spacing: 0;} .linkedin-btn { font-size: 0.65rem; padding: 8px; margin-top: 0.2rem; width: 100%; justify-content: center;}
-            .portfolio-right { width: 58%; height: 100%; display: flex; flex-direction: column; gap: 0.6rem; overflow-y: auto; padding-right: 4px; padding-bottom: 10px; overscroll-behavior: contain;}
-            .venture-card { padding: 0.8rem 1rem; border-radius: 10px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.3s ease; display: flex; flex-direction: column; box-shadow: none;} .venture-card.active { background: rgba(143,182,204,0.08); border-color: rgba(143,182,204,0.3); }
-            .v-header { display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 0; width: 100%;} .v-title-group { display: flex; flex-direction: column; gap: 0.2rem; pointer-events: none; width: calc(100% - 30px); align-items: flex-start;} .v-name { font-size: 0.9rem; line-height: 1.2; white-space: normal; margin-bottom: 0;} .v-role { font-size: 0.55rem; margin-top: 0; white-space: normal;}
-            .v-toggle { display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; min-width: 24px; background: rgba(255,255,255,0.05); border-radius: 50%; color: var(--text-light); transition: all 0.3s ease; pointer-events: none;} .venture-card.active .v-toggle { transform: rotate(135deg); background: var(--accent); color: var(--bg-primary); }
-            .v-details { max-height: 0; overflow: hidden; transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), margin-top 0.3s ease; font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; } .venture-card.active .v-details { max-height: 150px; margin-top: 0.6rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.6rem;}
+            .bio-section { padding-top: calc(var(--header-height) + 20px); }
+            .profile-header { flex-direction: column; text-align: center; gap: 2.5rem; }
+            .ph-left { flex: 0 0 auto; width: 240px; }
+            .ph-right h1 { font-size: 2.5rem; } .bio-text { font-size: 0.95rem; line-height: 1.6; max-width: 100%; margin-bottom: 1.5rem;}
+            .profile-extras { align-items: center; }
+            .extras-label { text-align: center; width: 100%; }
+            .skill-grid { justify-content: center; }
+            .quote-block { margin: 4rem auto; }
+            .professional-section { padding-bottom: 40px; }
+            .prof-card { padding: 2rem; }
             .footer-grid { grid-template-columns: 1fr; gap: 3rem; } .copyright { flex-direction: column; gap: 1rem; text-align: center; }
         }
-        @media (max-width: 400px) { .portfolio-left { width: 40%; } .portfolio-right { width: 60%; } .photo-overlay .name { font-size: 0.95rem; } .venture-card { padding: 0.7rem 0.8rem;} }
     </style>
 </head>
 <body class="intro-locked">
@@ -86,69 +138,73 @@
         <section class="bio-section reveal-zone">
             <div class="container">
                 <a href="about.html#leadership" class="back-link reveal-up">&larr; Back to Board</a>
-                <h1 class="reveal-up delay-1">Naveen Kumar M</h1>
-                <div class="role-title reveal-up delay-1">Co-Founder & CTO</div>
-                <div class="bio-text reveal-up delay-2">
-                    <p>Naveen Kumar M is a technology entrepreneur and digital platform builder passionate about creating innovative solutions that connect people and foster collaboration.</p>
-                    <p>He is the Founder of CollegenZ, a platform designed to empower communities through knowledge sharing, collaboration, and digital engagement. In addition, he serves as the Co-Founder of Dexys, where he contributes to developing scalable and forward-thinking digital solutions. Naveen is particularly interested in leveraging modern technologies such as artificial intelligence, data science, and web development to build impactful products that support the growth of the digital ecosystem.</p>
+                
+                <div class="profile-header">
+                    <div class="ph-left reveal-right delay-1">
+                        <div class="photo-wrapper">
+                            <img src="naveen.jpeg" alt="Naveen Kumar M" class="profile-photo">
+                        </div>
+                    </div>
+                    <div class="ph-right reveal-up delay-1">
+                        <h1>Naveen Kumar M</h1>
+                        <div class="role-title">Co-Founder & CTO</div>
+                        <div class="bio-text">
+                            <p>Naveen Kumar M is a technology entrepreneur and digital platform builder passionate about creating innovative solutions that connect people and foster collaboration.</p>
+                            <p>He is the Founder of CollegenZ, a platform designed to empower communities through knowledge sharing, collaboration, and digital engagement. In addition, he serves as the Co-Founder of Dexys, where he contributes to developing scalable and forward-thinking digital solutions.</p>
+                        </div>
+                        
+                        <div class="profile-extras reveal-up delay-2">
+                             <div class="extras-label">Core Expertise</div>
+                             <div class="skill-grid">
+                                 <span class="skill-pill">AI & Data Science</span>
+                                 <span class="skill-pill">Web Dev</span>
+                                 <span class="skill-pill">Community Platforms</span>
+                             </div>
+                             <a href="https://www.linkedin.com/in/naveenkumarmuralidharan247" target="_blank" class="linkedin-btn">
+                                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                                Connect
+                             </a>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="quote-block reveal-up">
+                    <div class="quote-text">&ldquo;Complexity is the enemy. We engineer highly intelligent systems that just feel effortless.&rdquo;</div>
+                </div>
+
             </div>
         </section>
 
-        <section class="portfolio-section reveal-zone">
+        <section class="professional-section reveal-zone">
             <div class="container">
-                <div class="section-kicker reveal-up">Venture Portfolio (2)</div>
+                <div class="section-kicker reveal-up">Key Focus Areas</div>
                 
-                <div class="portfolio-split">
-                    <div class="portfolio-left reveal-right delay-1">
-                        <div class="photo-wrapper">
-                            <img src="naveen.jpeg" alt="Naveen Kumar M" class="profile-photo">
-                            <div class="photo-overlay">
-                                <span class="name">Naveen Kumar</span>
-                                
-                            </div>
+                <div class="prof-grid reveal-up delay-1">
+                    <div class="prof-card">
+                        <div class="prof-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                         </div>
-
-                        <div class="profile-extras">
-                            <div class="extras-label">Core Expertise</div>
-                            <div class="skill-grid">
-                                <span class="skill-pill">AI & Data Science</span>
-                                <span class="skill-pill">Web Dev</span>
-                                <span class="skill-pill">Community Platforms</span>
-                            </div>
-                            <a href="https://www.linkedin.com/in/naveenkumarmuralidharan247?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="linkedin-btn">
-                                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                                Connect
-                            </a>
-                        </div>
+                        <h3 class="prof-title">Systems Architecture</h3>
+                        <p class="prof-desc">Designing resilient, high-performance computing infrastructures to support complex and demanding digital platforms.</p>
                     </div>
 
-                    <div class="portfolio-right reveal-up delay-2">
-                        
-                        <div class="venture-card" onclick="toggleMobileCard(this)">
-                            <div class="v-header">
-                                <div class="v-title-group">
-                                    <div class="v-name">CollegenZ</div>
-                                    <div class="v-role">Founder & MD</div>
-                                </div>
-                                <div class="v-toggle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></div>
-                            </div>
-                            <div class="v-details"><div class="venture-details-inner">A student community startup designed to empower communities through knowledge sharing and digital engagement.</div></div>
+                    <div class="prof-card">
+                        <div class="prof-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
                         </div>
+                        <h3 class="prof-title">AI Integration</h3>
+                        <p class="prof-desc">Leveraging advanced machine learning and data science protocols to build intelligent, forward-thinking tech solutions.</p>
+                    </div>
 
-                        <div class="venture-card" onclick="toggleMobileCard(this)">
-                            <div class="v-header">
-                                <div class="v-title-group">
-                                    <div class="v-name">DEXYS India</div>
-                                    <div class="v-role">Co-Founder & CTO</div>
-                                </div>
-                                <div class="v-toggle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></div>
-                            </div>
-                            <div class="v-details"><div class="venture-details-inner">An IT solutions firm turning concepts into scalable enterprise digital ecosystems.</div></div>
+                    <div class="prof-card">
+                        <div class="prof-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
                         </div>
-
+                        <h3 class="prof-title">Scalable Infrastructure</h3>
+                        <p class="prof-desc">Ensuring mission-critical technical environments are engineered for massive scale, deep security, and continuous deployment.</p>
                     </div>
                 </div>
+
             </div>
         </section>
     </main>
@@ -168,17 +224,6 @@
     </footer>
 
     <script>
-        function toggleMobileCard(card) {
-            if(window.innerWidth <= 900) {
-                const wasActive = card.classList.contains('active');
-                document.querySelectorAll('.venture-card.active').forEach(c => c.classList.remove('active'));
-                if(!wasActive) {
-                    card.classList.add('active');
-                    setTimeout(() => { card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 300);
-                }
-            }
-        }
-
         window.addEventListener('load', () => {
             const tl = anime.timeline({ easing: 'easeOutExpo' });
             tl.add({ targets: '.loader-logo', opacity: [0, 1], translateY: [10, 0], duration: 400 })
@@ -191,7 +236,7 @@
               .add({ targets: '.reveal-up, .reveal-scale, .reveal-right', opacity: 1, translateY: 0, translateX: 0, scale: 1, duration: 800, delay: anime.stagger(100), easing: 'easeOutExpo', complete: function(anim) { anim.animatables.forEach(a => a.target.classList.add('is-visible')); } }, '-=400');
         });
         
-        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.querySelectorAll('.reveal-up, .reveal-scale, .reveal-right').forEach(el => el.classList.add('is-visible')); if(e.target.classList.contains('reveal-up') || e.target.classList.contains('reveal-scale')) e.target.classList.add('is-visible'); observer.unobserve(e.target); } }); }, { threshold: 0.15 }); document.querySelectorAll('.reveal-zone, .section-divider').forEach(s => observer.observe(s));
+        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.querySelectorAll('.reveal-up, .reveal-scale, .reveal-right').forEach(el => el.classList.add('is-visible')); if(e.target.classList.contains('reveal-up') || e.target.classList.contains('reveal-scale')) e.target.classList.add('is-visible'); observer.unobserve(e.target); } }); }, { threshold: 0.1 }); document.querySelectorAll('.reveal-zone, .section-divider').forEach(s => observer.observe(s));
         
         const menuBtn = document.getElementById('menu-toggle'); const overlay = document.getElementById('menu-overlay'); let menuOpen = false; let menuTimeline = anime.timeline({ autoplay: false });
         menuTimeline.add({ targets: overlay, opacity: [0, 1], duration: 300, easing: 'easeInOutSine', begin: () => { overlay.style.pointerEvents = 'auto'; } }).add({ targets: '.menu-link', opacity: [0, 1], translateY: [20, 0], duration: 400, delay: anime.stagger(50), easing: 'easeOutExpo' }, '-=200');
