@@ -7,21 +7,13 @@
     <title>DEXYS India | Enterprise IT Solutions</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script>
-        (function() {
-            const isInternal = document.referrer.includes(location.hostname) && document.referrer !== "";
-            const isReload = performance.navigation.type === 1 || (performance.getEntriesByType && performance.getEntriesByType("navigation")[0]?.type === "reload");
-            if (!isInternal || isReload) { document.documentElement.classList.add('fresh-route'); } 
-            else { document.documentElement.classList.add('internal-route'); }
-        })();
-    </script>
     <style>
         :root { --bg-primary: #0B0F19; --bg-secondary: #111827; --accent: #8FB6CC; --text-light: #F9FAFB; --text-muted: #9CA3AF; --border: rgba(143, 182, 204, 0.12); --header-height: 80px; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         ::selection { background: rgba(143, 182, 204, 0.3); color: var(--text-light); }
         ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg-primary); } ::-webkit-scrollbar-thumb { background: rgba(143,182,204,0.2); border-radius: 10px; transition: background 0.3s;} ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
         body { background-color: var(--bg-primary); color: var(--text-light); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.7; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; display: flex; flex-direction: column; min-height: 100vh;}
-        main { flex: 1 0 auto; display: flex; flex-direction: column; } footer { flex-shrink: 0; margin-top: auto; position: relative; z-index: 10;} a, button { cursor: pointer; text-decoration: none;} body.intro-locked { overflow: hidden !important; height: 100vh !important; }
+        main { flex: 1 0 auto; display: flex; flex-direction: column; } a, button { cursor: pointer; text-decoration: none;} body.intro-locked { overflow: hidden !important; height: 100vh !important; }
         .dexys-text-logo { font-family: 'Inter', sans-serif; font-weight: 800; color: var(--text-light); letter-spacing: -0.04em; line-height: 1; transition: color 0.3s ease; } .nav-logo { font-size: 24px; } .footer-logo { font-size: 32px; margin-bottom: 1rem; display: inline-block; } .nav-logo:hover, .footer-logo:hover { color: var(--accent); }
         .bg-grid { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; background-image: radial-gradient(rgba(143,182,204,0.12) 1px, transparent 1px); background-size: 40px 40px; mask-image: linear-gradient(to bottom, black 0%, transparent 100%); pointer-events: none; }
         @keyframes pulse-glow { 0% { opacity: 0.5; transform: translateX(-50%) scale(1); } 100% { opacity: 0.8; transform: translateX(-50%) scale(1.05); } } .ambient-glow { position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 80vw; height: 80vw; background: radial-gradient(circle, rgba(143,182,204,0.06) 0%, transparent 60%); z-index: -1; pointer-events: none; animation: pulse-glow 10s ease-in-out infinite alternate; }
@@ -34,7 +26,7 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; position: relative; } section { padding: clamp(100px, 12vw, 160px) 0; border-bottom: 1px solid var(--border); position: relative; } .bg-secondary-section { background-color: var(--bg-secondary); } .kicker { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 1.5rem; display: block; } h1 { font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 1.5rem; color: #fff; } h2 { font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1.5rem; line-height: 1.1; color: #fff; } p { color: var(--text-muted); font-size: clamp(1.05rem, 2vw, 1.15rem); max-width: 70ch; margin-bottom: 2rem; line-height: 1.8; } .text-gradient { background: linear-gradient(135deg, #FFF 0%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.5rem; } .btn { display: inline-flex; align-items: center; justify-content: center; padding: 16px 32px; font-weight: 600; font-size: 0.85rem; border-radius: 8px; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em; position: relative; overflow: hidden; z-index: 1;} .btn-primary { background: var(--text-light); color: var(--bg-primary); border: 1px solid var(--text-light); box-shadow: 0 4px 15px rgba(255,255,255,0.05); } .btn-primary:hover { background: var(--accent); border-color: var(--accent); color: var(--bg-primary); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(143,182,204,0.25); } .btn-secondary { background: transparent; color: var(--text-light); border: 1px solid rgba(255,255,255,0.15); } .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); background: rgba(143,182,204,0.05); } .btn span { transition: transform 0.3s ease; display: inline-block; margin-left: 8px;} .btn:hover span { transform: translateX(4px); }
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 3rem; margin-top: 5rem; padding-top: 4rem; border-top: 1px solid var(--border); width: 100%; text-align: left; } .stat-item { border-left: 2px solid var(--accent); padding-left: 1.5rem; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); } .stat-item:hover { transform: translateX(10px); border-left-width: 4px; border-color: #fff;} .stat-val { font-family: 'JetBrains Mono', monospace; font-size: 3.5rem; font-weight: 900; color: var(--text-light); line-height: 1; display: block; margin-bottom: 0.5rem; } .stat-label { color: var(--accent); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
-        footer { background: #070A11; padding: 80px 0 40px 0; border-top: 1px solid var(--border); margin-top: auto; position: relative; z-index: 10; } .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 60px; } .footer-brand p { font-size: 0.95rem; max-width: 350px; margin-top: 0.5rem; color: var(--text-muted); line-height: 1.7; } .footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; color: var(--text-light); } .footer-col ul { list-style: none; } .footer-col li { margin-bottom: 0.85rem; } .footer-col a { color: var(--text-muted); font-size: 0.95rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: inline-block; } .footer-col a:hover { color: var(--accent); transform: translateX(5px); } .copyright { padding-top: 40px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: #4B5563; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em; }
+        footer { background: #070A11; padding: 60px 0 30px 0; border-top: 1px solid var(--border); position: relative; z-index: 10; margin-top: auto;} .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 40px; } .footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1.5rem; color: var(--text-light); } .footer-col ul { list-style: none; } .footer-col li { margin-bottom: 0.85rem; } .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: inline-block;} .footer-col a:hover { color: var(--accent); transform: translateX(4px); } .copyright { padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 0.75rem; color: #4B5563; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
         @media (max-width: 900px) { .menu-btn { display: flex; } .desktop-nav { display: none; } .footer-grid { grid-template-columns: 1fr; gap: 3rem; } .copyright { flex-direction: column; gap: 1rem; text-align: center; } #methodology > .container > div { grid-template-columns: 1fr !important; gap: 2.5rem !important; } #methodology > .container > div > div:nth-child(2) { border-left: none !important; padding-left: 0 !important; border-top: 1px solid var(--border); padding-top: 2.5rem;} }
     </style>
 </head>
@@ -47,14 +39,14 @@
 
     <header id="main-header">
         <div class="nav-container">
-            <a href="index.html" style="text-decoration: none;">
+            <a href="/" style="text-decoration: none;">
                 <span class="dexys-text-logo nav-logo">DEXYS</span>
             </a>
             <nav class="desktop-nav">
-                <a href="index.html" class="active">Home</a>
-                <a href="products-services.html">Products & Services</a>
-                <a href="contact.html">Contact Us</a>
-                <a href="about.html">About Us</a>
+                <a href="/" class="active">Home</a>
+                <a href="/products-services">Products & Services</a>
+                <a href="/contact">Contact Us</a>
+                <a href="/about">About Us</a>
             </nav>
             <button class="menu-btn" id="menu-toggle"><div class="menu-line"></div><div class="menu-line"></div></button>
         </div>
@@ -62,10 +54,10 @@
 
     <div class="menu-overlay" id="menu-overlay">
         <span class="kicker" style="opacity: 0; transform: translateY(20px);" id="menu-kicker">Navigation</span>
-        <a href="index.html" class="menu-link" style="color: var(--accent);">Home</a>
-        <a href="products-services.html" class="menu-link">Products & Services</a>
-        <a href="contact.html" class="menu-link">Contact Us</a>
-        <a href="about.html" class="menu-link">About Us</a>
+        <a href="/" class="menu-link" style="color: var(--accent);">Home</a>
+        <a href="/products-services" class="menu-link">Products & Services</a>
+        <a href="/contact" class="menu-link">Contact Us</a>
+        <a href="/about" class="menu-link">About Us</a>
     </div>
 
     <div class="ambient-glow"></div>
@@ -74,13 +66,13 @@
     <main>
         <section id="hero" style="padding-top: 160px; border: none; min-height: 85vh; display: flex; align-items: center;" class="reveal-zone">
             <div class="container">
-                <span class="kicker reveal-up" style="text-align: center;">Premier IT Solutions</span>
+                <span class="kicker reveal-up" style="text-align: center;">A complete IT Solution</span>
                 <h1 class="reveal-up delay-1" style="text-align: center;">Architecting <br><span class="text-gradient">Enterprise Scale.</span></h1>
                 <p class="reveal-up delay-2" style="text-align: center; margin-inline: auto;">DEXYS India is an advanced IT solutions firm based in Pollachi. We don't just serve the enterprise—we turn any concept, startup, or digital operation into a highly scalable, mathematically sound enterprise-grade infrastructure.</p>
                 
                 <div class="btn-group reveal-up delay-3" style="justify-content: center;">
-                    <a href="products-services.html" class="btn btn-primary">Explore Products & Services &rarr;</a>
-                    <a href="contact.html" class="btn btn-secondary">Request Consultation</a>
+                    <a href="/products-services" class="btn btn-primary">Explore Products & Services &rarr;</a>
+                    <a href="/contact" class="btn btn-secondary">contact us</a>
                 </div>
 
                 <div class="stats-grid reveal-up delay-4">
@@ -157,29 +149,25 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <span class="dexys-text-logo footer-logo">DEXYS</span>
-                    <p>Architecting secure, intelligent, and sovereign digital ecosystems for India's most ambitious enterprises.</p>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; max-width: 300px;">Architecting secure, intelligent, and sovereign digital ecosystems.</p>
                 </div>
-                <div class="footer-col delay-1">
+                <div class="footer-col">
                     <h4>Sitemap</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="products-services.html">Products & Services</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/products-services">Products & Services</a></li>
+                        <li><a href="/about">About Us</a></li>
                     </ul>
                 </div>
-                <div class="footer-col delay-2">
-                    <h4>Intelligence</h4>
+                <div class="footer-col">
+                    <h4>Contact</h4>
                     <ul>
-                        <li><a href="products-services.html#products">Proprietary Products</a></li>
-                        <li><a href="products-services.html#services">Core Services</a></li>
-                        <li><a href="mailto:dharsan@dexys.in">dharsan@dexys.in</a></li>
+                        <li><a href="/contact">Contact Us</a></li>
+                        <li><a href="mailto:dexysindia@gmail.com">dexysindia@gmail.com</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="copyright">
-                <span>© 2026 DEXYS India. Engineered in Pollachi.</span>
-            </div>
+            <div class="copyright"><span>© 2026 DEXYS India.</span></div>
         </div>
     </footer>
 
