@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
     });
 
     await transporter.sendMail({
-      from: `"DEXYS Website" <${process.env.EMAIL_USER}>`,
+      from: `"Dexys.in" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER,
 
       /* SUBJECT */
@@ -42,12 +42,12 @@ router.post("/", async (req, res) => {
       `,
     });
 
-    console.log("EMAIL SENT SUCCESS");
+    console.log(`EMAIL SENT SUCCESS - ${new Date().toLocaleString()}`);
 
     res.json({ success: true });
 
   } catch (err) {
-    console.log("EMAIL ERROR:", err);
+    console.log(`EMAIL ERROR - ${new Date().toLocaleString()}:`, err);
     res.status(500).json({ error: err.message });
   }
 });
