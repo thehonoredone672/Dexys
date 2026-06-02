@@ -58,32 +58,17 @@
         .bio-text { color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; max-width: 75ch; margin-bottom: 2rem;}
 
         .profile-extras { display: flex; flex-direction: column; gap: 1rem; width: 100%; align-items: flex-start; }
-        .extras-label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: -0.2rem; text-align: left;}
-        .skill-grid { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: flex-start; width: 100%; margin-bottom: 0.5rem;}
-        .skill-pill { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 700; background: rgba(143,182,204,0.05); border: 1px solid rgba(143,182,204,0.15); color: var(--accent); padding: 6px 14px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.3s ease;}
-        .skill-pill:hover { background: rgba(143,182,204,0.15); border-color: var(--accent); transform: translateY(-2px); }
-        
         .linkedin-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: auto; min-width: 140px; padding: 12px 24px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-light); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.3s ease;}
         .linkedin-btn:hover { background: #0A66C2; border-color: #0A66C2; color: #fff; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(10, 102, 194, 0.3); }
 
         .quote-block { max-width: 900px; margin: 6rem auto; text-align: center; padding: 0 5%; }
         .quote-text { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 400; line-height: 1.4; color: var(--text-light); font-style: italic; }
 
-        .professional-section { padding-bottom: 40px; }
-        .section-kicker { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 1rem; font-weight: 600;}
-        .section-kicker::after { content: ''; height: 1px; flex: 1; background: var(--border); }
-        
-        .prof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-        .prof-card { background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.005) 100%); border: 1px solid rgba(143,182,204,0.1); border-radius: 16px; padding: 2.5rem; transition: transform 0.4s ease, border-color 0.4s ease; display: flex; flex-direction: column; }
-        .prof-card:hover { transform: translateY(-8px); border-color: rgba(143,182,204,0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-        .prof-icon { color: var(--accent); margin-bottom: 1.2rem; display: flex; align-items: center; }
-        .prof-title { font-size: 1.15rem; color: #fff; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.8rem; }
-        .prof-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
-
-        footer { background: #070A11; padding: 80px 0 20px 0; border-top: 1px solid var(--border); margin-top: auto;}
+        /* UNIFIED FOOTER CSS */
+        footer { background: #070A11; padding: 60px 0 30px 0; border-top: 1px solid var(--border); position: relative; z-index: 10; margin-top: auto;}
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 40px; }
         .footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1.5rem; color: var(--text-light); }
-        .footer-col ul { list-style: none; } .footer-col li { margin-bottom: 0.85rem; } .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; } .footer-col a:hover { color: var(--accent); padding-left: 4px; }
+        .footer-col ul { list-style: none; } .footer-col li { margin-bottom: 0.85rem; } .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: inline-block;} .footer-col a:hover { color: var(--accent); transform: translateX(4px); }
         .copyright { padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 0.75rem; color: #4B5563; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
 
         @media (max-width: 900px) { 
@@ -93,11 +78,7 @@
             .ph-left { flex: 0 0 auto; width: 240px; }
             .ph-right h1 { font-size: 2.5rem; } .bio-text { font-size: 0.95rem; line-height: 1.6; max-width: 100%; margin-bottom: 1.5rem;}
             .profile-extras { align-items: center; }
-            .extras-label { text-align: center; width: 100%; }
-            .skill-grid { justify-content: center; }
             .quote-block { margin: 4rem auto; }
-            .professional-section { padding-bottom: 40px; }
-            .prof-card { padding: 2rem; }
             .footer-grid { grid-template-columns: 1fr; gap: 3rem; } .copyright { flex-direction: column; gap: 1rem; text-align: center; }
         }
     </style>
@@ -110,14 +91,14 @@
     
     <header id="main-header">
         <div class="nav-container">
-            <a href="index.html" style="text-decoration: none;">
+            <a href="/" style="text-decoration: none;">
                 <span class="dexys-text-logo nav-logo">DEXYS</span>
             </a>
             <nav class="desktop-nav">
-                <a href="index.html">Home</a>
-                <a href="products-services.html">Products & Services</a>
-                <a href="contact.html">Contact Us</a>
-                <a href="about.html" class="active">About Us</a>
+                <a href="/">Home</a>
+                <a href="/products-services">Products & Services</a>
+                <a href="/contact">Contact Us</a>
+                <a href="/about" class="active">About Us</a>
             </nav>
             <button class="menu-btn" id="menu-toggle"><div class="menu-line" id="line1"></div><div class="menu-line" id="line2"></div></button>
         </div>
@@ -125,10 +106,10 @@
 
     <div class="menu-overlay" id="menu-overlay">
         <span class="kicker" style="opacity: 0; transform: translateY(20px);" id="menu-kicker">Navigation</span>
-        <a href="index.html" class="menu-link">Home</a>
-        <a href="products-services.html" class="menu-link">Products & Services</a>
-        <a href="contact.html" class="menu-link">Contact Us</a>
-        <a href="about.html" class="menu-link" style="color: var(--accent);">About Us</a>
+        <a href="/">Home</a>
+        <a href="/products-services" class="menu-link">Products & Services</a>
+        <a href="/contact" class="menu-link">Contact Us</a>
+        <a href="/about" class="menu-link" style="color: var(--accent);">About Us</a>
     </div>
 
     <div class="ambient-glow"></div>
@@ -137,7 +118,7 @@
     <main>
         <section class="bio-section reveal-zone">
             <div class="container">
-                <a href="about.html#leadership" class="back-link reveal-up">&larr; Back to Board</a>
+                <a href="/about#leadership" class="back-link reveal-up">&larr; Back to Board</a>
                 
                 <div class="profile-header">
                     <div class="ph-left reveal-right delay-1">
@@ -154,12 +135,6 @@
                         </div>
                         
                         <div class="profile-extras reveal-up delay-2">
-                             <div class="extras-label">Core Expertise</div>
-                             <div class="skill-grid">
-                                 <span class="skill-pill">Software Dev</span>
-                                 <span class="skill-pill">Cybersecurity</span>
-                                 <span class="skill-pill">AI & Web Tech</span>
-                             </div>
                              <a href="https://www.linkedin.com/in/dharsank" target="_blank" class="linkedin-btn">
                                 <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                                 Connect
@@ -174,39 +149,6 @@
 
             </div>
         </section>
-
-        <section class="professional-section reveal-zone">
-            <div class="container">
-                <div class="section-kicker reveal-up">Key Focus Areas</div>
-                
-                <div class="prof-grid reveal-up delay-1">
-                    <div class="prof-card">
-                        <div class="prof-icon">
-                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                        </div>
-                        <h3 class="prof-title">Enterprise Architecture</h3>
-                        <p class="prof-desc">Architecting highly scalable, secure, and resilient digital ecosystems tailored to meet complex modern enterprise demands.</p>
-                    </div>
-
-                    <div class="prof-card">
-                        <div class="prof-icon">
-                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-                        </div>
-                        <h3 class="prof-title">Venture Building</h3>
-                        <p class="prof-desc">Incubating and scaling disruptive technology startups from early-stage conceptualization through to successful market execution.</p>
-                    </div>
-
-                    <div class="prof-card">
-                        <div class="prof-icon">
-                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-                        </div>
-                        <h3 class="prof-title">Strategic Leadership</h3>
-                        <p class="prof-desc">Driving technological innovation, managing high-performance cross-functional teams, and executing long-term business strategies.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
     </main>
     
     <footer class="reveal-zone">
@@ -216,10 +158,23 @@
                     <span class="dexys-text-logo footer-logo">DEXYS</span>
                     <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; max-width: 300px;">Architecting secure, intelligent, and sovereign digital ecosystems.</p>
                 </div>
-                <div class="footer-col"><h4>Sitemap</h4><ul><li><a href="index.html">Home</a></li><li><a href="products-services.html">Products & Services</a></li><li><a href="about.html">About Us</a></li></ul></div>
-                <div class="footer-col"><h4>Connect</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="mailto:dharsan@dexys.in">dharsan@dexys.in</a></li></ul></div>
+                <div class="footer-col">
+                    <h4>Sitemap</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/products-services">Products & Services</a></li>
+                        <li><a href="/about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="/contact">Contact Us</a></li>
+                        <li><a href="mailto:dexysindia@gmail.com">dexysindia@gmail.com</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="copyright"><span>© 2026 DEXYS India. Engineered in Pollachi.</span></div>
+            <div class="copyright"><span>© 2026 DEXYS India.</span></div>
         </div>
     </footer>
 
