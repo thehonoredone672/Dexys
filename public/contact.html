@@ -16,7 +16,7 @@
         })();
     </script>
     <style>
-        :root { --bg-primary: #0B0F19; --bg-secondary: #111827; --accent: #8FB6CC; --text-light: #F9FAFB; --text-muted: #9CA3AF; --border: rgba(143, 182, 204, 0.15); --header-height: 80px; } * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; } ::selection { background: rgba(143, 182, 204, 0.3); color: var(--text-light); } ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg-primary); } ::-webkit-scrollbar-thumb { background: rgba(143,182,204,0.2); border-radius: 10px; transition: background 0.3s;} ::-webkit-scrollbar-thumb:hover { background: var(--accent); } body { background-color: var(--bg-primary); color: var(--text-light); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh;} main { flex: 1 0 auto; display: flex; flex-direction: column; } footer { flex-shrink: 0; margin-top: auto; position: relative; z-index: 10; } a, button { cursor: pointer; text-decoration: none;} body.intro-locked { overflow: hidden !important; height: 100vh !important; } .bg-grid { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; background-image: radial-gradient(rgba(143,182,204,0.1) 1px, transparent 1px); background-size: 30px 30px; mask-image: linear-gradient(to bottom, black 0%, transparent 100%); pointer-events: none; } @keyframes pulse { 0% { opacity: 0.4; transform: translateX(-50%) scale(1); } 100% { opacity: 0.7; transform: translateX(-50%) scale(1.05); } } .ambient-glow { position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 80vw; height: 80vw; background: radial-gradient(circle, rgba(143,182,204,0.06) 0%, transparent 60%); z-index: -1; pointer-events: none; animation: pulse 10s ease-in-out infinite alternate; will-change: transform, opacity; } 
+        :root { --bg-primary: #0B0F19; --bg-secondary: #111827; --accent: #8FB6CC; --text-light: #F9FAFB; --text-muted: #9CA3AF; --border: rgba(143, 182, 204, 0.15); --header-height: 80px; } * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; } ::selection { background: rgba(143, 182, 204, 0.3); color: var(--text-light); } ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg-primary); } ::-webkit-scrollbar-thumb { background: rgba(143,182,204,0.2); border-radius: 10px; transition: background 0.3s;} ::-webkit-scrollbar-thumb:hover { background: var(--accent); } body { background-color: var(--bg-primary); color: var(--text-light); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh;} main { flex: 1 0 auto; display: flex; flex-direction: column; } a, button { cursor: pointer; text-decoration: none;} body.intro-locked { overflow: hidden !important; height: 100vh !important; } .bg-grid { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; background-image: radial-gradient(rgba(143,182,204,0.1) 1px, transparent 1px); background-size: 30px 30px; mask-image: linear-gradient(to bottom, black 0%, transparent 100%); pointer-events: none; } @keyframes pulse { 0% { opacity: 0.4; transform: translateX(-50%) scale(1); } 100% { opacity: 0.7; transform: translateX(-50%) scale(1.05); } } .ambient-glow { position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 80vw; height: 80vw; background: radial-gradient(circle, rgba(143,182,204,0.06) 0%, transparent 60%); z-index: -1; pointer-events: none; animation: pulse 10s ease-in-out infinite alternate; will-change: transform, opacity; } 
         
         #loader { position: fixed; inset: 0; background: var(--bg-primary); z-index: 999999; display: flex; align-items: center; justify-content: center; flex-direction: column; } 
         .loader-logo { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.8rem; color: var(--text-light); letter-spacing: -0.04em; margin-bottom: 1.5rem; opacity: 0; transform: translateY(10px); will-change: transform, opacity; }
@@ -37,7 +37,7 @@
         p { color: var(--text-muted); font-size: clamp(1.05rem, 2vw, 1.15rem); max-width: 70ch; margin-bottom: 2rem; line-height: 1.8; }
         .text-gradient { background: linear-gradient(135deg, #FFF 0%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         
-        .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; margin-top: 1rem; }
         .contact-info-block { margin-bottom: 2.5rem; } .info-title { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; } .info-val { font-size: 1.15rem; font-weight: 600; color: var(--text-light); }
         
         .glass-form { position: relative; background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.005) 100%); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(143,182,204,0.08); border-radius: 16px; padding: 3rem; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease, box-shadow 0.5s ease; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); } 
@@ -49,11 +49,11 @@
         .btn-submit { display: inline-flex; align-items: center; justify-content: center; width: 100%; padding: 18px 28px; background: var(--text-light); color: var(--bg-primary); border: none; font-weight: 700; font-size: 0.9rem; border-radius: 8px; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; margin-top: 1rem; text-transform: uppercase; cursor: pointer;} 
         .btn-submit:hover { background: var(--accent); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(143,182,204,0.3); }
 
-        footer { background: #070A11; padding: 80px 0 40px 0; border-top: 1px solid var(--border); position: relative; z-index: 10; margin-top: auto;}
+        footer { background: #070A11; padding: 60px 0 30px 0; border-top: 1px solid var(--border); position: relative; z-index: 10; margin-top: auto;}
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 40px; }
         .footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1.5rem; color: var(--text-light); }
         .footer-col ul { list-style: none; } .footer-col li { margin-bottom: 0.85rem; } .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: inline-block;} .footer-col a:hover { color: var(--accent); transform: translateX(4px); }
-        .copyright { padding-top: 30px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 0.75rem; color: #4B5563; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+        .copyright { padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 0.75rem; color: #4B5563; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
 
         @media (max-width: 900px) { 
             .menu-btn { display: flex; } .desktop-nav { display: none; } 
@@ -70,14 +70,14 @@
     
     <header id="main-header">
         <div class="nav-container">
-            <a href="index.html" style="text-decoration: none;">
+            <a href="/" style="text-decoration: none;">
                 <span class="dexys-text-logo nav-logo">DEXYS</span>
             </a>
             <nav class="desktop-nav">
-                <a href="index.html">Home</a>
-                <a href="products-services.html">Products & Services</a>
-                <a href="contact.html" class="active">Contact Us</a>
-                <a href="about.html">About Us</a>
+                <a href="/">Home</a>
+                <a href="/products-services">Products & Services</a>
+                <a href="/contact" class="active">Contact Us</a>
+                <a href="/about">About Us</a>
             </nav>
             <button class="menu-btn" id="menu-toggle"><div class="menu-line" id="line1"></div><div class="menu-line" id="line2"></div></button>
         </div>
@@ -85,29 +85,28 @@
 
     <div class="menu-overlay" id="menu-overlay">
         <span class="kicker" style="opacity: 0; transform: translateY(20px);" id="menu-kicker">Navigation</span>
-        <a href="index.html" class="menu-link">Home</a>
-        <a href="products-services.html" class="menu-link">Products & Services</a>
-        <a href="contact.html" class="menu-link" style="color: var(--accent);">Contact Us</a>
-        <a href="about.html" class="menu-link">About Us</a>
+        <a href="/">Home</a>
+        <a href="/products-services" class="menu-link">Products & Services</a>
+        <a href="/contact" class="menu-link" style="color: var(--accent);">Contact Us</a>
+        <a href="/about" class="menu-link">About Us</a>
     </div>
 
     <div class="ambient-glow"></div>
     <div class="bg-grid"></div>
 
     <main>
-        <section style="padding-top: 180px; border: none; min-height: 90vh;" id="hero" class="reveal-zone">
+        <section style="padding-top: 130px; padding-bottom: 60px; border: none;" id="hero" class="reveal-zone">
             <div class="container">
                 <div class="contact-grid">
                     <div>
-                        <span class="kicker reveal-up">Enterprise Engagement</span>
+                        <span class="kicker reveal-up">Contact Dexys</span>
                         <h1 class="reveal-up delay-1" style="margin-bottom: 1rem;">Let's Build<br><span class="text-gradient">Together.</span></h1>
                         <p class="reveal-up delay-2">Whether you are a rising startup or an established organization, we partner directly with you to engineer your enterprise-grade IT infrastructure.</p>
                         
                         <div class="reveal-up delay-3" style="margin-top: 3rem; margin-bottom: 3rem;">
-                            <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">Partnership Inquiries</h4>
                             <div class="contact-info-block" style="margin-bottom: 1.5rem;">
-                                <div class="info-title">Executive Architecture Board</div>
-                                <a href="mailto:dharsan@dexys.in" style="color: var(--text-light); text-decoration: none; font-size: 1.1rem; transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1);" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-light)'">dharsan@dexys.in</a>
+                                <div class="info-title">Contact Email</div>
+                                <a href="mailto:dexysindia@gmail.com" style="color: var(--text-light); text-decoration: none; font-size: 1.1rem; transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1);" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-light)'">dexysindia@gmail.com</a>
                             </div>
                         </div>
                         <div class="reveal-up delay-4" style="margin-top: 2rem;">
@@ -124,14 +123,14 @@
                                 <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Enterprise Email</label>
-                                <input type="email" id="email" class="form-control" placeholder="name@enterprise.com" required>
+                                <label class="form-label">Email</label>
+                                <input type="email" id="email" class="form-control" placeholder="name@company.com" required>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Project Scope & Scale</label>
-                                <textarea id="message" class="form-control" placeholder="Detail your architectural requirements..." required></textarea>
+                                <label class="form-label">Description</label>
+                                <textarea id="message" class="form-control" placeholder="Detail your requirements..." required></textarea>
                             </div>
-                            <button type="submit" class="btn-submit" id="submitBtn">Request Consultation</button>
+                            <button type="submit" class="btn-submit" id="submitBtn">CONTACT</button>
                         </form>
                     </div>
                 </div>
@@ -146,10 +145,23 @@
                     <span class="dexys-text-logo footer-logo">DEXYS</span>
                     <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; max-width: 300px;">Architecting secure, intelligent, and sovereign digital ecosystems.</p>
                 </div>
-                <div class="footer-col"><h4>Sitemap</h4><ul><li><a href="index.html">Home</a></li><li><a href="products-services.html">Products & Services</a></li><li><a href="about.html">About Us</a></li></ul></div>
-                <div class="footer-col"><h4>Connect</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="mailto:dharsan@dexys.in">dharsan@dexys.in</a></li></ul></div>
+                <div class="footer-col">
+                    <h4>Sitemap</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/products-services">Products & Services</a></li>
+                        <li><a href="/about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="/contact">Contact Us</a></li>
+                        <li><a href="mailto:dexysindia@gmail.com">dexysindia@gmail.com</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="copyright"><span>© 2026 DEXYS India. Engineered in Pollachi.</span></div>
+            <div class="copyright"><span>© 2026 DEXYS India.</span></div>
         </div>
     </footer>
 
@@ -158,17 +170,15 @@
             const btn = document.getElementById('submitBtn'); 
             const form = document.getElementById('contactForm');
             
-            // Grabbing values using the new IDs
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
 
-            btn.innerHTML = 'ESTABLISHING SECURE LINK...'; 
+            btn.innerHTML = 'SENDING...'; 
             btn.style.background = 'rgba(143,182,204,0.1)'; 
             btn.style.color = 'var(--accent)'; 
             
             try {
-                // Change '/api/contact' if you mount your Express router somewhere else
                 const response = await fetch('/api/contact', {
                     method: 'POST',
                     headers: {
@@ -180,28 +190,28 @@
                 const data = await response.json();
 
                 if (response.ok && data.success) {
-                    btn.innerHTML = 'TRANSMISSION SUCCESSFUL ✓'; 
+                    btn.innerHTML = 'MESSAGE SEND ✓'; 
                     btn.style.background = '#27C93F'; 
                     btn.style.color = '#000';
                     
                     setTimeout(() => {
-                        btn.innerHTML = 'REQUEST CONSULTATION';
+                        btn.innerHTML = 'CONTACT';
                         btn.style.background = 'var(--text-light)';
                         btn.style.color = 'var(--bg-primary)';
                         form.reset();
                     }, 3000);
                 } else {
-                    throw new Error(data.error || 'Transmission failed');
+                    throw new Error(data.error || 'message failed');
                 }
 
             } catch (error) {
                 console.error('Error:', error);
-                btn.innerHTML = 'TRANSMISSION FAILED ✗'; 
+                btn.innerHTML = 'MESSAGE FAILED ✗'; 
                 btn.style.background = '#ef4444'; 
                 btn.style.color = '#fff';
                 
                 setTimeout(() => {
-                    btn.innerHTML = 'REQUEST CONSULTATION';
+                    btn.innerHTML = 'CONTACT';
                     btn.style.background = 'var(--text-light)';
                     btn.style.color = 'var(--bg-primary)';
                 }, 3000);
