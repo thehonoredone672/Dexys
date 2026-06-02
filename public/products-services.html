@@ -34,9 +34,8 @@
         .bento-card { position: relative; background: linear-gradient(145deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.005) 100%); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(143,182,204,0.08); border-radius: 16px; padding: 2.5rem; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease, box-shadow 0.5s ease; display: flex; flex-direction: column; align-items: flex-start; box-shadow: 0 4px 20px rgba(0,0,0,0.1);} .bento-card.large { grid-column: span 2; } .bento-card:hover { transform: translateY(-8px); border-color: rgba(143,182,204,0.4); box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 0 30px rgba(143,182,204,0.05); } .bento-card > * { position: relative; z-index: 1; } .bento-card h3 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.75rem; color: #fff; } .bento-card p { font-size: 0.95rem; margin-bottom: 0; max-width: 100%; color: var(--text-muted); line-height: 1.6;} .card-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(143,182,204,0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; border: 1px solid rgba(143,182,204,0.2); color: var(--accent); font-size: 1rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);} .bento-card:hover .card-icon { transform: scale(1.15) rotate(5deg); background: rgba(143,182,204,0.25); color: #fff; border-color: var(--accent); box-shadow: 0 0 20px rgba(143,182,204,0.4);}
         .algo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 4rem; } .algo-card { background: linear-gradient(145deg, rgba(11, 15, 25, 0.8) 0%, rgba(11, 15, 25, 0.4) 100%); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 16px; padding: 3rem 2.5rem; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 10px 30px rgba(0,0,0,0.2), inset 0 0 0 1px rgba(255,255,255,0.02);} .algo-card:hover { border-color: var(--accent); transform: translateY(-8px); box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 0 20px rgba(143,182,204,0.05); } .algo-card h3 { font-family: 'JetBrains Mono', monospace; font-size: 1.25rem; color: #fff; margin-bottom: 1rem; letter-spacing: -0.02em;} .algo-score { text-align: right; } .algo-score .score-val { font-family: 'JetBrains Mono', monospace; font-size: 1.8rem; font-weight: 900; color: #fff; line-height: 1;} .algo-score .score-unit { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--accent); font-weight: 700;} .algo-score .score-label { display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; font-weight: 600;}
 
-        footer { background: #05080E; padding: 80px 0 40px 0; border-top: 1px solid var(--border); position: relative; z-index: 10; margin-top: auto;} .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 5rem; margin-bottom: 80px; } .footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1.8rem; color: var(--text-light); } .footer-col ul { list-style: none; } .footer-col li { margin-bottom: 1rem; } .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 1rem; transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: inline-block;} .footer-col a:hover { color: var(--accent); transform: translateX(5px); } .copyright { padding-top: 50px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 0.85rem; color: #4B5563; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
-
-        @media (max-width: 1024px) { .bento-card.large { grid-column: span 1; } } @media (max-width: 900px) { .menu-btn { display: flex; } .desktop-nav { display: none; } .algo-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; gap: 3rem; } .copyright { flex-direction: column; gap: 1rem; text-align: center; } }
+        footer { background: #070A11; padding: 60px 0 30px 0; border-top: 1px solid var(--border); position: relative; z-index: 10; margin-top: auto;} .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 40px; } .footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1.5rem; color: var(--text-light); } .footer-col ul { list-style: none; } .footer-col li { margin-bottom: 0.85rem; } .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: inline-block;} .footer-col a:hover { color: var(--accent); transform: translateX(4px); } .copyright { padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 0.75rem; color: #4B5563; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+        @media (max-width: 900px) { .menu-btn { display: flex; } .desktop-nav { display: none; } .footer-grid { grid-template-columns: 1fr; gap: 3rem; } .copyright { flex-direction: column; gap: 1rem; text-align: center; } #methodology > .container > div { grid-template-columns: 1fr !important; gap: 2.5rem !important; } #methodology > .container > div > div:nth-child(2) { border-left: none !important; padding-left: 0 !important; border-top: 1px solid var(--border); padding-top: 2.5rem;} }
     </style>
 </head>
 <body class="intro-locked">
@@ -51,10 +50,10 @@
                 <span class="dexys-text-logo nav-logo">DEXYS</span>
             </a>
             <nav class="desktop-nav">
-                <a href="index.html">Home</a>
-                <a href="products-services.html" class="active">Products & Services</a>
-                <a href="contact.html">Contact Us</a>
-                <a href="about.html">About Us</a>
+                <a href="/">Home</a>
+                <a href="/products-services" class="active">Products & Services</a>
+                <a href="/contact">Contact Us</a>
+                <a href="/about">About Us</a>
             </nav>
             <button class="menu-btn" id="menu-toggle"><div class="menu-line" id="line1"></div><div class="menu-line" id="line2"></div></button>
         </div>
@@ -62,10 +61,10 @@
 
     <div class="menu-overlay" id="menu-overlay">
         <span class="kicker" style="opacity: 0; transform: translateY(20px);" id="menu-kicker">Navigation</span>
-        <a href="index.html" class="menu-link">Home</a>
-        <a href="products-services.html" class="menu-link" style="color: var(--accent);">Products & Services</a>
-        <a href="contact.html" class="menu-link">Contact Us</a>
-        <a href="about.html" class="menu-link">About Us</a>
+        <a href="/" class="menu-link">Home</a>
+        <a href="/products-services" class="menu-link" style="color: var(--accent);">Products & Services</a>
+        <a href="/contact" class="menu-link">Contact Us</a>
+        <a href="/about" class="menu-link">About Us</a>
     </div>
 
     <div class="ambient-glow"></div>
@@ -74,7 +73,7 @@
     <main>
         <section id="hero" class="reveal-zone" style="padding-top: 160px; border: none; padding-bottom: 60px;">
             <div class="container">
-                <span class="kicker reveal-up">Enterprise Solutions</span>
+                <span class="kicker reveal-up">Tech Solutions</span>
                 <h1 class="reveal-up delay-1">Products &<br><span class="text-gradient">Services.</span></h1>
                 <p class="reveal-up delay-2">We engineer comprehensive IT solutions. From proprietary business management products to deep-tech integrations, DEXYS India turns complex operational requirements into highly scalable digital infrastructures.</p>
             </div>
@@ -244,10 +243,23 @@
                     <span class="dexys-text-logo footer-logo">DEXYS</span>
                     <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; max-width: 300px;">Architecting secure, intelligent, and sovereign digital ecosystems.</p>
                 </div>
-                <div class="footer-col"><h4>Sitemap</h4><ul><li><a href="index.html">Home</a></li><li><a href="products-services.html">Products & Services</a></li><li><a href="about.html">About Us</a></li></ul></div>
-                <div class="footer-col"><h4>Connect</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="mailto:dharsan@dexys.in">dharsan@dexys.in</a></li></ul></div>
+                <div class="footer-col">
+                    <h4>Sitemap</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/products-services">Products & Services</a></li>
+                        <li><a href="/about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="/contact">Contact Us</a></li>
+                        <li><a href="mailto:dexysindia@gmail.com">dexysindia@gmail.com</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="copyright"><span>© 2026 DEXYS India. Engineered in Pollachi.</span></div>
+            <div class="copyright"><span>© 2026 DEXYS India.</span></div>
         </div>
     </footer>
 
