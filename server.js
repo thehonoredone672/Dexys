@@ -32,7 +32,7 @@ app.get("/about", (req, res) => res.sendFile(path.join(__dirname, "public", "abo
 app.get("/dharsan", (req, res) => res.sendFile(path.join(__dirname, "public", "dharsan.html")));
 app.get("/naveenkumar", (req, res) => res.sendFile(path.join(__dirname, "public", "naveenkumar.html")));
 app.get("/arun", (req, res) => res.sendFile(path.join(__dirname, "public", "arun.html")));
-// app.get("/anton", (req, res) => res.sendFile(path.join(__dirname, "public", "anton.html")));
+app.get("/anton", (req, res) => res.sendFile(path.join(__dirname, "public", "anton.html")));
 
 /* ------------------------ */
 
