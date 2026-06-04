@@ -35,7 +35,21 @@
         .algo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 4rem; } .algo-card { background: linear-gradient(145deg, rgba(11, 15, 25, 0.8) 0%, rgba(11, 15, 25, 0.4) 100%); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 16px; padding: 3rem 2.5rem; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 10px 30px rgba(0,0,0,0.2), inset 0 0 0 1px rgba(255,255,255,0.02);} .algo-card:hover { border-color: var(--accent); transform: translateY(-8px); box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 0 20px rgba(143,182,204,0.05); } .algo-card h3 { font-family: 'JetBrains Mono', monospace; font-size: 1.25rem; color: #fff; margin-bottom: 1rem; letter-spacing: -0.02em;} .algo-score { text-align: right; } .algo-score .score-val { font-family: 'JetBrains Mono', monospace; font-size: 1.8rem; font-weight: 900; color: #fff; line-height: 1;} .algo-score .score-unit { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--accent); font-weight: 700;} .algo-score .score-label { display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; font-weight: 600;}
 
         footer { background: #070A11; padding: 60px 0 30px 0; border-top: 1px solid var(--border); position: relative; z-index: 10; margin-top: auto;} .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 40px; } .footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1.5rem; color: var(--text-light); } .footer-col ul { list-style: none; } .footer-col li { margin-bottom: 0.85rem; } .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: inline-block;} .footer-col a:hover { color: var(--accent); transform: translateX(4px); } .copyright { padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 0.75rem; color: #4B5563; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
-        @media (max-width: 900px) { .menu-btn { display: flex; } .desktop-nav { display: none; } .footer-grid { grid-template-columns: 1fr; gap: 3rem; } .copyright { flex-direction: column; gap: 1rem; text-align: center; } #methodology > .container > div { grid-template-columns: 1fr !important; gap: 2.5rem !important; } #methodology > .container > div > div:nth-child(2) { border-left: none !important; padding-left: 0 !important; border-top: 1px solid var(--border); padding-top: 2.5rem;} }
+        
+        /* UPDATED MEDIA QUERY FOR FULL RESPONSIVENESS */
+        @media (max-width: 900px) { 
+            .menu-btn { display: flex; } 
+            .desktop-nav { display: none; } 
+            .footer-grid { grid-template-columns: 1fr; gap: 3rem; text-align: center; } 
+            .footer-col p { margin: 0 auto; }
+            .copyright { flex-direction: column; gap: 1rem; text-align: center; } 
+            
+            /* Fix algorithms grid stacking on mobile */
+            .algo-grid { grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; } 
+            
+            /* Override span 2 on large bento cards so they don't break the layout */
+            .bento-card.large { grid-column: span 1; }
+        }
     </style>
 </head>
 <body class="intro-locked">
