@@ -3,159 +3,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="DEXYS India: A premier IT solutions firm based in Pollachi, turning concepts into scalable enterprise digital ecosystems.">
-    <title>DEXYS India | Enterprise IT Solutions</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <meta name="description" content="Dexys It Solutions: A premier IT solutions firm based in Tamil Nadu, turning concepts into scalable enterprise digital ecosystems.">
+    <title>Dexys It Solutions | Enterprise IT Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-primary: #0B0F19; --bg-secondary: #111827; --accent: #8FB6CC; --text-light: #F9FAFB; --text-muted: #9CA3AF; --border: rgba(143, 182, 204, 0.12); --header-height: 80px; }
+        :root {
+            --violet: #7C3AED;
+            --violet-deep: #5B21B6;
+            --violet-700: #6D28D9;
+            --lavender: #F1EAFE;
+            --lavender-2: #E9DFFC;
+            --ink: #17122B;
+            --gray: #6E6680;
+            --line: #ECE6F7;
+            --white: #FFFFFF;
+            --header-h: 76px;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        ::selection { background: rgba(143, 182, 204, 0.3); color: var(--text-light); }
-        ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg-primary); } ::-webkit-scrollbar-thumb { background: rgba(143,182,204,0.2); border-radius: 10px; transition: background 0.3s;} ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
-        body { background-color: var(--bg-primary); color: var(--text-light); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.7; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; display: flex; flex-direction: column; min-height: 100vh;}
-        main { flex: 1 0 auto; display: flex; flex-direction: column; } a, button { cursor: pointer; text-decoration: none;} body.intro-locked { overflow: hidden !important; height: 100vh !important; }
-        .dexys-text-logo { font-family: 'Inter', sans-serif; font-weight: 800; color: var(--text-light); letter-spacing: -0.04em; line-height: 1; transition: color 0.3s ease; } .nav-logo { font-size: 24px; } .footer-logo { font-size: 32px; margin-bottom: 1rem; display: inline-block; } .nav-logo:hover, .footer-logo:hover { color: var(--accent); }
-        .bg-grid { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; background-image: radial-gradient(rgba(143,182,204,0.12) 1px, transparent 1px); background-size: 40px 40px; mask-image: linear-gradient(to bottom, black 0%, transparent 100%); pointer-events: none; }
-        @keyframes pulse-glow { 0% { opacity: 0.5; transform: translateX(-50%) scale(1); } 100% { opacity: 0.8; transform: translateX(-50%) scale(1.05); } } .ambient-glow { position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 80vw; height: 80vw; background: radial-gradient(circle, rgba(143,182,204,0.06) 0%, transparent 60%); z-index: -1; pointer-events: none; animation: pulse-glow 10s ease-in-out infinite alternate; }
-        #loader { position: fixed; inset: 0; background: var(--bg-primary); z-index: 999999; display: flex; align-items: center; justify-content: center; flex-direction: column; } .loader-logo { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.8rem; color: var(--text-light); letter-spacing: -0.04em; margin-bottom: 1.5rem; opacity: 0; transform: translateY(10px); } .loader-line-wrapper { width: 140px; height: 2px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; } .loader-line { width: 0%; height: 100%; background: var(--accent); }
-        header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); background: rgba(11, 15, 25, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); z-index: 1000; display: flex; align-items: center; opacity: 0; transform: translateY(-100%);} .nav-container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 5%; display: flex; justify-content: space-between; align-items: center; height: 100%;}
-        .desktop-nav { display: flex; gap: 3.5rem; align-items: center; height: 100%;} .desktop-nav a { position: relative; color: var(--text-light); font-size: 0.9rem; font-weight: 500; padding: 1rem 0; opacity: 0.8; transition: opacity 0.3s, color 0.3s;} .desktop-nav a::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 2px; background-color: var(--accent); transform: scaleX(0); transform-origin: right; transition: transform 0.4s ease; } .desktop-nav a:hover, .desktop-nav a.active { opacity: 1; color: #fff;} .desktop-nav a:hover::after, .desktop-nav a.active::after { transform: scaleX(1); transform-origin: left; }
-        .menu-btn { background: none; border: none; width: 40px; height: 40px; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; gap: 7px; z-index: 1001; position: relative; display: none; } .menu-line { height: 2px; background: var(--text-light); transition: 0.3s ease; } .menu-line:nth-child(1) { width: 28px; } .menu-line:nth-child(2) { width: 20px; }
-        .menu-overlay { position: fixed; inset: 0; background: rgba(11,15,25,0.99); backdrop-filter: blur(25px); z-index: 999; display: flex; flex-direction: column; justify-content: center; padding-left: 10%; pointer-events: none; opacity: 0; } .menu-link { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; color: var(--text-light); letter-spacing: -0.03em; margin-bottom: 1.5rem; opacity: 0; transform: translateY(40px); display: block; width: fit-content; transition: color 0.3s, transform 0.3s;} .menu-link:hover { color: var(--accent); transform: translateX(10px) !important;}
-        .reveal-up { opacity: 0; transform: translateY(40px); } .reveal-right { opacity: 0; transform: translateX(-40px); } .reveal-scale { opacity: 0; transform: scale(0.95) translateY(20px); } .is-visible { opacity: 1 !important; transform: translate(0) scale(1) !important; transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); } .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; } .delay-3 { transition-delay: 0.3s; } .delay-4 { transition-delay: 0.4s; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; position: relative; } section { padding: clamp(100px, 12vw, 160px) 0; border-bottom: 1px solid var(--border); position: relative; } .bg-secondary-section { background-color: var(--bg-secondary); } .kicker { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 1.5rem; display: block; } h1 { font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 1.5rem; color: #fff; } h2 { font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1.5rem; line-height: 1.1; color: #fff; } p { color: var(--text-muted); font-size: clamp(1.05rem, 2vw, 1.15rem); max-width: 70ch; margin-bottom: 2rem; line-height: 1.8; } .text-gradient { background: linear-gradient(135deg, #FFF 0%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.5rem; } .btn { display: inline-flex; align-items: center; justify-content: center; padding: 16px 32px; font-weight: 600; font-size: 0.85rem; border-radius: 8px; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em; position: relative; overflow: hidden; z-index: 1;} .btn-primary { background: var(--text-light); color: var(--bg-primary); border: 1px solid var(--text-light); box-shadow: 0 4px 15px rgba(255,255,255,0.05); } .btn-primary:hover { background: var(--accent); border-color: var(--accent); color: var(--bg-primary); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(143,182,204,0.25); } .btn-secondary { background: transparent; color: var(--text-light); border: 1px solid rgba(255,255,255,0.15); } .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); background: rgba(143,182,204,0.05); } .btn span { transition: transform 0.3s ease; display: inline-block; margin-left: 8px;} .btn:hover span { transform: translateX(4px); }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 3rem; margin-top: 5rem; padding-top: 4rem; border-top: 1px solid var(--border); width: 100%; text-align: left; } .stat-item { border-left: 2px solid var(--accent); padding-left: 1.5rem; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); } .stat-item:hover { transform: translateX(10px); border-left-width: 4px; border-color: #fff;} .stat-val { font-family: 'JetBrains Mono', monospace; font-size: 3.5rem; font-weight: 900; color: var(--text-light); line-height: 1; display: block; margin-bottom: 0.5rem; } .stat-label { color: var(--accent); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
-        footer { background: #070A11; padding: 60px 0 30px 0; border-top: 1px solid var(--border); position: relative; z-index: 10; margin-top: auto;} .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 40px; } .footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1.5rem; color: var(--text-light); } .footer-col ul { list-style: none; } .footer-col li { margin-bottom: 0.85rem; } .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: inline-block;} .footer-col a:hover { color: var(--accent); transform: translateX(4px); } .copyright { padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 0.75rem; color: #4B5563; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
-        @media (max-width: 900px) { .menu-btn { display: flex; } .desktop-nav { display: none; } .footer-grid { grid-template-columns: 1fr; gap: 3rem; } .copyright { flex-direction: column; gap: 1rem; text-align: center; } #methodology > .container > div { grid-template-columns: 1fr !important; gap: 2.5rem !important; } #methodology > .container > div > div:nth-child(2) { border-left: none !important; padding-left: 0 !important; border-top: 1px solid var(--border); padding-top: 2.5rem;} }
+        html, body { background: var(--white); }
+        body { font-family: 'Inter', system-ui, sans-serif; color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+        button { font-family: inherit; cursor: pointer; }
+        img { display: block; max-width: 100%; }
+        ::selection { background: var(--violet); color: #fff; }
+
+        .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+        /* ---- Header ---- */
+        header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+        .nav-row { height: var(--header-h); display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+        .logo { font-weight: 800; font-size: 1.05rem; letter-spacing: -0.01em; color: var(--ink); white-space: nowrap; }
+        .nav-links { display: flex; align-items: center; gap: 2.5rem; }
+        .nav-links a { font-size: 0.92rem; font-weight: 500; color: var(--gray); transition: color 0.2s ease; }
+        .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+        .nav-cta { display: inline-flex; align-items: center; padding: 10px 22px; background: var(--ink); color: #fff; font-size: 0.88rem; font-weight: 600; border-radius: 100px; border: 1px solid var(--ink); transition: background-color 0.2s ease, border-color 0.2s ease; }
+        .nav-cta:hover { background: var(--violet); border-color: var(--violet); }
+        .nav-right { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
+        .menu-btn { display: none; background: none; border: none; width: 40px; height: 40px; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
+        .menu-btn span { width: 20px; height: 1.5px; background: var(--ink); }
+
+        .mobile-nav { position: fixed; inset: 0; background: #fff; z-index: 200; display: flex; flex-direction: column; padding: 24px; transform: translateX(100%); transition: transform 0.35s cubic-bezier(.16,1,.3,1); }
+        .mobile-nav.open { transform: translateX(0); }
+        .mobile-nav-top { display: flex; justify-content: space-between; align-items: center; height: var(--header-h); }
+        .mobile-nav-close { background: none; border: none; font-size: 1.6rem; color: var(--ink); }
+        .mobile-nav-links { display: flex; flex-direction: column; gap: 1.75rem; margin-top: 2.5rem; }
+        .mobile-nav-links a { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); }
+
+        /* ---- Sections ---- */
+        section { padding: 96px 0; }
+        .label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--gray); margin-bottom: 12px; }
+        h1, h2, h3 { letter-spacing: -0.03em; color: var(--ink); }
+        p { color: var(--gray); font-size: 1.02rem; }
+
+        /* ---- Full-screen hero ---- */
+        .hero { position: relative; min-height: calc(100vh - var(--header-h)); display: flex; align-items: center; background: linear-gradient(165deg, #FFFFFF 0%, #F7F2FD 45%, #FDFCFF 100%); overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -20%; right: -12%; width: 55vw; height: 55vw; max-width: 640px; max-height: 640px; border-radius: 50%; background: radial-gradient(circle, rgba(124,58,237,0.10) 0%, transparent 70%); pointer-events: none; }
+        .hero::after { content: ''; position: absolute; bottom: -25%; left: -10%; width: 40vw; height: 40vw; max-width: 480px; max-height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(124,58,237,0.06) 0%, transparent 70%); pointer-events: none; }
+        .hero-inner { position: relative; z-index: 1; max-width: 720px; }
+        .hero h1 { font-size: clamp(2.6rem, 6vw, 4.4rem); font-weight: 900; line-height: 1.04; margin-bottom: 22px; }
+        .hero p { font-size: 1.12rem; max-width: 56ch; margin-bottom: 36px; }
+        .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 100px; font-size: 0.9rem; font-weight: 600; transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
+        .btn-primary { background: var(--ink); color: #fff; border: 1px solid var(--ink); }
+        .btn-primary:hover { background: var(--violet); border-color: var(--violet); }
+        .btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+        .btn-secondary:hover { border-color: var(--ink); }
+        /* legacy aliases kept for other pages during migration */
+        .btn-light { background: #fff; color: var(--violet-deep); border: 1px solid var(--line); }
+        .btn-light:hover { border-color: var(--violet); color: var(--violet); }
+        .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+        .btn-outline:hover { border-color: var(--ink); }
+
+        /* ---- Card row ---- */
+        .card-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .tile-card { background: var(--lavender); border-radius: 24px; padding: 28px 24px; }
+        .tile-card .num { font-size: 2.1rem; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
+        .tile-card .cap { font-size: 0.85rem; color: var(--gray); margin-top: 6px; }
+        .tile-card .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--violet); margin-bottom: 14px; }
+
+        /* ---- Methodology ---- */
+        .method-head { max-width: 620px; margin: 0 auto 56px; text-align: center; }
+        .method-head h2 { font-size: clamp(1.9rem, 3.5vw, 2.6rem); font-weight: 800; margin-bottom: 14px; }
+        .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .method-card { background: var(--lavender); border-radius: 24px; padding: 32px 26px; }
+        .method-card .idx { font-size: 0.85rem; font-weight: 700; color: var(--violet); margin-bottom: 16px; }
+        .method-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+        .method-card p { font-size: 0.92rem; margin: 0; }
+
+        /* ---- Sovereign tile ---- */
+        .soft-tile { border-radius: 36px; background: var(--lavender); padding: 64px 48px; text-align: center; }
+        .soft-tile .label { justify-content: center; }
+        .soft-tile h2 { font-size: clamp(1.9rem, 3.5vw, 2.6rem); font-weight: 800; margin: 0 auto 16px; max-width: 640px; }
+        .soft-tile p { max-width: 620px; margin: 0 auto; }
+        .soft-stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 44px; }
+        .soft-stat { background: #fff; border-radius: 20px; padding: 24px 18px; }
+        .soft-stat .num { font-size: 1.9rem; font-weight: 800; }
+        .soft-stat .cap { font-size: 0.8rem; color: var(--gray); margin-top: 4px; }
+
+        /* ---- Footer ---- */
+        footer { border-top: 1px solid var(--line); padding: 56px 0 28px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-logo { font-weight: 800; font-size: 1.15rem; margin-bottom: 12px; display: inline-block; }
+        .footer-col h4 { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray); margin-bottom: 16px; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 10px; }
+        .footer-col a { font-size: 0.9rem; color: var(--ink); opacity: 0.75; transition: opacity 0.2s ease; }
+        .footer-col a:hover { opacity: 1; color: var(--violet); }
+        .copyright { padding-top: 20px; border-top: 1px solid var(--line); font-size: 0.8rem; color: var(--gray); }
+
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1); }
+        .reveal.in { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .nav-cta { display: none; }
+            .menu-btn { display: flex; }
+            .hero-tile { padding: 44px 26px; border-radius: 28px; }
+            .card-row { grid-template-columns: 1fr; margin-top: 24px; }
+            .method-grid { grid-template-columns: 1fr; }
+            .soft-stat-row { grid-template-columns: 1fr; }
+            .soft-tile { padding: 44px 26px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+            section { padding: 64px 0; }
+        }
     </style>
 </head>
-<body class="intro-locked">
+<body>
 
-    <div id="loader">
-        <div class="loader-logo">DEXYS</div>
-        <div class="loader-line-wrapper"><div class="loader-line"></div></div>
-    </div>
-
-    <header id="main-header">
-        <div class="nav-container">
-            <a href="/" style="text-decoration: none;">
-                <span class="dexys-text-logo nav-logo">DEXYS</span>
-            </a>
-            <nav class="desktop-nav">
+    <header>
+        <div class="wrap nav-row">
+            <a href="/" class="logo">Dexys It Solutions</a>
+            <nav class="nav-links">
                 <a href="/" class="active">Home</a>
-                <a href="/products-services">Products & Services</a>
-                <a href="/contact">Contact Us</a>
+                <a href="/products-services">Products &amp; Services</a>
                 <a href="/about">About Us</a>
             </nav>
-            <button class="menu-btn" id="menu-toggle"><div class="menu-line"></div><div class="menu-line"></div></button>
+            <div class="nav-right">
+                <a href="/contact" class="nav-cta">Contact Us</a>
+                <button class="menu-btn" id="menuBtn" aria-label="Open menu"><span></span><span></span></button>
+            </div>
         </div>
     </header>
 
-    <div class="menu-overlay" id="menu-overlay">
-        <span class="kicker" style="opacity: 0; transform: translateY(20px);" id="menu-kicker">Navigation</span>
-        <a href="/" class="menu-link" style="color: var(--accent);">Home</a>
-        <a href="/products-services" class="menu-link">Products & Services</a>
-        <a href="/contact" class="menu-link">Contact Us</a>
-        <a href="/about" class="menu-link">About Us</a>
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-top">
+            <span class="logo">Dexys It Solutions</span>
+            <button class="mobile-nav-close" id="menuClose" aria-label="Close menu">&times;</button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="/">Home</a>
+            <a href="/products-services">Products &amp; Services</a>
+            <a href="/contact">Contact Us</a>
+            <a href="/about">About Us</a>
+        </div>
     </div>
 
-    <div class="ambient-glow"></div>
-    <div class="bg-grid"></div>
-
     <main>
-        <section id="hero" style="padding-top: 160px; border: none; min-height: 85vh; display: flex; align-items: center;" class="reveal-zone">
-            <div class="container">
-                <span class="kicker reveal-up" style="text-align: center;">A complete IT Solution</span>
-                <h1 class="reveal-up delay-1" style="text-align: center;">Architecting <br><span class="text-gradient">Enterprise Scale.</span></h1>
-                <p class="reveal-up delay-2" style="text-align: center; margin-inline: auto;">DEXYS India is an advanced IT solutions firm based in Pollachi. We don't just serve the enterprise—we turn any concept, startup, or digital operation into a highly scalable, mathematically sound enterprise-grade infrastructure.</p>
-                
-                <div class="btn-group reveal-up delay-3" style="justify-content: center;">
-                    <a href="/products-services" class="btn btn-primary">Explore Products & Services &rarr;</a>
-                    <a href="/contact" class="btn btn-secondary">contact us</a>
+        <section class="hero">
+            <div class="wrap hero-inner reveal">
+                <span class="label">Dexys It Solutions · Tamil Nadu</span>
+                <h1>Architecting enterprise scale.</h1>
+                <p>Dexys It Solutions is an advanced IT solutions firm based in Tamil Nadu. We don't just serve the enterprise — we turn any concept, startup, or digital operation into a highly scalable, mathematically sound enterprise-grade infrastructure.</p>
+                <div class="btn-row">
+                    <a href="/products-services" class="btn btn-primary">Explore Products &amp; Services</a>
+                    <a href="/contact" class="btn btn-secondary">Contact Us</a>
                 </div>
+            </div>
+        </section>
 
-                <div class="stats-grid reveal-up delay-4">
-                    <div class="stat-item">
-                        <span class="stat-val count-up" data-val="14" data-suffix="+">0</span>
-                        <span class="stat-label">Enterprise Solutions</span>
+        <section style="padding-top: 64px;">
+            <div class="wrap">
+                <div class="card-row reveal">
+                    <div class="tile-card">
+                        <span class="dot"></span>
+                        <div class="num">14+</div>
+                        <div class="cap">Enterprise Solutions</div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-val count-up" data-val="100" data-suffix="%">0</span>
-                        <span class="stat-label">Proprietary Engineering</span>
+                    <div class="tile-card">
+                        <span class="dot"></span>
+                        <div class="num">100%</div>
+                        <div class="cap">Proprietary Engineering</div>
                     </div>
-                    <div class="stat-item">
-                        <span class="stat-val count-up" data-val="0">100</span>
-                        <span class="stat-label">Tolerance for Tech Debt</span>
+                    <div class="tile-card">
+                        <span class="dot"></span>
+                        <div class="num">0%</div>
+                        <div class="cap">Tolerance for Tech Debt</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="methodology" class="bg-secondary-section reveal-zone">
-            <div class="container">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
-                    <div>
-                        <span class="kicker reveal-up">Our Core Methodology</span>
-                        <h2 class="reveal-up delay-1">Built to Scale. Built to Last.</h2>
-                        <p class="reveal-up delay-2">Unlike conventional IT service providers, DEXYS India guarantees uncompromising architectural integrity from day one. We engineer systems purpose-built to absorb complexity and scale flawlessly across demanding environments.</p>
-                        <p class="reveal-up delay-3">From predictive neural networks to highly available databases, our infrastructure ensures your digital assets remain secure, responsive, and infinitely scalable.</p>
+        <section id="methodology">
+            <div class="wrap">
+                <div class="method-head reveal">
+                    <span class="label" style="justify-content:center; display:flex;">Our Core Methodology</span>
+                    <h2>Built to scale. Built to last.</h2>
+                    <p>Unlike conventional IT service providers, Dexys It Solutions guarantees uncompromising architectural integrity from day one — engineering systems purpose-built to absorb complexity and scale flawlessly.</p>
+                </div>
+                <div class="method-grid reveal">
+                    <div class="method-card">
+                        <div class="idx">01</div>
+                        <h3>Foundational Logic</h3>
+                        <p>We distill complex IT challenges down to their root computational requirements, engineering fundamental solutions rather than superficial patches.</p>
                     </div>
-                    <div style="border-left: 1px solid var(--border); padding-left: 3rem;">
-                        <div class="reveal-right delay-1" style="margin-bottom: 2.5rem;">
-                            <h4 style="color: var(--text-light); margin-bottom: 0.5rem; font-size: 1rem; font-family: 'JetBrains Mono', monospace; letter-spacing: -0.02em;">> Foundational Logic</h4>
-                            <p style="font-size: 0.95rem; margin-bottom: 0;">We distill complex IT challenges down to their root computational requirements, engineering fundamental solutions rather than superficial patches.</p>
-                        </div>
-                        <div class="reveal-right delay-2" style="margin-bottom: 2.5rem;">
-                            <h4 style="color: var(--text-light); margin-bottom: 0.5rem; font-size: 1rem; font-family: 'JetBrains Mono', monospace; letter-spacing: -0.02em;">> Universal Integration</h4>
-                            <p style="font-size: 0.95rem; margin-bottom: 0;">Our executive architects seamlessly integrate modern digital frameworks with your existing business logic and legacy operations.</p>
-                        </div>
-                        <div class="reveal-right delay-3">
-                            <h4 style="color: var(--text-light); margin-bottom: 0.5rem; font-size: 1rem; font-family: 'JetBrains Mono', monospace; letter-spacing: -0.02em;">> Sovereign Architecture</h4>
-                            <p style="font-size: 0.95rem; margin-bottom: 0;">Bespoke infrastructures engineered to ensure strict compliance with India's evolving data localization and DPDP regulatory frameworks.</p>
-                        </div>
+                    <div class="method-card">
+                        <div class="idx">02</div>
+                        <h3>Universal Integration</h3>
+                        <p>Our executive architects seamlessly integrate modern digital frameworks with your existing business logic and legacy operations.</p>
+                    </div>
+                    <div class="method-card">
+                        <div class="idx">03</div>
+                        <h3>Sovereign Architecture</h3>
+                        <p>Bespoke infrastructures engineered to ensure strict compliance with India's evolving data localization and DPDP regulatory frameworks.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="global" style="border-bottom: none;" class="reveal-zone">
-            <div class="container">
-                <div style="text-align: center; max-width: 850px; margin: 0 auto;">
-                    <span class="kicker reveal-up" style="text-align: center;">Sovereign Infrastructure</span>
-                    <h2 class="reveal-up delay-1">Engineered for Absolute Sovereignty.</h2>
-                    <p class="reveal-up delay-2" style="margin-inline: auto;">Our digital architectures are meticulously designed to operate flawlessly across diverse network conditions. By leveraging dynamic edge-computing and decentralized deployments, DEXYS India guarantees absolute data sovereignty, robust security, and zero-latency delivery nationwide.</p>
-                </div>
-                <div class="stats-grid" style="margin-top: 3rem; border-top: none; padding-top: 0; text-align: center;">
-                    <div class="stat-item reveal-scale delay-1" style="border: none; padding: 0;">
-                        <span class="stat-val count-up" data-val="6" data-suffix="+">0</span>
-                        <span class="stat-label">Target Cloud Regions</span>
-                    </div>
-                    <div class="stat-item reveal-scale delay-2" style="border: none; padding: 0;">
-                        <span class="stat-val count-up" data-val="24" data-suffix="/7">0</span>
-                        <span class="stat-label">Active Monitoring Prep</span>
-                    </div>
-                    <div class="stat-item reveal-scale delay-3" style="border: none; padding: 0;">
-                        <span class="stat-val count-up" data-val="100" data-suffix="%">0</span>
-                        <span class="stat-label">Scalability Guarantee</span>
+        <section style="padding-top: 0;">
+            <div class="wrap">
+                <div class="soft-tile reveal">
+                    <span class="label">Sovereign Infrastructure</span>
+                    <h2>Engineered for absolute sovereignty.</h2>
+                    <p>Our digital architectures are meticulously designed to operate flawlessly across diverse network conditions — leveraging dynamic edge-computing and decentralized deployments for absolute data sovereignty, robust security, and zero-latency delivery nationwide.</p>
+                    <div class="soft-stat-row">
+                        <div class="soft-stat">
+                            <div class="num">6+</div>
+                            <div class="cap">Target Cloud Regions</div>
+                        </div>
+                        <div class="soft-stat">
+                            <div class="num">24/7</div>
+                            <div class="cap">Active Monitoring Prep</div>
+                        </div>
+                        <div class="soft-stat">
+                            <div class="num">100%</div>
+                            <div class="cap">Scalability Guarantee</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="reveal-zone">
-        <div class="container reveal-up">
+    <footer>
+        <div class="wrap">
             <div class="footer-grid">
-                <div class="footer-col">
-                    <span class="dexys-text-logo footer-logo">DEXYS</span>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; max-width: 300px;">Architecting secure, intelligent, and sovereign digital ecosystems.</p>
+                <div>
+                    <span class="footer-logo">Dexys It Solutions</span>
+                    <p style="max-width: 300px;">Architecting secure, intelligent, and sovereign digital ecosystems.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Sitemap</h4>
                     <ul>
                         <li><a href="/">Home</a></li>
-                        <li><a href="/products-services">Products & Services</a></li>
+                        <li><a href="/products-services">Products &amp; Services</a></li>
                         <li><a href="/about">About Us</a></li>
                     </ul>
                 </div>
@@ -167,36 +270,22 @@
                     </ul>
                 </div>
             </div>
-            <div class="copyright"><span>© 2026 DEXYS India.</span></div>
+            <div class="copyright">&copy; 2026 Dexys It Solutions.</div>
         </div>
     </footer>
 
     <script>
-        function runCounters(parent) {
-            parent.querySelectorAll('.count-up').forEach(el => {
-                let val = { v: 0 }; let target = parseFloat(el.getAttribute('data-val')); let isFloat = target % 1 !== 0; let prefix = el.getAttribute('data-prefix') || ''; let suffix = el.getAttribute('data-suffix') || '';
-                anime({ targets: val, v: target, duration: 2500, easing: 'easeOutExpo', update: function() { el.innerHTML = prefix + (isFloat ? val.v.toFixed(1) : Math.round(val.v)) + suffix; } });
-                el.classList.remove('count-up');
-            });
-        }
+        const menuBtn = document.getElementById('menuBtn');
+        const menuClose = document.getElementById('menuClose');
+        const mobileNav = document.getElementById('mobileNav');
+        menuBtn.addEventListener('click', () => { mobileNav.classList.add('open'); document.body.style.overflow = 'hidden'; });
+        menuClose.addEventListener('click', () => { mobileNav.classList.remove('open'); document.body.style.overflow = ''; });
+        mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mobileNav.classList.remove('open'); document.body.style.overflow = ''; }));
 
-        window.addEventListener('load', () => {
-            const tl = anime.timeline({ easing: 'easeOutExpo' });
-            tl.add({ targets: '.loader-logo', opacity: [0, 1], translateY: [10, 0], duration: 500 })
-              .add({ targets: '.loader-line', width: ['0%', '100%'], duration: 700, easing: 'easeInOutQuart' }, '-=200')
-              .add({ targets: '#loader', opacity: 0, duration: 400, easing: 'linear', complete: () => {
-                  document.getElementById('loader').style.display = 'none';
-                  document.body.classList.remove('intro-locked');
-              }})
-              .add({ targets: '#main-header', translateY: ['-100%', '0%'], opacity: [0, 1], duration: 800, easing: 'easeOutExpo' }, '-=200')
-              .add({ targets: '#hero .reveal-up, #hero .reveal-scale, #hero .reveal-right', opacity: 1, translateY: 0, translateX: 0, scale: 1, duration: 1000, delay: anime.stagger(100), easing: 'easeOutExpo', complete: function(anim) { anim.animatables.forEach(a => a.target.classList.add('is-visible')); runCounters(document.getElementById('hero')); } }, '-=600');
-        });
-        
-        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.querySelectorAll('.reveal-up, .reveal-scale, .reveal-right').forEach(el => el.classList.add('is-visible')); if(e.target.classList.contains('reveal-up') || e.target.classList.contains('reveal-scale')) e.target.classList.add('is-visible'); runCounters(e.target); observer.unobserve(e.target); } }); }, { threshold: 0.1 }); document.querySelectorAll('.reveal-zone').forEach(s => observer.observe(s));
-        
-        const menuBtn = document.getElementById('menu-toggle'); const overlay = document.getElementById('menu-overlay'); let menuOpen = false; let menuTimeline = anime.timeline({ autoplay: false });
-        menuTimeline.add({ targets: overlay, opacity: [0, 1], duration: 400, easing: 'easeInOutSine', begin: () => { overlay.style.pointerEvents = 'auto'; } }).add({ targets: '#menu-kicker', opacity: [0, 1], translateY: [20, 0], duration: 600, easing: 'easeOutExpo' }, '-=200').add({ targets: '.menu-link', opacity: [0, 1], translateY: [40, 0], duration: 800, delay: anime.stagger(100), easing: 'easeOutExpo' }, '-=500');
-        if(menuBtn){ menuBtn.addEventListener('click', () => { if(!menuOpen){ menuBtn.children[0].style.transform = 'translateY(4px) rotate(45deg)'; menuBtn.children[1].style.transform = 'translateY(-4px) rotate(-45deg)'; menuBtn.children[0].style.width = '24px'; menuBtn.children[1].style.width = '24px'; menuTimeline.play(); menuTimeline.finished.then(() => menuTimeline.reverse()); } else { menuBtn.children[0].style.transform = 'none'; menuBtn.children[1].style.transform = 'none'; menuBtn.children[1].style.width = '20px'; menuTimeline.play(); menuTimeline.finished.then(() => { overlay.style.pointerEvents = 'none'; menuTimeline.reverse(); }); } menuOpen = !menuOpen; }); }
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     </script>
 </body>
 </html>
