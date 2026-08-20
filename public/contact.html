@@ -3,153 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Contact DEXYS India to request an IT consultation.">
-    <title>Contact | DEXYS India</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script>
-        (function() {
-            const isInternal = document.referrer.includes(location.hostname) && document.referrer !== "";
-            const isReload = performance.navigation.type === 1 || (performance.getEntriesByType && performance.getEntriesByType("navigation")[0]?.type === "reload");
-            if (!isInternal || isReload) { document.documentElement.classList.add('fresh-route'); } 
-            else { document.documentElement.classList.add('internal-route'); }
-        })();
-    </script>
+    <meta name="description" content="Contact Dexys It Solutions to request an IT consultation.">
+    <title>Contact | Dexys It Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-primary: #0B0F19; --bg-secondary: #111827; --accent: #8FB6CC; --text-light: #F9FAFB; --text-muted: #9CA3AF; --border: rgba(143, 182, 204, 0.15); --header-height: 80px; } * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; } ::selection { background: rgba(143, 182, 204, 0.3); color: var(--text-light); } ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg-primary); } ::-webkit-scrollbar-thumb { background: rgba(143,182,204,0.2); border-radius: 10px; transition: background 0.3s;} ::-webkit-scrollbar-thumb:hover { background: var(--accent); } body { background-color: var(--bg-primary); color: var(--text-light); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh;} main { flex: 1 0 auto; display: flex; flex-direction: column; } a, button { cursor: pointer; text-decoration: none;} body.intro-locked { overflow: hidden !important; height: 100vh !important; } .bg-grid { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; background-image: radial-gradient(rgba(143,182,204,0.1) 1px, transparent 1px); background-size: 30px 30px; mask-image: linear-gradient(to bottom, black 0%, transparent 100%); pointer-events: none; } @keyframes pulse { 0% { opacity: 0.4; transform: translateX(-50%) scale(1); } 100% { opacity: 0.7; transform: translateX(-50%) scale(1.05); } } .ambient-glow { position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 80vw; height: 80vw; background: radial-gradient(circle, rgba(143,182,204,0.06) 0%, transparent 60%); z-index: -1; pointer-events: none; animation: pulse 10s ease-in-out infinite alternate; will-change: transform, opacity; } 
-        
-        #loader { position: fixed; inset: 0; background: var(--bg-primary); z-index: 999999; display: flex; align-items: center; justify-content: center; flex-direction: column; } 
-        .loader-logo { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 1.8rem; color: var(--text-light); letter-spacing: -0.04em; margin-bottom: 1.5rem; opacity: 0; transform: translateY(10px); will-change: transform, opacity; }
-        .loader-line-wrapper { width: 140px; height: 2px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; } 
-        .loader-line { width: 0%; height: 100%; background: var(--accent); will-change: width;}
+        :root {
+            --violet: #7C3AED;
+            --violet-deep: #5B21B6;
+            --lavender: #F1EAFE;
+            --ink: #17122B;
+            --gray: #6E6680;
+            --line: #ECE6F7;
+            --white: #FFFFFF;
+            --header-h: 76px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html, body { background: var(--white); }
+        body { font-family: 'Inter', system-ui, sans-serif; color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+        button { font-family: inherit; cursor: pointer; }
+        ::selection { background: var(--violet); color: #fff; }
 
-        .dexys-text-logo { font-family: 'Inter', sans-serif; font-weight: 800; color: var(--text-light); letter-spacing: -0.04em; line-height: 1; transition: color 0.3s ease; }
-        .nav-logo { font-size: 24px; }
-        .footer-logo { font-size: 32px; margin-bottom: 1rem; display: inline-block; }
-        .nav-logo:hover, .footer-logo:hover { color: var(--accent); }
+        .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
 
-        header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); background: rgba(11, 15, 25, 0.75); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255,255,255,0.03); z-index: 1000; display: flex; align-items: center; opacity: 0; transform: translateY(-100%); transition: opacity 0.8s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity;} .nav-container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 5%; display: flex; justify-content: space-between; align-items: center; height: 100%; } .desktop-nav { display: flex; gap: 3.5rem; align-items: center; height: 100%; } .desktop-nav a { position: relative; color: var(--text-light); font-size: 0.9rem; font-weight: 500; padding: 1rem 0; opacity: 0.7; transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s;} .desktop-nav a::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 2px; background-color: var(--accent); transform: scaleX(0); transform-origin: right; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); } .desktop-nav a:hover, .desktop-nav a.active { opacity: 1; color: #fff; } .desktop-nav a:hover::after, .desktop-nav a.active::after { transform: scaleX(1); transform-origin: left; } .menu-btn { background: none; border: none; width: 40px; height: 40px; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; gap: 7px; z-index: 1001; position: relative; display: none; } .menu-line { height: 2px; background: var(--text-light); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), width 0.4s cubic-bezier(0.16, 1, 0.3, 1); } .menu-line:nth-child(1) { width: 28px; } .menu-line:nth-child(2) { width: 20px; } .menu-overlay { position: fixed; inset: 0; background: rgba(11,15,25,0.99); backdrop-filter: blur(30px); z-index: 999; display: flex; flex-direction: column; justify-content: center; padding-left: 10%; pointer-events: none; opacity: 0; } .menu-link { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; color: var(--text-light); letter-spacing: -0.03em; margin-bottom: 1.5rem; opacity: 0; transform: translateY(40px); display: block; width: fit-content; transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity;} .menu-link:hover { color: var(--accent); transform: translateX(10px) !important;} .reveal-up { opacity: 0; transform: translateY(50px); will-change: transform, opacity;} .reveal-scale { opacity: 0; transform: scale(0.95) translateY(20px); will-change: transform, opacity;} .is-visible { opacity: 1 !important; transform: translate(0) scale(1) !important; transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); } .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.15s; } .delay-3 { transition-delay: 0.2s; }
+        header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+        .nav-row { height: var(--header-h); display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+        .logo { font-weight: 800; font-size: 1.05rem; letter-spacing: -0.01em; color: var(--ink); white-space: nowrap; }
+        .nav-links { display: flex; align-items: center; gap: 2.5rem; }
+        .nav-links a { font-size: 0.92rem; font-weight: 500; color: var(--gray); transition: color 0.2s ease; }
+        .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+        .nav-cta { display: inline-flex; align-items: center; padding: 10px 22px; background: var(--ink); color: #fff; font-size: 0.88rem; font-weight: 600; border-radius: 100px; border: 1px solid var(--ink); transition: background-color 0.2s ease, border-color 0.2s ease; }
+        .nav-cta:hover { background: var(--violet); border-color: var(--violet); }
+        .nav-right { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
+        .menu-btn { display: none; background: none; border: none; width: 40px; height: 40px; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
+        .menu-btn span { width: 20px; height: 1.5px; background: var(--ink); }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 5%; position: relative; } 
-        section { padding: clamp(120px, 15vw, 180px) 0; border-bottom: 1px solid var(--border); position: relative; }
-        .kicker { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 1.5rem; display: block; } 
-        h1 { font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 1.5rem; color: #fff;} 
-        p { color: var(--text-muted); font-size: clamp(1.05rem, 2vw, 1.15rem); max-width: 70ch; margin-bottom: 2rem; line-height: 1.8; }
-        .text-gradient { background: linear-gradient(135deg, #FFF 0%, var(--accent) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        
-        .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; margin-top: 1rem; }
-        .contact-info-block { margin-bottom: 2.5rem; } .info-title { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; } .info-val { font-size: 1.15rem; font-weight: 600; color: var(--text-light); }
-        
-        .glass-form { position: relative; background: linear-gradient(145deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.005) 100%); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(143,182,204,0.08); border-radius: 16px; padding: 3rem; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease, box-shadow 0.5s ease; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); } 
-        .glass-form:hover { transform: translateY(-8px); border-color: rgba(143,182,204,0.4); box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 0 30px rgba(143,182,204,0.05); } 
-        .form-group { margin-bottom: 1.5rem; } .form-label { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em;} 
-        .form-control { width: 100%; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); padding: 1rem 1.2rem; border-radius: 8px; color: var(--text-light); font-family: 'Inter', sans-serif; font-size: 0.95rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); } 
-        .form-control:focus { outline: none; border-color: var(--accent); background: rgba(143,182,204,0.05); box-shadow: 0 0 15px rgba(143,182,204,0.2);} textarea.form-control { resize: vertical; min-height: 120px; }
-        
-        .btn-submit { display: inline-flex; align-items: center; justify-content: center; width: 100%; padding: 18px 28px; background: var(--text-light); color: var(--bg-primary); border: none; font-weight: 700; font-size: 0.9rem; border-radius: 8px; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; margin-top: 1rem; text-transform: uppercase; cursor: pointer;} 
-        .btn-submit:hover { background: var(--accent); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(143,182,204,0.3); }
+        .mobile-nav { position: fixed; inset: 0; background: #fff; z-index: 200; display: flex; flex-direction: column; padding: 24px; transform: translateX(100%); transition: transform 0.35s cubic-bezier(.16,1,.3,1); }
+        .mobile-nav.open { transform: translateX(0); }
+        .mobile-nav-top { display: flex; justify-content: space-between; align-items: center; height: var(--header-h); }
+        .mobile-nav-close { background: none; border: none; font-size: 1.6rem; color: var(--ink); }
+        .mobile-nav-links { display: flex; flex-direction: column; gap: 1.75rem; margin-top: 2.5rem; }
+        .mobile-nav-links a { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); }
 
-        footer { background: #070A11; padding: 60px 0 30px 0; border-top: 1px solid var(--border); position: relative; z-index: 10; margin-top: auto;}
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 40px; }
-        .footer-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1.5rem; color: var(--text-light); }
-        .footer-col ul { list-style: none; } .footer-col li { margin-bottom: 0.85rem; } .footer-col a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: inline-block;} .footer-col a:hover { color: var(--accent); transform: translateX(4px); }
-        .copyright { padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 0.75rem; color: #4B5563; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+        .label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--gray); margin-bottom: 12px; }
+        h1, h2 { letter-spacing: -0.03em; color: var(--ink); }
+        p { color: var(--gray); font-size: 1.02rem; }
 
-        @media (max-width: 900px) { 
-            .menu-btn { display: flex; } .desktop-nav { display: none; } 
-            .contact-grid { grid-template-columns: 1fr; gap: 3rem; } .glass-form { padding: 2rem; transform: none !important; }
-            .footer-grid { grid-template-columns: 1fr; gap: 3rem; } .copyright { flex-direction: column; gap: 1rem; text-align: center; } 
+        .hero { position: relative; min-height: calc(100vh - var(--header-h)); display: flex; align-items: center; background: linear-gradient(165deg, #FFFFFF 0%, #F7F2FD 45%, #FDFCFF 100%); overflow: hidden; padding: 64px 0; }
+        .hero::before { content: ''; position: absolute; top: -20%; right: -12%; width: 55vw; height: 55vw; max-width: 640px; max-height: 640px; border-radius: 50%; background: radial-gradient(circle, rgba(124,58,237,0.10) 0%, transparent 70%); pointer-events: none; }
+        .hero::after { content: ''; position: absolute; bottom: -25%; left: -10%; width: 40vw; height: 40vw; max-width: 480px; max-height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(124,58,237,0.06) 0%, transparent 70%); pointer-events: none; }
+
+        .contact-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: center; }
+        .contact-grid h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 900; line-height: 1.05; margin-bottom: 20px; }
+        .contact-grid > div:first-child p { max-width: 48ch; margin-bottom: 32px; }
+
+        .info-block { margin-bottom: 20px; }
+        .info-title { font-size: 0.78rem; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+        .info-val { font-size: 1.08rem; font-weight: 600; color: var(--ink); }
+        .info-val a { transition: color 0.2s ease; }
+        .info-val a:hover { color: var(--violet); }
+
+        .form-card { background: #fff; border-radius: 28px; padding: 40px; box-shadow: 0 30px 60px -32px rgba(23,18,43,0.22); border: 1px solid var(--line); }
+        .form-group { margin-bottom: 18px; }
+        .form-label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+        .form-control { width: 100%; background: #FAF8FE; border: 1px solid var(--line); padding: 14px 16px; border-radius: 12px; color: var(--ink); font-family: 'Inter', sans-serif; font-size: 0.95rem; transition: border-color 0.2s ease, background-color 0.2s ease; }
+        .form-control:focus { outline: none; border-color: var(--violet); background: #fff; }
+        textarea.form-control { resize: vertical; min-height: 120px; }
+
+        .btn-submit { display: inline-flex; align-items: center; justify-content: center; width: 100%; padding: 16px 28px; background: var(--ink); color: #fff; border: 1px solid var(--ink); font-weight: 600; font-size: 0.9rem; border-radius: 100px; transition: background-color 0.2s ease, border-color 0.2s ease; margin-top: 4px; cursor: pointer; }
+        .btn-submit:hover { background: var(--violet); border-color: var(--violet); }
+
+        footer { border-top: 1px solid var(--line); padding: 56px 0 28px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-logo { font-weight: 800; font-size: 1.15rem; margin-bottom: 12px; display: inline-block; }
+        .footer-col h4 { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray); margin-bottom: 16px; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 10px; }
+        .footer-col a { font-size: 0.9rem; color: var(--ink); opacity: 0.75; transition: opacity 0.2s ease; }
+        .footer-col a:hover { opacity: 1; color: var(--violet); }
+        .copyright { padding-top: 20px; border-top: 1px solid var(--line); font-size: 0.8rem; color: var(--gray); }
+
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1); }
+        .reveal.in { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .nav-cta { display: none; }
+            .menu-btn { display: flex; }
+            .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .form-card { padding: 28px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
         }
     </style>
 </head>
-<body class="intro-locked">
-    <div id="loader">
-        <div class="loader-logo">DEXYS</div>
-        <div class="loader-line-wrapper"><div class="loader-line"></div></div>
-    </div>
-    
-    <header id="main-header">
-        <div class="nav-container">
-            <a href="/" style="text-decoration: none;">
-                <span class="dexys-text-logo nav-logo">DEXYS</span>
-            </a>
-            <nav class="desktop-nav">
+<body>
+
+    <header>
+        <div class="wrap nav-row">
+            <a href="/" class="logo">Dexys It Solutions</a>
+            <nav class="nav-links">
                 <a href="/">Home</a>
-                <a href="/products-services">Products & Services</a>
-                <a href="/contact" class="active">Contact Us</a>
+                <a href="/products-services">Products &amp; Services</a>
                 <a href="/about">About Us</a>
             </nav>
-            <button class="menu-btn" id="menu-toggle"><div class="menu-line" id="line1"></div><div class="menu-line" id="line2"></div></button>
+            <div class="nav-right">
+                <a href="/contact" class="nav-cta">Contact Us</a>
+                <button class="menu-btn" id="menuBtn" aria-label="Open menu"><span></span><span></span></button>
+            </div>
         </div>
     </header>
 
-    <div class="menu-overlay" id="menu-overlay">
-        <span class="kicker" style="opacity: 0; transform: translateY(20px);" id="menu-kicker">Navigation</span>
-        <a href="/" class="menu-link">Home</a>
-        <a href="/products-services" class="menu-link">Products & Services</a>
-        <a href="/contact" class="menu-link" style="color: var(--accent);">Contact Us</a>
-        <a href="/about" class="menu-link">About Us</a>
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-top">
+            <span class="logo">Dexys It Solutions</span>
+            <button class="mobile-nav-close" id="menuClose" aria-label="Close menu">&times;</button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="/">Home</a>
+            <a href="/products-services">Products &amp; Services</a>
+            <a href="/contact">Contact Us</a>
+            <a href="/about">About Us</a>
+        </div>
     </div>
 
-    <div class="ambient-glow"></div>
-    <div class="bg-grid"></div>
-
     <main>
-        <section style="padding-top: 130px; padding-bottom: 60px; border: none;" id="hero" class="reveal-zone">
-            <div class="container">
-                <div class="contact-grid">
-                    <div>
-                        <span class="kicker reveal-up">Contact Dexys</span>
-                        <h1 class="reveal-up delay-1" style="margin-bottom: 1rem;">Let's Build<br><span class="text-gradient">Together.</span></h1>
-                        <p class="reveal-up delay-2">Whether you are a rising startup or an established organization, we partner directly with you to engineer your enterprise-grade IT infrastructure.</p>
-                        
-                        <div class="reveal-up delay-3" style="margin-top: 3rem; margin-bottom: 3rem;">
-                            <div class="contact-info-block" style="margin-bottom: 1.5rem;">
-                                <div class="info-title">Contact Email</div>
-                                <a href="mailto:dexysindia@gmail.com" style="color: var(--text-light); text-decoration: none; font-size: 1.1rem; transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1);" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-light)'">dexysindia@gmail.com</a>
-                            </div>
-                        </div>
-                        <div class="reveal-up delay-4" style="margin-top: 2rem;">
-                            <div class="contact-info-block">
-                                <div class="info-title">Headquarters</div>
-                                <div class="info-val" style="font-size: 1.1rem;">Pollachi, Tamil Nadu, India</div>
-                            </div>
-                        </div>
+        <section class="hero">
+            <div class="wrap contact-grid reveal">
+                <div>
+                    <span class="label">Contact Us</span>
+                    <h1>Let's build together.</h1>
+                    <p>Whether you are a rising startup or an established organization, we partner directly with you to engineer your enterprise-grade IT infrastructure.</p>
+
+                    <div class="info-block">
+                        <div class="info-title">Contact Email</div>
+                        <div class="info-val"><a href="mailto:dexysindia@gmail.com">dexysindia@gmail.com</a></div>
                     </div>
-                    <div class="glass-form reveal-scale delay-2">
-                        <form id="contactForm" onsubmit="event.preventDefault(); submitForm();">
-                            <div class="form-group">
-                                <label class="form-label">Full Name</label>
-                                <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Email</label>
-                                <input type="email" id="email" class="form-control" placeholder="name@company.com" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Description</label>
-                                <textarea id="message" class="form-control" placeholder="Detail your requirements..." required></textarea>
-                            </div>
-                            <button type="submit" class="btn-submit" id="submitBtn">CONTACT</button>
-                        </form>
+                    <div class="info-block">
+                        <div class="info-title">Headquarters</div>
+                        <div class="info-val">Tamil Nadu, India</div>
                     </div>
+                </div>
+
+                <div class="form-card">
+                    <form id="contactForm" onsubmit="event.preventDefault(); submitForm();">
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="name@company.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Description</label>
+                            <textarea id="message" class="form-control" placeholder="Detail your requirements..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit" id="submitBtn">Contact</button>
+                    </form>
                 </div>
             </div>
         </section>
     </main>
-    
-    <footer class="reveal-zone">
-        <div class="container reveal-up">
+
+    <footer>
+        <div class="wrap">
             <div class="footer-grid">
-                <div class="footer-col">
-                    <span class="dexys-text-logo footer-logo">DEXYS</span>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; max-width: 300px;">Architecting secure, intelligent, and sovereign digital ecosystems.</p>
+                <div>
+                    <span class="footer-logo">Dexys It Solutions</span>
+                    <p style="max-width: 300px;">Architecting secure, intelligent, and sovereign digital ecosystems.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Sitemap</h4>
                     <ul>
                         <li><a href="/">Home</a></li>
-                        <li><a href="/products-services">Products & Services</a></li>
+                        <li><a href="/products-services">Products &amp; Services</a></li>
                         <li><a href="/about">About Us</a></li>
                     </ul>
                 </div>
@@ -161,23 +190,23 @@
                     </ul>
                 </div>
             </div>
-            <div class="copyright"><span>© 2026 DEXYS India.</span></div>
+            <div class="copyright">&copy; 2026 Dexys It Solutions.</div>
         </div>
     </footer>
 
     <script>
-        async function submitForm() { 
-            const btn = document.getElementById('submitBtn'); 
+        async function submitForm() {
+            const btn = document.getElementById('submitBtn');
             const form = document.getElementById('contactForm');
-            
+
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
 
-            btn.innerHTML = 'SENDING...'; 
-            btn.style.background = 'rgba(143,182,204,0.1)'; 
-            btn.style.color = 'var(--accent)'; 
-            
+            btn.innerHTML = 'SENDING...';
+            btn.style.background = '#F1EAFE';
+            btn.style.color = 'var(--violet)';
+
             try {
                 const response = await fetch('/api/contact', {
                     method: 'POST',
@@ -190,14 +219,14 @@
                 const data = await response.json();
 
                 if (response.ok && data.success) {
-                    btn.innerHTML = 'MESSAGE SEND ✓'; 
-                    btn.style.background = '#27C93F'; 
+                    btn.innerHTML = 'MESSAGE SEND ✓';
+                    btn.style.background = '#27C93F';
                     btn.style.color = '#000';
-                    
+
                     setTimeout(() => {
                         btn.innerHTML = 'CONTACT';
-                        btn.style.background = 'var(--text-light)';
-                        btn.style.color = 'var(--bg-primary)';
+                        btn.style.background = '';
+                        btn.style.color = '';
                         form.reset();
                     }, 3000);
                 } else {
@@ -206,35 +235,29 @@
 
             } catch (error) {
                 console.error('Error:', error);
-                btn.innerHTML = 'MESSAGE FAILED ✗'; 
-                btn.style.background = '#ef4444'; 
+                btn.innerHTML = 'MESSAGE FAILED ✗';
+                btn.style.background = '#ef4444';
                 btn.style.color = '#fff';
-                
+
                 setTimeout(() => {
                     btn.innerHTML = 'CONTACT';
-                    btn.style.background = 'var(--text-light)';
-                    btn.style.color = 'var(--bg-primary)';
+                    btn.style.background = '';
+                    btn.style.color = '';
                 }, 3000);
             }
         }
 
-        window.addEventListener('load', () => {
-            const tl = anime.timeline({ easing: 'easeOutExpo' });
-            tl.add({ targets: '.loader-logo', opacity: [0, 1], translateY: [10, 0], duration: 500 })
-              .add({ targets: '.loader-line', width: ['0%', '100%'], duration: 700, easing: 'easeInOutQuart' }, '-=200')
-              .add({ targets: '#loader', opacity: 0, duration: 400, easing: 'linear', complete: () => {
-                  document.getElementById('loader').style.display = 'none';
-                  document.body.classList.remove('intro-locked');
-              }})
-              .add({ targets: '#main-header', translateY: ['-100%', '0%'], opacity: [0, 1], duration: 800, easing: 'easeOutExpo' }, '-=200')
-              .add({ targets: '#hero .reveal-up, #hero .reveal-scale, #hero .reveal-right', opacity: 1, translateY: 0, translateX: 0, scale: 1, duration: 1000, delay: anime.stagger(100), easing: 'easeOutExpo', complete: function(anim) { anim.animatables.forEach(a => a.target.classList.add('is-visible')); } }, '-=600');
-        });
-        
-        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.querySelectorAll('.reveal-up, .reveal-scale, .reveal-right').forEach(el => el.classList.add('is-visible')); if(e.target.classList.contains('reveal-up') || e.target.classList.contains('reveal-scale')) e.target.classList.add('is-visible'); observer.unobserve(e.target); } }); }, { threshold: 0.15 }); document.querySelectorAll('.reveal-zone').forEach(s => observer.observe(s));
+        const menuBtn = document.getElementById('menuBtn');
+        const menuClose = document.getElementById('menuClose');
+        const mobileNav = document.getElementById('mobileNav');
+        menuBtn.addEventListener('click', () => { mobileNav.classList.add('open'); document.body.style.overflow = 'hidden'; });
+        menuClose.addEventListener('click', () => { mobileNav.classList.remove('open'); document.body.style.overflow = ''; });
+        mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mobileNav.classList.remove('open'); document.body.style.overflow = ''; }));
 
-        const menuBtn = document.getElementById('menu-toggle'); const overlay = document.getElementById('menu-overlay'); let menuOpen = false; let menuTimeline = anime.timeline({ autoplay: false });
-        menuTimeline.add({ targets: overlay, opacity: [0, 1], duration: 300, easing: 'easeInOutSine', begin: () => { overlay.style.pointerEvents = 'auto'; } }).add({ targets: '.menu-link', opacity: [0, 1], translateY: [20, 0], duration: 400, delay: anime.stagger(50), easing: 'easeOutExpo' }, '-=200');
-        if(menuBtn){ menuBtn.addEventListener('click', () => { if(!menuOpen){ menuBtn.children[0].style.transform = 'translateY(4px) rotate(45deg)'; menuBtn.children[1].style.transform = 'translateY(-4px) rotate(-45deg)'; menuBtn.children[0].style.width = '24px'; menuBtn.children[1].style.width = '24px'; menuTimeline.play(); menuTimeline.finished.then(() => menuTimeline.reverse()); } else { menuBtn.children[0].style.transform = 'none'; menuBtn.children[1].style.transform = 'none'; menuBtn.children[1].style.width = '16px'; menuTimeline.play(); menuTimeline.finished.then(() => { overlay.style.pointerEvents = 'none'; menuTimeline.reverse(); }); } menuOpen = !menuOpen; }); }
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     </script>
 </body>
 </html>
