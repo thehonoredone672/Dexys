@@ -17,6 +17,9 @@ app.use(express.static(path.join(__dirname, "public")));
 const contactRoute = require("./routes/contact");
 app.use("/api/contact", contactRoute);
 
+const weindieContactRoute = require("./routes/weindie-contact");
+app.use("/api/weindie-contact", weindieContactRoute);
+
 /* --- HTML Page Routes --- */
 
 // Homepage
@@ -27,6 +30,7 @@ app.get("/home", (req, res) => res.sendFile(path.join(__dirname, "public", "inde
 app.get("/products-services", (req, res) => res.sendFile(path.join(__dirname, "public", "products-services.html")));
 app.get("/contact", (req, res) => res.sendFile(path.join(__dirname, "public", "contact.html")));
 app.get("/about", (req, res) => res.sendFile(path.join(__dirname, "public", "about.html")));
+app.get("/weindie", (req, res) => res.sendFile(path.join(__dirname, "public", "weindie.html")));
 
 // Team / Profile Pages
 app.get("/dharsan", (req, res) => res.sendFile(path.join(__dirname, "public", "dharsan.html")));
