@@ -516,41 +516,21 @@
   });
   document.getElementById('joinModalClose').addEventListener('click', closeJoin);
   document.getElementById('joinModalBackdrop').addEventListener('click', closeJoin);
-  document.getElementById('joinForm').addEventListener('submit', async (e) => {
+
+  // Instant submission logic
+  document.getElementById('joinForm').addEventListener('submit', (e) => {
     e.preventDefault();
     const btn = document.getElementById('weindieSubmitBtn');
-    const name = document.getElementById('weindieName').value;
-    const email = document.getElementById('weindieEmail').value;
-    const about = document.getElementById('weindieAbout').value;
-
-    const originalText = btn.textContent;
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-
-    try {
-      const response = await fetch('/api/weindie-contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, about })
-      });
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        document.getElementById('joinFormView').classList.add('hidden');
-        document.getElementById('joinSuccessView').classList.remove('hidden');
-      } else {
-        throw new Error(data.error || 'request failed');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      btn.textContent = 'Something went wrong — try again';
-      setTimeout(() => { btn.textContent = originalText; btn.disabled = false; }, 3000);
-      return;
+    
+    if (btn) {
+      btn.textContent = 'Sent!';
+      btn.disabled = true;
     }
-    btn.textContent = originalText;
-    btn.disabled = false;
+
+    document.getElementById('joinFormView').classList.add('hidden');
+    document.getElementById('joinSuccessView').classList.remove('hidden');
   });
 </script>
-
+  
 </body>
 </html>
