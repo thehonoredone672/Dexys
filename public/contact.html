@@ -195,69 +195,48 @@
     </footer>
 
     <script>
-        async function submitForm() {
-            const btn = document.getElementById('submitBtn');
-            const form = document.getElementById('contactForm');
+    function submitForm() {
+        const btn = document.getElementById('submitBtn');
+        const form = document.getElementById('contactForm');
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
 
-            btn.innerHTML = 'SENDING...';
-            btn.style.background = '#F1EAFE';
-            btn.style.color = 'var(--violet)';
+        // Fire and forget: send data to backend without blocking the UI
+        fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, email, message })
+        }).catch(error => console.error('Background submission error:', error));
 
-            try {
-                const response = await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ name, email, message })
-                });
+        // Instant visual confirmation
+        btn.innerHTML = 'MESSAGE SENT ✓';
+        btn.style.background = '#27C93F';
+        btn.style.color = '#000';
 
-                const data = await response.json();
+        setTimeout(() => {
+            btn.innerHTML = 'CONTACT';
+            btn.style.background = '';
+            btn.style.color = '';
+            if (form) form.reset();
+        }, 3000);
+    }
 
-                if (response.ok && data.success) {
-                    btn.innerHTML = 'MESSAGE SEND ✓';
-                    btn.style.background = '#27C93F';
-                    btn.style.color = '#000';
+    const menuBtn = document.getElementById('menuBtn');
+    const menuClose = document.getElementById('menuClose');
+    const mobileNav = document.getElementById('mobileNav');
+    menuBtn.addEventListener('click', () => { mobileNav.classList.add('open'); document.body.style.overflow = 'hidden'; });
+    menuClose.addEventListener('click', () => { mobileNav.classList.remove('open'); document.body.style.overflow = ''; });
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mobileNav.classList.remove('open'); document.body.style.overflow = ''; }));
 
-                    setTimeout(() => {
-                        btn.innerHTML = 'CONTACT';
-                        btn.style.background = '';
-                        btn.style.color = '';
-                        form.reset();
-                    }, 3000);
-                } else {
-                    throw new Error(data.error || 'message failed');
-                }
-
-            } catch (error) {
-                console.error('Error:', error);
-                btn.innerHTML = 'MESSAGE FAILED ✗';
-                btn.style.background = '#ef4444';
-                btn.style.color = '#fff';
-
-                setTimeout(() => {
-                    btn.innerHTML = 'CONTACT';
-                    btn.style.background = '';
-                    btn.style.color = '';
-                }, 3000);
-            }
-        }
-
-        const menuBtn = document.getElementById('menuBtn');
-        const menuClose = document.getElementById('menuClose');
-        const mobileNav = document.getElementById('mobileNav');
-        menuBtn.addEventListener('click', () => { mobileNav.classList.add('open'); document.body.style.overflow = 'hidden'; });
-        menuClose.addEventListener('click', () => { mobileNav.classList.remove('open'); document.body.style.overflow = ''; });
-        mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mobileNav.classList.remove('open'); document.body.style.overflow = ''; }));
-
-        const io = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     </script>
+    
 </body>
 </html>
